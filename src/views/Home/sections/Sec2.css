@@ -1,0 +1,56 @@
+#s2-container {
+  margin-top: 20px;
+  background-color: rgb(247, 247, 247);
+  max-height: 1300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#s2-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+#s2-h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 4rem 0;
+}
+
+#s2-cardtitle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 0.5rem;
+  justify-content: space-between;
+}
+
+#s2-button {
+  background-color: transparent;
+  border-color: rgb(53, 52, 52);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
+}
+
+#s2-button:hover {
+  transition: 0.5s;
+  background-color: rgb(53, 52, 52);
+  border-color: rgb(53, 52, 52);
+  color: rgb(255, 255, 255);
+}
+#s2-cardbody {
+  display: flex;
+  min-height: 8rem;
+  height: 8.3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

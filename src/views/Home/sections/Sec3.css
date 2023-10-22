@@ -1,0 +1,88 @@
+#sec3-box {
+  height: 20rem;
+  display: flex;
+  align-items: center;
+}
+
+#sec3-greetings {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+#sec3-box button {
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 10rem;
+}
+
+#sec3-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 960px;
+  /* background-color: pink; */
+  height: 23vh;
+  /* width: 100%; */
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap;
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
+#sec3-container::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+  height: 0.5rem;
+}
+
+#sec3-container::-webkit-scrollbar-track {
+  background: gray; /* Set the background color of the track */
+  height: 0.5rem;
+}
+
+#sec3-container::-webkit-scrollbar-thumb {
+  background: rgb(91, 87, 87); /* Set the background color of the thumb */
+  border-radius: 6px; /* Round the corners of the thumb */
+  height: 0.5rem;
+}
+
+#sec3-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(0, 0, 0); /* Set the background color of the thumb on hover */
+  height: 0.5rem;
+}
+.scrollable-content {
+  /* Ensure the content doesn't grow to fill the container */
+  flex: 0 0 auto;
+  display: flex;
+}
+
+#sec3-carousel {
+  display: flex;
+}
+
+#sec3-card {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 10rem;
+  border-color: transparent;
+  flex: 0 0 auto;
+  /* background-color: pink; */
+}
+
+#sec3-card-img {
+  width: 8rem;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden; /* Ensure the image stays within the circle */
+}
+
+@media (min-width: 1024px) {
+  #sec3-container {
+    width: 100%;
+    display: flex;
+  }
+}

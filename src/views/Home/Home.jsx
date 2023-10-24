@@ -1,13 +1,16 @@
 import Hero from './sections/Hero';
 import Sec1 from './sections/Sec1';
-import Login from '../Login/sections/Login';
+import Sec2 from './sections/Sec2';
+import Sec3 from './sections/Sec3';
 
 const Home = () => {
   return (
     <div>
-      <Login />
+      {/* <Login /> */}
       <Hero />
       <Sec1 />
+      <Sec2 />
+      <Sec3 />
     </div>
   );
 };

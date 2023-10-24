@@ -1,16 +1,13 @@
-// import React from 'react'
 import Hero from './sections/Hero';
-import SectionOne from './sections/SectionTwo';
-// import SectionTwo from './sections/SectionTwo';
-// import SectionThree from './sections/SectionThree';
+import Sec1 from './sections/Sec1';
+import Login from '../Login/sections/Login';
 
 const Home = () => {
   return (
     <div>
+      <Login />
       <Hero />
-      <SectionOne />
-      {/* <SectionTwo />
-      <SectionThree /> */}
+      <Sec1 />
     </div>
   );
 };

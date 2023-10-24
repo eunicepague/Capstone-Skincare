@@ -1,10 +1,14 @@
 // import React from 'react'
 import Home from './views/Home/Home';
-
-const routes = () => [
+import Loginmain from './views/Login/Loginmain';
+const routes = [
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: '/login',
+    element: <Loginmain />,
   },
 ];
 

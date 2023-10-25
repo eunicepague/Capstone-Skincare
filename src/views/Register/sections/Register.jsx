@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Container,
   Row,
@@ -8,22 +8,43 @@ import {
   InputGroup,
   OverlayTrigger,
   Tooltip,
-} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Logo from './../../../assets/logo.png';
-import './Register.css';
+} from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import Logo from "./../../../assets/logo.png";
+import "./Register.css";
+import axios from "axios";
 
 const Register = () => {
   const [validated, setValidated] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPasswordConfirm] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+  const handleRegister = async () => {
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+    // setValidated(true);
+    try {
+      const response = await axios.post("http://localhost:8000/api/register", {
+        name,
+        email,
+        password,
+        password_confirmation,
+        phone,
+        address,
+      });
+      navigate("/login");
+    } catch (error) {
+      // Handle authentication error (e.g., show an error message to the user).
+      console.error("Login failed", error);
     }
-
-    setValidated(true);
   };
 
   return (
@@ -31,42 +52,16 @@ const Register = () => {
       <Row>
         <Col lg={6} id="register-left-side">
           <h5
-            style={{ fontWeight: ' bold' }}
+            style={{ fontWeight: " bold" }}
             id="register-h5"
             className="mx-5 mb-4"
           >
             CREATE AN ACCOUNT
           </h5>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={validated}>
             {/* USERNAME -------------- */}
-            <Form.Group
-              as={Col}
-              md="10"
-              className="mx-auto mb-3"
-              controlId="validationCustomUsername"
-            >
-              <InputGroup hasValidation>
-                <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                <OverlayTrigger
-                  placement="right"
-                  overlay={
-                    <Tooltip id="tooltip-username">
-                      Username must be at least 1 uppercase and 1 lowercase
-                    </Tooltip>
-                  }
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    pattern="^(?=.*[A-Z])(?=.*[a-z]).*$"
-                  />
-                </OverlayTrigger>
-              </InputGroup>
-            </Form.Group>
 
-            {/* FIRST NAME -------------- */}
+            {/* FULL NAME -------------- */}
             <Form.Group
               as={Col}
               md="10"
@@ -77,43 +72,19 @@ const Register = () => {
                 placement="right"
                 overlay={
                   <Tooltip id="tooltip-username">
-                    Please enter a valid first name.
+                    Please enter a valid Fullname.
                   </Tooltip>
                 }
               >
                 <Form.Control
                   type="text"
-                  placeholder="First name"
+                  placeholder="Fullname"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
-                  pattern="^[A-Za-z]+$"
                 />
               </OverlayTrigger>
             </Form.Group>
-
-            {/* LAST NAME -------------- */}
-            <Form.Group
-              as={Col}
-              md="10"
-              className="mx-auto mb-3 mt-2"
-              controlId="validationCustom02"
-            >
-              <OverlayTrigger
-                placement="right"
-                overlay={
-                  <Tooltip id="tooltip-username">
-                    Please enter a valid last name.
-                  </Tooltip>
-                }
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Last name"
-                  required
-                  pattern="^[A-Za-z]+$" // Pattern for alphabetic characters only
-                />
-              </OverlayTrigger>
-            </Form.Group>
-
             {/* EMAIL ADDRESS -------------- */}
             <Form.Group
               as={Col}
@@ -134,6 +105,58 @@ const Register = () => {
                   placeholder="Email"
                   aria-describedby="inputGroupPrepend"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </OverlayTrigger>
+            </Form.Group>
+
+            {/* Phone  -------------- */}
+            <Form.Group
+              as={Col}
+              md="10"
+              className="mx-auto mb-3 mt-2"
+              controlId="validationCustom02"
+            >
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip id="tooltip-username">
+                    Please enter a valid phone.
+                  </Tooltip>
+                }
+              >
+                <Form.Control
+                  type="text"
+                  placeholder="Phone"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </OverlayTrigger>
+            </Form.Group>
+
+            {/* Address  -------------- */}
+            <Form.Group
+              as={Col}
+              md="10"
+              className="mx-auto mb-3 mt-2"
+              controlId="validationCustom02"
+            >
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip id="tooltip-username">
+                    Please enter a valid Address.
+                  </Tooltip>
+                }
+              >
+                <Form.Control
+                  type="text"
+                  placeholder="Address"
+                  required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </OverlayTrigger>
             </Form.Group>
@@ -159,8 +182,32 @@ const Register = () => {
                   placeholder="Password"
                   aria-describedby="inputGroupPrepend"
                   required
-                  minLength="8"
-                  pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </OverlayTrigger>
+            </Form.Group>
+
+            {/* PASSWORD CONFIRMATION -------------- */}
+            <Form.Group
+              as={Col}
+              md="10"
+              className="mx-auto mb-3 mt-2"
+              controlId="validationCustomPassword"
+            >
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip id="tooltip-username">Confirm Password</Tooltip>
+                }
+              >
+                <Form.Control
+                  type="password"
+                  placeholder="Password Confirmation"
+                  aria-describedby="inputGroupPrepend"
+                  required
+                  value={password_confirmation}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
               </OverlayTrigger>
             </Form.Group>
@@ -182,11 +229,15 @@ const Register = () => {
             </Form.Group>
 
             {/* button */}
-            <Button type="submit" className="ms-5 mb-3 " id="register-button">
+            <Button
+              onClick={handleRegister}
+              className="ms-5 mb-3 "
+              id="register-button"
+            >
               JOIN NOW
             </Button>
             <p id="register-p" className="ms-5 mb-3">
-              By clicking “Join Now” you agree to the{' '}
+              By clicking “Join Now” you agree to the{" "}
               <span id="register-link-color">Privacy Policy</span> and
               <span id="register-link-color">Terms of Use.</span>
             </p>
@@ -194,7 +245,7 @@ const Register = () => {
               Already have an account?
               <Link to="/login">
                 <span
-                  style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
                   id="register-link-color"
                 >
                   Sign in

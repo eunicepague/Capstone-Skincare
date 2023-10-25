@@ -104,8 +104,11 @@
 }
 
 #sec1-card-img {
-  width: 8rem;
-  border-radius: 50%;
+  margin-left: 3px;
+  margin-top: 3px px;
+  max-height: 80px;
+  max-width: 80px;
+  width: 80px;
   overflow: hidden; /* Ensure the image stays within the circle */
 }
 

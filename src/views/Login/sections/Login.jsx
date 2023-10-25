@@ -1,6 +1,7 @@
 // import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 import './Login.css';
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
           <p className="mx-5" style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
             First time visiting our new site? Create an account here.
           </p>
+
           <Form id="login-form" className="mx-5">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -44,7 +46,9 @@ const Login = () => {
             Set up an account so we can remember your details and speed up your
             next visit.
           </p>
-          <button id="login-button"> Create Account</button>
+          <Link to="/register" style={{ textDecoration: 'none' }}>
+            <button id="login-button">Create Account</button>
+          </Link>
           <hr></hr>
           <h5
             style={{

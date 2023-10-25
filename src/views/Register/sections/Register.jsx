@@ -9,6 +9,7 @@ import {
   OverlayTrigger,
   Tooltip,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Logo from './../../../assets/logo.png';
 import './Register.css';
 
@@ -191,12 +192,14 @@ const Register = () => {
             </p>
             <p id="register-p" className="ms-5 mb-3">
               Already have an account?
-              <span
-                style={{ textDecoration: 'underline', cursor: 'pointer' }}
-                id="register-link-color"
-              >
-                Sign in
-              </span>
+              <Link to="/login">
+                <span
+                  style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                  id="register-link-color"
+                >
+                  Sign in
+                </span>
+              </Link>
             </p>
           </Form>
         </Col>

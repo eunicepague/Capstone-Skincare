@@ -1,21 +1,21 @@
 // import React from 'react'
-import { Component, useEffect, useState } from "react";
-import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import Fade from "react-reveal/Fade";
+import { Component, useEffect, useState } from 'react';
+import { Container, Card, Row, Col, Button } from 'react-bootstrap';
+import Fade from 'react-reveal/Fade';
 
-import "./Sec2.css";
-import axios from "axios";
+import './Sec2.css';
+import axios from 'axios';
 
 const Sec2 = () => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/products");
+      const response = await axios.get('http://localhost:8000/api/products');
       setProducts(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("Fetching products failed", error);
+      console.error('Fetching products failed', error);
     }
   };
 
@@ -30,9 +30,9 @@ const Sec2 = () => {
           <Fade bottom>
             <div id="s2-card-container">
               <Row className="mx-auto">
-                {/* first card */}
+                {/* Map through the products and add a key prop */}
                 {products.slice(0, 4).map((item) => (
-                  <Col xs={6} sm={6} md={3} lg={3}>
+                  <Col key={item.id} xs={6} sm={6} md={3} lg={3}>
                     <Card id="s2-card-box" className="mx-auto mt-3 ">
                       <Card.Img
                         id="s2-cardimg"

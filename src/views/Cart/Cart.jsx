@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import Pic1 from './../../assets/hyaluronic.jpg';
+import Pic1 from './../../assets/Toner.jpg';
 import './Cart.css';
 
 const Cart = () => {

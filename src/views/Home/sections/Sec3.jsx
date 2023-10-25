@@ -37,7 +37,11 @@ const Sec3 = () => {
     <>
       <h1 id="sec3-greetings">SHOP BY CATEGORY</h1>
       <Container id="sec3-box">
-        <button onClick={scrollLeft}>Left</button>
+        <button id="sec3-left-button" onClick={scrollLeft}>
+          <box-icon name="left-arrow" style={{ width: '2rem' }}>
+            Left
+          </box-icon>
+        </button>
         <div
           id="sec3-container"
           className="scrollable-container"
@@ -54,7 +58,9 @@ const Sec3 = () => {
             {generateCards(Cleansers, 'Cleansers', 1)}
           </div>
         </div>
-        <button onClick={scrollRight}>Right</button>
+        <button id="sec3-right-button" onClick={scrollRight}>
+          <box-icon name="right-arrow">Left</box-icon>
+        </button>
       </Container>
     </>
   );

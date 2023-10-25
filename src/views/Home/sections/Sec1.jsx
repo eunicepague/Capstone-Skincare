@@ -34,26 +34,37 @@ const Sec1 = () => {
     }
   };
   return (
-    <Container id="sec1-box">
-      <button onClick={scrollLeft}>Left</button>
-      <div
-        id="sec1-container"
-        className="scrollable-container"
-        ref={containerRef}
-      >
-        <div className="scrollable-content d-flex">
-          {generateCards(Ageing, 'Signs of Ageing', 1)}
-          {generateCards(Dullness, 'Dullness', 1)}
-          {generateCards(Hyperpigmintation, 'Hyperpigmintation', 1)}
-          {generateCards(Uneven, 'Uneven Skin Tone', 1)}
-          {generateCards(Dryness, 'Dryness', 1)}
-          {generateCards(Crowsfeet, 'Crows feet', 1)}
-          {generateCards(Visiblelines, 'Visible shine', 1)}
-          {generateCards(Darkcircles, 'Dark circles', 1)}
+    <>
+      <Container id="sec1-box">
+        <button id="sec1-left-button" onClick={scrollLeft}>
+          <box-icon name="left-arrow" style={{ width: '2rem' }}>
+            Left
+          </box-icon>
+        </button>
+        <div
+          id="sec1-container"
+          className="scrollable-container"
+          ref={containerRef}
+        >
+          <div className="scrollable-content d-flex">
+            {generateCards(Ageing, 'Signs of Ageing', 1)}
+            {generateCards(Dullness, 'Dullness', 1)}
+            {generateCards(Hyperpigmintation, 'Hyperpigmintation', 1)}
+            {generateCards(Uneven, 'Uneven Skin Tone', 1)}
+            {generateCards(Dryness, 'Dryness', 1)}
+            {generateCards(Crowsfeet, 'Crows feet', 1)}
+            {generateCards(Visiblelines, 'Visible shine', 1)}
+            {generateCards(Darkcircles, 'Dark circles', 1)}
+          </div>
         </div>
+        <button id="sec1-right-button" onClick={scrollRight}>
+          <box-icon name="right-arrow">Left</box-icon>
+        </button>
+      </Container>
+      <div className="d-flex justify-content-center">
+        <button id="s1-shop-button">Shop all</button>
       </div>
-      <button onClick={scrollRight}>Right</button>
-    </Container>
+    </>
   );
 };
 

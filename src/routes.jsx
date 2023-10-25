@@ -3,6 +3,7 @@ import Home from './views/Home/Home';
 import Footer from './views/Footer/Footer';
 import Loginmain from './views/Login/Loginmain';
 import Registermain from './views/Register/Registermain';
+import Cart from './views/Cart/Cart';
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
   {
     path: '/register',
     element: <Registermain />,
+  },
+  {
+    path: '/cart',
+    element: <Cart />,
   },
 ];
 

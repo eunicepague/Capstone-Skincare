@@ -1,17 +1,53 @@
 #sec1-box {
-  height: 20rem;
+  height: 18rem;
   display: flex;
   align-items: center;
 }
 
-#sec1-box button {
-  width: 5rem;
-  height: 2rem;
+#sec1-left-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
   display: flex;
+  position: relative;
+  left: 5rem;
   justify-content: center;
-  border-radius: 10rem;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+#sec1-right-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  position: relative;
+  right: 5rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#s1-shop-button {
+  background-color: transparent;
+  border-color: rgb(53, 52, 52);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 10rem;
+  border-radius: 5px;
+}
+
+#s1-shop-button:hover {
+  transition: 0.5s;
+  background-color: rgb(53, 52, 52);
+  border-color: rgb(53, 52, 52);
+  color: rgb(255, 255, 255);
+}
 #sec1-container {
   margin-left: auto;
   margin-right: auto;

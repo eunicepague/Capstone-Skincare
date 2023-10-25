@@ -43,6 +43,7 @@ const Header = () => {
               <Nav.Link as={Link} to="/register">
                 Register
               </Nav.Link>
+              <box-icon name="cart"></box-icon>
             </Nav>
           </Navbar.Collapse>
         </Container>

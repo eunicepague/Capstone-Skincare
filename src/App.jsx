@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './views/Header/Header';
+import Footer from './views/Footer/Footer';
 import routes from './routes';
 
 // import Hero from './views/Home/sections/Hero';
@@ -25,6 +26,7 @@ const App = () => {
           })}
         </Routes>
       </main>
+      <Footer />
     </>
   );
 };

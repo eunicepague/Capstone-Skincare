@@ -1,0 +1,73 @@
+.medium-screen .company-section {
+  display: none;
+}
+
+.medium-screen .company-section-hidden {
+  display: block;
+}
+
+#footer-nav ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+#footer-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.8rem;
+}
+
+#footer-nav ul,
+#footer-nav ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#footer-nav a:hover {
+  color: #555;
+}
+
+#footer-button {
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#footer-button:hover {
+  transition: 0.5s;
+  background-color: rgb(53, 52, 52);
+  border-color: rgb(53, 52, 52);
+  color: rgb(255, 255, 255);
+}
+
+#copyright {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.6rem;
+}
+
+#copyright p {
+  margin-top: 3rem;
+  margin-right: 1rem;
+}
+
+.order-first {
+  order: -1;
+}
+
+.order-second {
+  order: 2;
+}
+.order-third {
+  order: 3;
+}

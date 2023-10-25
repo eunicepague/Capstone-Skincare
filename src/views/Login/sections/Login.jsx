@@ -1,7 +1,6 @@
 // import React from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import './Login.css';
 
 const Login = () => {

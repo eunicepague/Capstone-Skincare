@@ -18,7 +18,6 @@ const Footer = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 992) {
-        // Adjust this value for your desired medium size breakpoint
         setIsMediumScreen(true);
       } else {
         setIsMediumScreen(false);

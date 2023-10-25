@@ -205,7 +205,11 @@ const Register = () => {
         </Col>
 
         <Col lg={6} id="register-right-side">
-          <img src={Logo}></img>
+          <img
+            src={Logo}
+            className="d-none d-lg-block"
+            alt="Your Image Alt Text"
+          />
         </Col>
       </Row>
     </Container>

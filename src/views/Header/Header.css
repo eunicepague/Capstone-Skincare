@@ -4,3 +4,13 @@
   text-align: center;
   height: 1.5rem;
 }
+
+#navbar-container {
+  background-color: white;
+  -webkit-box-shadow: 2px 6.5px 17px 1px #cbcbcb;
+  -moz-box-shadow: 2px 6.5px 17px 1px #cbcbcb;
+  box-shadow: 2px 6.5px 17px 1px #cbcbcb;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}

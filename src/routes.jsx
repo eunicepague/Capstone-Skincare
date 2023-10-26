@@ -4,6 +4,7 @@ import Footer from './views/Footer/Footer';
 import Loginmain from './views/Login/Loginmain';
 import Registermain from './views/Register/Registermain';
 import Cart from './views/Cart/Cart';
+import Account from './views/Profile/Account';
 
 const routes = [
   {
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/cart',
     element: <Cart />,
+  },
+  {
+    path: '/account',
+    element: <Account />,
   },
 ];
 

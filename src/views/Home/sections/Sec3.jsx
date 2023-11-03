@@ -13,8 +13,8 @@ import axios from "axios";
 
 const Sec3 = () => {
   const containerRef = useRef(null);
-  const [categories, setCategories] = useState([]);
 
+  const [categories, setCategories] = useState([]);
   const getCatgories = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/category");
@@ -28,6 +28,7 @@ const Sec3 = () => {
     // When the component mounts, load categories
     getCatgories();
   }, []);
+
   const scrollLeft = () => {
     const container = containerRef.current;
     if (container) {
@@ -53,7 +54,7 @@ const Sec3 = () => {
       <h1 id="sec3-greetings">SHOP BY CATEGORY</h1>
       <Container id="sec3-box">
         <button id="sec3-left-button" onClick={scrollLeft}>
-          <box-icon name="left-arrow" style={{ width: '2rem' }}>
+          <box-icon name="left-arrow" style={{ width: "2rem" }}>
             Left
           </box-icon>
         </button>

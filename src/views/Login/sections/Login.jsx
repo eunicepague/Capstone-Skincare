@@ -4,6 +4,8 @@ import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import React, { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert2";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,9 +23,30 @@ const Login = () => {
       // ] = `Bearer ${window.localStorage.getItem("ECOM_TOKEN")}`;
       navigate("/");
     } catch (error) {
-      // Handle authentication error (e.g., show an error message to the user).
-      alert("Invalid Username or Password");
-      console.error("Login failed", error);
+      if (error.response.status == 401) {
+        // store.commit("SET_ERROR", 401);
+        // router.push("/login");
+        swal.fire({
+          title: "Login Failed.",
+          text: "Invalid Credentials",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
+      if (error.response.status == 422) {
+        const item = error.response.data.errors;
+        let errors = "";
+        for (const key in item) {
+          errors += `${item[key]}<br>`;
+          //console.log(`${key}: ${item[key]}`);
+        }
+        swal.fire({
+          title: error.response.data.message,
+          icon: "error",
+          html: errors,
+          confirmButtonText: "OK",
+        });
+      }
     }
   };
   return (

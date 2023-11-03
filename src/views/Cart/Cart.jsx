@@ -1,10 +1,24 @@
-import { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import Pic1 from './../../assets/Toner.jpg';
-import './Cart.css';
-
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import Pic1 from "./../../assets/Toner.jpg";
+import "./Cart.css";
+import axios from "./../../axios";
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
+  const [carts, setCarts] = useState([]);
+  const getCarts = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/api/carts");
+      setCarts(response.data.data);
+      console.log(response);
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+  useEffect(() => {
+    // When the component mounts, load categories
+    getCarts();
+  }, []);
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -31,51 +45,60 @@ const Cart = () => {
                 </Col>
                 <hr></hr>
               </Row>
-              <Row className="cart-left-container mt-3">
-                <Col id="cart-img">
-                  <p>PRODUCT DETAILS</p>
-                  <div className="product-info-container">
-                    <img src={Pic1} alt="Hyaluronic Acid 2% + B5" />
-                    <Col className="product-content" xl={6}>
-                      <p style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-                        The Ordinary Hyaluronic Acid 2% + B5
-                      </p>
-                      <p style={{ color: 'red' }}>Dryness</p>
-                      <p style={{ color: 'gray' }}>Remove</p>
-                    </Col>
-                  </div>
-                </Col>
-                <Col xl={2}>
-                  <p>QUANTITY</p>
-                  <div className="quantity-controls">
-                    <button
-                      className="quantity-button me-2"
-                      onClick={decrementQuantity}
-                    >
-                      -
-                    </button>
-                    <span>{quantity}</span>
-                    <button
-                      className="quantity-button mx-2"
-                      onClick={incrementQuantity}
-                    >
-                      +
-                    </button>
-                  </div>
-                </Col>
-                <Col xl={2}>
-                  <p>PRICE</p>
-                  <h6 style={{ marginTop: '3rem' }}>P1,000</h6>
-                </Col>
-                <Col xl={2}>
-                  <p>TOTAL</p>
-                  <h6 style={{ marginTop: '3rem' }}>P1,000</h6>
-                </Col>
-              </Row>
+              {carts.map((item) => (
+                <Row className="cart-left-container mt-3">
+                  <Col id="cart-img">
+                    <p>PRODUCT DETAILS</p>
+                    <div className="product-info-container">
+                      <img src={Pic1} alt="Hyaluronic Acid 2% + B5" />
+                      <Col className="product-content" xl={6}>
+                        <p style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+                          {item.product.name}
+                        </p>
+                        <p>Category: {item.product.category.name}</p>
+                        <p>
+                          {"Targets: "}
+                          <span style={{ color: "red" }}>
+                            {item.product.concern.name}
+                          </span>
+                        </p>
+                        <p style={{ color: "gray" }}>Remove</p>
+                      </Col>
+                    </div>
+                  </Col>
+                  <Col xl={2}>
+                    <p>QUANTITY</p>
+                    <div className="quantity-controls">
+                      <button
+                        className="quantity-button me-2"
+                        onClick={decrementQuantity}
+                      >
+                        -
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        className="quantity-button mx-2"
+                        onClick={incrementQuantity}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </Col>
+                  <Col xl={2}>
+                    <p>PRICE</p>
+                    <h6 style={{ marginTop: "3rem" }}>{item.price}</h6>
+                  </Col>
+                  <Col xl={2}>
+                    <p>TOTAL</p>
+                    <h6 style={{ marginTop: "3rem" }}>{item.total_price}</h6>
+                  </Col>
+                </Row>
+              ))}
+
               {/* You can repeat the product details section for additional items */}
             </div>
           </Col>
-          <Col md={4} style={{ backgroundColor: 'rgb(245, 245, 245' }}>
+          <Col md={4} style={{ backgroundColor: "rgb(245, 245, 245" }}>
             <section id="cart-right-container">
               <Row id="cart-right-content" lg={4} xl={4}>
                 <Col className="w-100">

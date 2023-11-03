@@ -1,34 +1,34 @@
 // import React from 'react'
-import Home from './views/Home/Home';
-import Footer from './views/Footer/Footer';
-import Loginmain from './views/Login/Loginmain';
-import Registermain from './views/Register/Registermain';
-import Cart from './views/Cart/Cart';
-import Account from './views/Profile/Account';
+import Home from "./views/Home/Home";
+import Footer from "./views/Footer/Footer";
+import Loginmain from "./views/Login/Loginmain";
+import Registermain from "./views/Register/Registermain";
+import Cart from "./views/Cart/Cart";
+import Account from "./views/Profile/Account";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/footer',
+    path: "/footer",
     element: <Footer />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Loginmain />,
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Registermain />,
   },
   {
-    path: '/cart',
+    path: "/cart",
     element: <Cart />,
   },
   {
-    path: '/account',
+    path: "/account",
     element: <Account />,
   },
 ];

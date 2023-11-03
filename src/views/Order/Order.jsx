@@ -1,11 +1,101 @@
-// import React from 'react';
-import { Container } from 'react-bootstrap';
+import { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import Pic1 from './../../assets/Toner.jpg';
+import Cart from './../../assets/cart-icon.png';
+import './Order.css';
 
 const Order = () => {
+  const [isContentVisible, setContentVisibility] = useState(false);
+  const [count, setCount] = useState(0);
+
+  const toggleContent = () => {
+    setContentVisibility(!isContentVisible);
+  };
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
   return (
-    <Container>
-      <section></section>
-    </Container>
+    <>
+      <Container id="order-container">
+        <section id="order-content">
+          <Row className="w-100">
+            <Col sm={12} md={12} lg={6} xl={5}>
+              <section id="order-left">
+                <div id="order-top-content">
+                  <h2 className="mb-5">Product Title goes here</h2>
+                  <h4 className="mb-4">Price Goes Here</h4>
+                </div>
+
+                {/* visible only when in small screen */}
+                <section id="order-sm" className="d-md-block d-lg-none">
+                  <img src={Pic1} alt="Product" />
+                </section>
+
+                <div id="order-bot-content">
+                  <h6>Regimen Step:</h6>
+                  <p>Regimen step number and description goes here</p>
+                  <hr></hr>
+                  <h6>Targets</h6>
+                  <p>Target description goes here</p>
+                  <hr></hr>
+                  <h6>Suited To</h6>
+                  <p>Suited to data goes here</p>
+                  <hr></hr>
+                  <h6>Format</h6>
+                  <p>Format data goes here</p>
+                  <hr></hr>
+                  <div className="d-flex justify-content-between">
+                    <h6>Key Ingredients</h6>
+                    <button id="order-button" onClick={toggleContent}>
+                      +
+                    </button>
+                  </div>
+                  {isContentVisible && <p>Key Ingredients goes here</p>}
+                </div>
+
+                <div id="order-count-container">
+                  <div id="order-counter">
+                    <button onClick={decrementCount}>-</button>
+                    <span>{count}</span>
+                    <button onClick={incrementCount}>+</button>
+                  </div>
+
+                  <div id="order-basket-container">
+                    <div id="order-basket">
+                      <button className="d-none d-lg-flex">
+                        <img src={Cart}></img>
+                        <h6>ADD TO BASKET</h6>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </Col>
+            <Col sm={12} md={12} lg={6} xl={7}>
+              <section id="order-right" className="mt-5">
+                <img src={Pic1} alt="Product" />
+              </section>
+            </Col>
+          </Row>
+        </section>
+      </Container>
+
+      {/* --------THIS IS THE ADD TO BASKET BUTTON WHEN IN SM SCREEN*/}
+      <div id="sm-button">
+        <button id="sm-button" className="d-lg-none sticky">
+          <img src={Cart}></img>
+          <h6>ADD TO BASKET</h6>
+        </button>
+      </div>
+    </>
   );
 };
 

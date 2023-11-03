@@ -4,7 +4,7 @@
 }
 #order-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 5rem;
 }
 
@@ -107,6 +107,37 @@
   color: rgb(255, 255, 255);
 }
 
+/* --------ICON CONTAINER */
+#order-icon-container {
+  display: flex;
+  align-items: center;
+  background-color: rgb(249, 248, 247);
+  min-height: 10rem;
+  margin-top: 1rem;
+}
+#order-icon-content {
+  margin: 2rem;
+}
+
+#order-icon-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+#order-icon-col img {
+  width: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------OVERVIEW CONTAINER */
+#order-overview-container {
+  margin-top: 5rem;
+}
+
 /* SMALL DEVICE Button */
 #sm-button {
   display: flex;
@@ -118,7 +149,7 @@
 #sm-button button {
   width: 100%;
   height: auto;
-  padding: 20px 10px;
+  padding: 20px 0;
   background-color: black;
   color: white;
 }

@@ -9,6 +9,7 @@ import {
   Dropdown,
 } from 'react-bootstrap';
 import { useState } from 'react';
+import Cart from './../../assets/cart-icon.png';
 import Pic1 from './../../assets/Toner.jpg';
 import yellowStar from './../../assets/yellowStar.png';
 import transStar from './../../assets/transStar.png';
@@ -534,7 +535,7 @@ const Category = () => {
               </div>
               {Array.from({ length: 10 }, (_, index) => (
                 <Col key={index} xs={6} md={4} className="mb-4">
-                  <Card>
+                  <Card id="category-right-card">
                     <Card.Img variant="top" src={Pic1} />
                     <Card.Body>
                       <h5>Title goes here</h5>
@@ -563,6 +564,15 @@ const Category = () => {
                           </Col>
                         </div>
                       </Card.Text>
+                      <div>
+                        <button>
+                          <img
+                            src={Cart}
+                            style={{ width: '20px', marginRight: '0.5rem' }}
+                          ></img>
+                          ADD TO CART
+                        </button>
+                      </div>
                     </Card.Body>
                   </Card>
                 </Col>

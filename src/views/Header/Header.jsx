@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import { Nav, Navbar, Offcanvas } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -27,8 +27,8 @@ const Header = () => {
               <Nav.Link as={Link} to="/new">
                 New
               </Nav.Link>
-              <Nav.Link as={Link} to="/bestsellers">
-                Best Sellers
+              <Nav.Link as={Link} to="/ProductCategories">
+                Products
               </Nav.Link>
               <Nav.Link as={Link} to="/Account">
                 Skin Care
@@ -62,8 +62,8 @@ const Header = () => {
               <Nav.Link as={Link} to="/new">
                 New
               </Nav.Link>
-              <Nav.Link as={Link} to="/bestsellers">
-                Best Sellers
+              <Nav.Link as={Link} to="/ProductCategories">
+                Products
               </Nav.Link>
               <Nav.Link as={Link} to="/Account">
                 Skin Care

@@ -6,6 +6,7 @@ import Registermain from './views/Register/Registermain';
 import Cart from './views/Cart/Cart';
 import Account from './views/Profile/Account';
 import Order from './views/Order/Order';
+import Category from './views/Category/Category';
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
   {
     path: '/order',
     element: <Order />,
+  },
+  {
+    path: '/ProductCategories',
+    element: <Category />,
   },
 ];
 

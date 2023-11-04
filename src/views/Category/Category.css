@@ -1,0 +1,42 @@
+#category-container {
+  margin-top: 5rem;
+}
+
+#category-left {
+  display: flex;
+  flex-direction: column;
+}
+
+#category-right {
+  display: flex;
+  /* margin-top: 9rem; */
+}
+
+#category-right-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+#category-right-dropdown {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#dropdown-autoclose-inside {
+  background-color: transparent;
+  color: black;
+  border-color: black;
+}
+
+#category-rating img {
+  width: 10%;
+}
+
+#category-stars span {
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+#category-stars img {
+  width: 8%;
+}

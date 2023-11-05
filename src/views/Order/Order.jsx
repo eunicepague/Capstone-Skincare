@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Pic1 from './../../assets/Toner.jpg';
 import Cart from './../../assets/cart-icon.png';
+
+import Crueltyfree from './../../assets/cruelty-free.png';
+import Check from './../../assets/check.png';
+import X from './../../assets/x.png';
+
 import './Order.css';
 
 const Order = () => {
@@ -77,8 +82,56 @@ const Order = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* ICON CONTAINER */}
+                <div id="order-icon-container">
+                  <Row id="order-icon-content">
+                    <Col id="order-icon-col">
+                      <p>water-free</p>
+                      <img src={X}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>alcohol-free</p>
+                      <img src={Check}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>oil-free</p>
+                      <img src={Check}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>silicone-free</p>
+                      <img src={Check}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>vegan</p>
+                      <img src={Check}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>gluten-free</p>
+                      <img src={Check}></img>
+                    </Col>
+                    <Col id="order-icon-col">
+                      <p>cruelty-free</p>
+                      <img src={Crueltyfree}></img>
+                    </Col>
+                  </Row>
+                </div>
+
+                {/* OVERVIEW CONTAINER */}
+                <div id="order-overview-container">
+                  <Row id="order-overview-content">
+                    <Col sm={12} md={12} lg={6}>
+                      <h2 className="mb-md-3 mb-sm-3">Overview.</h2>
+                    </Col>
+                    <Col sm={12} md={12} lg={6}>
+                      <h5 className="mb-md-3 mb-sm-3">About.</h5>
+                      Longer Description goes here
+                    </Col>
+                  </Row>
+                </div>
               </section>
             </Col>
+
             <Col sm={12} md={12} lg={6} xl={7}>
               <section id="order-right" className="mt-5">
                 <img src={Pic1} alt="Product" />

@@ -14,3 +14,18 @@
   top: 0;
   z-index: 5;
 }
+
+#navbar-container .navbar-toggler {
+  border: none;
+  margin-left: 0.5rem;
+  order: -1; /* This moves the toggle button to the left */
+}
+
+#navbar-container .navbar-nav {
+  order: 0; /* This restores the order of the nav items */
+  margin-left: 0.5rem;
+}
+
+#basic-navbar-nav {
+  margin-left: 1rem;
+}

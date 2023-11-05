@@ -5,6 +5,7 @@ import Loginmain from "./views/Login/Loginmain";
 import Registermain from "./views/Register/Registermain";
 import Cart from "./views/Cart/Cart";
 import Account from "./views/Profile/Account";
+import Order from "./views/Order/Order";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
   {
     path: "/account",
     element: <Account />,
+  },
+  {
+    path: "/order",
+    element: <Order />,
   },
 ];
 

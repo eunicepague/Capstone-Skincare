@@ -39,28 +39,6 @@
   color: rgb(255, 255, 255);
 }
 
-/* #footer-button {
-    background-color: rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    display: flex;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    height: 1.8rem;
-    font-size: 0.7rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-   */
-/* #footer-button:hover {
-    transition: 0.5s;
-    background-color: rgb(53, 52, 52);
-    border-color: rgb(53, 52, 52);
-    color: rgb(255, 255, 255);
-  }
- */
-
 #dropdown-autoclose-inside {
   background-color: transparent;
   color: black;

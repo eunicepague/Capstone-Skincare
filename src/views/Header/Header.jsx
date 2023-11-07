@@ -1,13 +1,36 @@
-import { useState } from 'react';
+import { useState,useEffect} from 'react';
 import { Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
+import axios from "./../../axios";
 
 const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+   const [user, setUser] = useState({});
+  const navigate = useNavigate();
+
+  const userLogged = async () => {
+    await axios
+      .get("/authUser")
+      .then((res) => {
+        setUser(res.data.user);
+      })
+      .catch((err) => {
+        setUser({});
+      });
+  };
+  useEffect(() => {
+    // Call userLogged when the component mounts
+    userLogged();
+  }, []);
+
+  const logout = async () => {
+    await axios.post("/logout");
+    setUser({});
+  };
 
   return (
     <>
@@ -41,13 +64,25 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/login">
-                Log in
-              </Nav.Link>
-              <Nav.Link as={Link} to="/register">
-                Register
-              </Nav.Link>
-              <box-icon name="cart"></box-icon>
+              {user.name ? (
+                <>
+                  <Nav.Link as={Link} to="/Account">
+                    {user.name}
+                  </Nav.Link>
+                  <Nav.Link onClick={logout}>Logout</Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login">
+                    Log in
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+
+              {/* <box-icon name="cart"></box-icon> */}
             </Nav>
           </Navbar.Collapse>
         )}
@@ -76,13 +111,25 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/login">
-                Log in
-              </Nav.Link>
-              <Nav.Link as={Link} to="/register">
-                Register
-              </Nav.Link>
-              <box-icon name="cart"></box-icon>
+              {user.name ? (
+                <>
+                  <Nav.Link as={Link} to="/Account">
+                    {user.name}
+                  </Nav.Link>
+                  <Nav.Link onClick={logout}>Logout</Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login">
+                    Log in
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+
+              {/* <box-icon name="cart"></box-icon> */}
             </Nav>
           </Offcanvas.Body>
         </Offcanvas>

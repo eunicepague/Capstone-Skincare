@@ -1,32 +1,98 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Pic1 from "./../../assets/Toner.jpg";
+// import Pic1 from "./../../assets/Toner.jpg";
 import "./Cart.css";
 import axios from "./../../axios";
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [itemCount, setItemCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [carts, setCarts] = useState([]);
+
   const getCarts = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/carts");
       setCarts(response.data.data);
+      setItemCount(response.data.data.length);
+
       console.log(response);
     } catch (error) {
       console.error("failed", error);
     }
   };
+
   useEffect(() => {
     // When the component mounts, load categories
+    calculateTotalPrice();
+
     getCarts();
   }, []);
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+  const calculateTotalPrice = () => {
+    let totals = 0;
+    const total = carts.map((item) => {
+      totals = totals + parseFloat(item.total_price);
+    });
+    setTotalPrice(totals);
+  };
+  const incrementQuantity = async (item) => {
+    try {
+      let quantity = item.quantity + 1;
+      const response = await axios.put(
+        `http://localhost:8000/api/carts/${item.id}`,
+        { quantity }
+      );
+
+      const updatedCarts = carts.map((cartItem) => {
+        if (cartItem.id === item.id) {
+          return {
+            ...cartItem,
+            quantity: quantity,
+            total_price: response.data.data.total_price,
+          };
+        }
+        return cartItem;
+      });
+
+      setCarts(updatedCarts);
+    } catch (error) {
+      console.error("failed", error);
+    }
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+  const decrementQuantity = async (item) => {
+    calculateTotalPrice();
+
+    try {
+      let quantity = item.quantity - 1;
+      const response = await axios.put(
+        `http://localhost:8000/api/carts/${item.id}`,
+        { quantity }
+      );
+      const updatedCarts = carts.map((cartItem) => {
+        if (cartItem.id === item.id) {
+          return {
+            ...cartItem,
+            quantity: quantity,
+            total_price: response.data.data.total_price,
+          };
+        }
+        return cartItem;
+      });
+      setCarts(updatedCarts);
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+  const removeFromCart = async (item) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/api/carts/${item.id}`
+      );
+      const updatedCarts = carts.filter((cartItem) => cartItem.id !== item.id);
+      setItemCount(updatedCarts.length);
+      setCarts(updatedCarts);
+    } catch (error) {
+      console.error("failed", error);
     }
   };
 
@@ -41,7 +107,7 @@ const Cart = () => {
                   <h6>Shopping Cart</h6>
                 </Col>
                 <Col>
-                  <h6>3 Items</h6>
+                  <h6>{itemCount} Items</h6>
                 </Col>
                 <hr></hr>
               </Row>
@@ -50,7 +116,10 @@ const Cart = () => {
                   <Col id="cart-img">
                     <p>PRODUCT DETAILS</p>
                     <div className="product-info-container">
-                      <img src={Pic1} alt="Hyaluronic Acid 2% + B5" />
+                      <img
+                        src={`/src/assets/${item.product.image}`}
+                        alt={item.product.name}
+                      />
                       <Col className="product-content" xl={6}>
                         <p style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
                           {item.product.name}
@@ -58,11 +127,16 @@ const Cart = () => {
                         <p>Category: {item.product.category.name}</p>
                         <p>
                           {"Targets: "}
-                          <span style={{ color: "red" }}>
-                            {item.product.concern.name}
+                          <span style={{ color: "black" }}>
+                            {item.product.target}
                           </span>
                         </p>
-                        <p style={{ color: "gray" }}>Remove</p>
+                        <p
+                          style={{ color: "gray", cursor: "pointer" }}
+                          onClick={() => removeFromCart(item)}
+                        >
+                          Remove
+                        </p>
                       </Col>
                     </div>
                   </Col>
@@ -71,14 +145,14 @@ const Cart = () => {
                     <div className="quantity-controls">
                       <button
                         className="quantity-button me-2"
-                        onClick={decrementQuantity}
+                        onClick={() => decrementQuantity(item)}
                       >
                         -
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         className="quantity-button mx-2"
-                        onClick={incrementQuantity}
+                        onClick={() => incrementQuantity(item)}
                       >
                         +
                       </button>
@@ -106,8 +180,8 @@ const Cart = () => {
                 </Col>
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
-                  <p>ITEMS 3</p>
-                  <p>P1000</p>
+                  <p>ITEMS {itemCount}</p>
+                  <p>₱{totalPrice}</p>
                 </Col>
                 <Col>
                   <p>SHIPPING</p>

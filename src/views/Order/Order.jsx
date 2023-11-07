@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import Pic1 from './../../assets/Toner.jpg';
-import Cart from './../../assets/cart-icon.png';
+import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import Pic1 from "./../../assets/Toner.jpg";
+import Cart from "./../../assets/cart-icon.png";
 
-import Crueltyfree from './../../assets/cruelty-free.png';
-import Check from './../../assets/check.png';
-import X from './../../assets/x.png';
+import Crueltyfree from "./../../assets/cruelty-free.png";
+import Check from "./../../assets/check.png";
+import X from "./../../assets/x.png";
 
-import './Order.css';
+import "./Order.css";
 
 const Order = () => {
   const [isContentVisible, setContentVisibility] = useState(false);
@@ -45,7 +45,7 @@ const Order = () => {
                 </section>
 
                 <div id="order-bot-content">
-                  <h6>Regimen Step:</h6>
+                  <h6>Regimen Step 2: Treat</h6>
                   <p>Regimen step number and description goes here</p>
                   <hr></hr>
                   <h6>Targets</h6>

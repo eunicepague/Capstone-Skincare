@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 // import Pic1 from "./../../assets/Toner.jpg";
-import "./Cart.css";
-import axios from "./../../axios";
+import { Link } from 'react-router-dom';
+import './Cart.css';
+import axios from './../../axios';
 const Cart = () => {
   const [itemCount, setItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -10,13 +11,13 @@ const Cart = () => {
 
   const getCarts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/carts");
+      const response = await axios.get('http://localhost:8000/api/carts');
       setCarts(response.data.data);
       setItemCount(response.data.data.length);
 
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -55,7 +56,7 @@ const Cart = () => {
 
       setCarts(updatedCarts);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -80,7 +81,7 @@ const Cart = () => {
       });
       setCarts(updatedCarts);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
   const removeFromCart = async (item) => {
@@ -92,7 +93,7 @@ const Cart = () => {
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -112,7 +113,7 @@ const Cart = () => {
                 <hr></hr>
               </Row>
               {carts.map((item) => (
-                <Row className="cart-left-container mt-3">
+                <Row key={item.id} className="cart-left-container mt-3">
                   <Col id="cart-img">
                     <p>PRODUCT DETAILS</p>
                     <div className="product-info-container">
@@ -121,18 +122,18 @@ const Cart = () => {
                         alt={item.product.name}
                       />
                       <Col className="product-content" xl={6}>
-                        <p style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+                        <p style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
                           {item.product.name}
                         </p>
                         <p>Category: {item.product.category.name}</p>
                         <p>
-                          {"Targets: "}
-                          <span style={{ color: "black" }}>
+                          {'Targets: '}
+                          <span style={{ color: 'black' }}>
                             {item.product.target}
                           </span>
                         </p>
                         <p
-                          style={{ color: "gray", cursor: "pointer" }}
+                          style={{ color: 'gray', cursor: 'pointer' }}
                           onClick={() => removeFromCart(item)}
                         >
                           Remove
@@ -160,11 +161,11 @@ const Cart = () => {
                   </Col>
                   <Col xl={2}>
                     <p>PRICE</p>
-                    <h6 style={{ marginTop: "3rem" }}>{item.price}</h6>
+                    <h6 style={{ marginTop: '3rem' }}>{item.price}</h6>
                   </Col>
                   <Col xl={2}>
                     <p>TOTAL</p>
-                    <h6 style={{ marginTop: "3rem" }}>{item.total_price}</h6>
+                    <h6 style={{ marginTop: '3rem' }}>{item.total_price}</h6>
                   </Col>
                 </Row>
               ))}
@@ -172,7 +173,7 @@ const Cart = () => {
               {/* You can repeat the product details section for additional items */}
             </div>
           </Col>
-          <Col md={4} style={{ backgroundColor: "rgb(245, 245, 245" }}>
+          <Col md={4} style={{ backgroundColor: 'rgb(245, 245, 245' }}>
             <section id="cart-right-container">
               <Row id="cart-right-content" lg={4} xl={4}>
                 <Col className="w-100">
@@ -217,6 +218,9 @@ const Cart = () => {
                     type="submit"
                     className="w-100 mb-5 mt-5"
                     id="cart-button"
+                    Link
+                    as={Link}
+                    to="/Checkout"
                   >
                     CHECKOUT
                   </Button>

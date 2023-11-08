@@ -7,39 +7,49 @@ import Cart from './views/Cart/Cart';
 import Account from './views/Profile/Account';
 import Order from './views/Order/Order';
 import Products from './views/Products/Products';
+import Checkout from './views/Checkout/Checkout';
+import Payment from './views/Checkout/Payment';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/footer",
+    path: '/footer',
     element: <Footer />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Loginmain />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Registermain />,
   },
   {
-    path: "/cart",
+    path: '/cart',
     element: <Cart />,
   },
   {
-    path: "/account",
+    path: '/account',
     element: <Account />,
   },
   {
-    path: "/order",
+    path: '/order',
     element: <Order />,
   },
   {
     path: '/Products',
     element: <Products />,
+  },
+  {
+    path: '/Checkout',
+    element: <Checkout />,
+  },
+  {
+    path: '/Payment',
+    element: <Payment />,
   },
 ];
 

@@ -6,7 +6,7 @@ import Registermain from './views/Register/Registermain';
 import Cart from './views/Cart/Cart';
 import Account from './views/Profile/Account';
 import Order from './views/Order/Order';
-import Category from './views/Category/Category';
+import Products from './views/Products/Products';
 
 const routes = [
   {
@@ -38,8 +38,8 @@ const routes = [
     element: <Order />,
   },
   {
-    path: '/ProductCategories',
-    element: <Category />,
+    path: '/Products',
+    element: <Products />,
   },
 ];
 

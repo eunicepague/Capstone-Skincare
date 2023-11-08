@@ -19,7 +19,7 @@ const Login = () => {
       // axios.defaults.headers[
       //   "Authorization"
       // ] = `Bearer ${window.localStorage.getItem("ECOM_TOKEN")}`;
-      navigate('/');
+      navigate('/Account');
     } catch (error) {
       // Handle authentication error (e.g., show an error message to the user).
       alert("Invalid Username or Password");

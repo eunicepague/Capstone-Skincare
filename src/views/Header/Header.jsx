@@ -50,7 +50,7 @@ const Header = () => {
               <Nav.Link as={Link} to="/new">
                 New
               </Nav.Link>
-              <Nav.Link as={Link} to="/ProductCategories">
+              <Nav.Link as={Link} to="/Products">
                 Products
               </Nav.Link>
               <Nav.Link as={Link} to="/Account">
@@ -67,7 +67,7 @@ const Header = () => {
               {user.name ? (
                 <>
                   <Nav.Link as={Link} to="/Account">
-                    {user.name}
+                    {user.username}
                   </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </>
@@ -114,7 +114,7 @@ const Header = () => {
               {user.name ? (
                 <>
                   <Nav.Link as={Link} to="/Account">
-                    {user.name}
+                    {user.username}
                   </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </>

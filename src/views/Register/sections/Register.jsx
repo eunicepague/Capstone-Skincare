@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Container,
   Row,
@@ -8,20 +8,21 @@ import {
   // InputGroup,
   OverlayTrigger,
   Tooltip,
-} from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
-import Logo from './../../../assets/logo.png';
-import './Register.css';
-import axios from 'axios';
+} from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import Logo from "./../../../assets/logo.png";
+import "./Register.css";
+import axios from "axios";
 
 const Register = () => {
   const [validated, setValidated] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_confirmation, setPasswordConfirm] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [username, setUsername] =useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPasswordConfirm] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -32,7 +33,8 @@ const Register = () => {
     // }
     // setValidated(true);
     try {
-      const response = await axios.post('http://localhost:8000/api/register', {
+      const response = await axios.post("http://localhost:8000/api/register", {
+        username,
         name,
         email,
         password,
@@ -40,10 +42,10 @@ const Register = () => {
         phone,
         address,
       });
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       // Handle authentication error (e.g., show an error message to the user).
-      console.error('Login failed', error);
+      console.error("Login failed", error);
     }
   };
 
@@ -52,7 +54,7 @@ const Register = () => {
       <Row>
         <Col lg={6} id="register-left-side">
           <h5
-            style={{ fontWeight: ' bold' }}
+            style={{ fontWeight: " bold" }}
             id="register-h5"
             className="mx-5 mb-4"
           >
@@ -60,7 +62,29 @@ const Register = () => {
           </h5>
           <Form noValidate validated={validated}>
             {/* USERNAME -------------- */}
-
+            <Form.Group
+              as={Col}
+              md="10"
+              className="mx-auto mb-3 mt-2"
+              controlId="validationCustom01"
+            >
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip id="tooltip-username">
+                    Please enter a Username.
+                  </Tooltip>
+                }
+              >
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </OverlayTrigger>
+            </Form.Group>
             {/* FULL NAME -------------- */}
             <Form.Group
               as={Col}
@@ -128,7 +152,7 @@ const Register = () => {
               >
                 <Form.Control
                   type="text"
-                  placeholder="Phone"
+                  placeholder="Phone Number"
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -237,7 +261,7 @@ const Register = () => {
               JOIN NOW
             </Button>
             <p id="register-p" className="ms-5 mb-3">
-              By clicking “Join Now” you agree to the{' '}
+              By clicking “Join Now” you agree to the{" "}
               <span id="register-link-color">Privacy Policy</span> and
               <span id="register-link-color">Terms of Use.</span>
             </p>
@@ -245,7 +269,7 @@ const Register = () => {
               Already have an account?
               <Link to="/login">
                 <span
-                  style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
                   id="register-link-color"
                 >
                   Sign in

@@ -47,7 +47,7 @@ const Cart = () => {
           return {
             ...cartItem,
             quantity: quantity,
-            total_price: response.data.data.total_price,
+            total_price: response.data.data.total_price.toFixed(2),
           };
         }
         return cartItem;
@@ -60,7 +60,7 @@ const Cart = () => {
   };
 
   const decrementQuantity = async (item) => {
-    calculateTotalPrice();
+    // calculateTotalPrice();
 
     try {
       let quantity = item.quantity - 1;
@@ -73,7 +73,7 @@ const Cart = () => {
           return {
             ...cartItem,
             quantity: quantity,
-            total_price: response.data.data.total_price,
+            total_price: response.data.data.total_price.toFixed(2),
           };
         }
         return cartItem;

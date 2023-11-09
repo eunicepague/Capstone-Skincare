@@ -8,58 +8,83 @@ import {
   Accordion,
   Dropdown,
 } from "react-bootstrap";
+import swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import Cart from "./../../assets/cart-icon.png";
 import Pic1 from "./../../assets/Toner.jpg";
 import yellowStar from "./../../assets/yellowStar.png";
 import transStar from "./../../assets/transStar.png";
 import axios from "./../../axios";
-
 import "./Products.css";
+import { useLocation } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
+
 
 const Category = () => {
   const [selectedItem, setSelectedItem] = useState("Sort Products");
   const [products, setProducts] = useState([]);
   const [category_id, setCategoryId] = useState([]);
   const [concern_id, setConcernId] = useState([]);
-  const [orderBy, setOrderBy] = useState("");
-  const [sortBy, setSortBy] = useState("");
-  
+  const [orderBy, setOrderBy] = useState("desc");
+  const [sortBy, setSortBy] = useState("id");
+  const location = useLocation();
+  const [statusLoad, setStatusLoad] = useState(false);
+  const navigate = useNavigate();
+
+
   const handleItemClick = (itemText) => {
-    if (itemText === "relevant"){
-      setOrderBy("id")
-      setSortBy('desc')
-    }else if (itemText === "high price"){
-      setOrderBy("price")
-      setSortBy('desc')
-    } else if (itemText === "low price"){
-      setOrderBy("price")
-      setSortBy('asc')
-    } else if (itemText === "Newest"){
-      setOrderBy("createdAt")
-      setSortBy('desc')
+    if (itemText === "relevant") {
+      setSortBy("id");
+      setOrderBy("asc");
+    } else if (itemText === "high price") {
+      setSortBy("price");
+      setOrderBy("desc");
+    } else if (itemText === "low price") {
+      setSortBy("price");
+      setOrderBy("asc");
+    } else if (itemText === "Newest") {
+      setSortBy("created_at");
+      setOrderBy("desc");
     }
 
     setSelectedItem(itemText);
   };
 
-  
   const getProducts = async () => {
+    const delay = 1000; // 2 seconds (in milliseconds)
+    // alert(1);
+    const timer = setTimeout(() => {
+      const queryParams = new URLSearchParams(location.search);
+      const concern = queryParams.get("concern");
+      const category = queryParams.get("category");
+      if (statusLoad == false) {
+        setConcernId([concern]);
+        setCategoryId([category]);
+        setStatusLoad(true);
+      }
+    }, delay);
+
     try {
       const response = await axios.get("http://localhost:8000/api/products", {
         params: { category_id, concern_id, orderBy, sortBy },
       });
       setProducts(response.data.data);
-
       console.log(response);
     } catch (error) {
       console.error("failed", error);
     }
+    clearTimeout(timer);
   };
 
   useEffect(() => {
+    getConcerns();
+    getCategories();
     getProducts();
-  }, []);
+  }, [concern_id, category_id, orderBy, sortBy, statusLoad]);
+
+  // useEffect(() => {
+  //   setConcernId([concern_id]); // Use the functional form of setConcernId
+  // }, [concern_id]);
 
   const addToCart = async (product) => {
     try {
@@ -69,13 +94,20 @@ const Category = () => {
         quantity,
         product_id,
       });
-      alert("Add to cart successfully");
+      swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (error) {
       console.error("failed", error);
     }
   };
 
   const [categories, setCategories] = useState([]);
+  const [concerns, setConcerns] = useState([]);
 
   const getCategories = async () => {
     try {
@@ -87,11 +119,6 @@ const Category = () => {
       console.error("failed", error);
     }
   };
-  const filterByCategory = async (category_id) => {
-    getProducts([12,13],[5]);
-  };
-
-  const [concerns, setConcerns] = useState([]);
 
   const getConcerns = async () => {
     try {
@@ -104,10 +131,25 @@ const Category = () => {
     }
   };
 
-  useEffect(() => {
-    getConcerns();
-    getCategories();
-  }, []);
+  const filterByCategory = async (id) => {
+    if (category_id.includes(id)) {
+      // If it's in the array, remove it
+      setCategoryId((category_id) => category_id.filter((item) => item !== id));
+    } else {
+      // If it's not in the array, add it
+      setCategoryId((category_id) => [...category_id, id]);
+    }
+  };
+
+  const filterByConcerns = async (id) => {
+    if (concern_id.includes(id)) {
+      // If it's in the array, remove it
+      setConcernId((concern_id) => concern_id.filter((item) => item !== id));
+    } else {
+      // If it's not in the array, add it
+      setConcernId((concern_id) => [...concern_id, id]);
+    }
+  };
 
   return (
     <Container id="category-container">
@@ -244,6 +286,7 @@ const Category = () => {
                             type={checkbox}
                             id={`default-ageing`}
                             label={item.name}
+                            onClick={() => filterByConcerns(item.id)}
                           />
                         </div>
                       ))
@@ -465,7 +508,13 @@ const Category = () => {
               </div>
 
               {products.map((product) => (
-                <Col key={product} xs={6} md={4} className="mb-4">
+                <Col
+                  onClick={() => navigate(`/Products/${product.id}`)}
+                  key={product}
+                  xs={6}
+                  md={4}
+                  className="mb-4"
+                >
                   <Card id="category-right-card">
                     <Card.Img
                       variant="top"

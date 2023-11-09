@@ -4,6 +4,8 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import axios from './../../axios';
+import swal from "sweetalert2";
+
 const Cart = () => {
   const [itemCount, setItemCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -92,6 +94,13 @@ const Cart = () => {
       const updatedCarts = carts.filter((cartItem) => cartItem.id !== item.id);
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
+      swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500
+      });
     } catch (error) {
       console.error('failed', error);
     }

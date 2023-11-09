@@ -30,6 +30,7 @@ const Header = () => {
   const logout = async () => {
     await axios.post("/logout");
     setUser({});
+    navigate('/')
   };
 
   return (
@@ -52,9 +53,6 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link as={Link} to="/Products">
                 Products
-              </Nav.Link>
-              <Nav.Link as={Link} to="/Account">
-                Skin Care
               </Nav.Link>
               <Nav.Link as={Link} to="/cart">
                 Cart

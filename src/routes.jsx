@@ -40,6 +40,10 @@ const routes = [
     element: <Order />,
   },
   {
+    path: '/Products/:id',
+    element: <Order />,
+  },
+  {
     path: '/Products',
     element: <Products />,
   },

@@ -10,11 +10,14 @@ import { useEffect, useRef, useState } from "react";
 // import Hydrators from "./../../../assets/hydrators.jpg";
 import "./Sec3.css";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const Sec3 = () => {
   const containerRef = useRef(null);
 
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
   const getCatgories = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/category");
@@ -24,6 +27,10 @@ const Sec3 = () => {
       console.error("Login failed", error);
     }
   };
+  const filterByCategory = async (id) => {
+    navigate(`/Products?category=${id}`);
+  };
+
   useEffect(() => {
     // When the component mounts, load categories
     getCatgories();
@@ -64,13 +71,21 @@ const Sec3 = () => {
           ref={containerRef}
         >
           <div className="scrollable-content d-flex">
-            {categories.map((item) =>
-              generateCards(
-                `/src/assets/category/${item.name}.jpg`,
-                item.name,
-                1
-              )
-            )}
+            {categories.map((item) => (
+              <Card key={item.id} id="sec3-card" className="mx-2">
+                <Card.Img
+                  onClick={() => filterByCategory(item.id)}
+                  variant="top"
+                  id="sec3-card-img"
+                  src={`/src/assets/category/${item.name}.jpg`}
+                />
+                <Card.Body id="sec3-card-body">
+                  <Card.Text style={{ textAlign: "center" }}>
+                    {item.name}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
           </div>
         </div>
         <button id="sec3-right-button" onClick={scrollRight}>
@@ -80,23 +95,5 @@ const Sec3 = () => {
     </>
   );
 };
-
-// Function to generate card elements
-function generateCards(imageSrc, title, count) {
-  const cards = [];
-
-  for (let i = 1; i <= count; i++) {
-    cards.push(
-      <Card key={i} id="sec3-card" className="mx-2">
-        <Card.Img variant="top" id="sec3-card-img" src={imageSrc} />
-        <Card.Body id="sec3-card-body">
-          <Card.Text style={{ textAlign: "center" }}>{title}</Card.Text>
-        </Card.Body>
-      </Card>
-    );
-  }
-
-  return cards;
-}
 
 export default Sec3;

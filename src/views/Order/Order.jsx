@@ -8,11 +8,13 @@ import Check from "./../../assets/check.png";
 import X from "./../../assets/x.png";
 
 import "./Order.css";
+import { useParams } from "react-router";
 
 const Order = () => {
   const [isContentVisible, setContentVisibility] = useState(false);
   const [count, setCount] = useState(0);
-
+  const { id } = useParams();
+  alert(id)
   const toggleContent = () => {
     setContentVisibility(!isContentVisible);
   };

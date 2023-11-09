@@ -9,6 +9,7 @@ import Order from './views/Order/Order';
 import Products from './views/Products/Products';
 import Checkout from './views/Checkout/Checkout';
 import Payment from './views/Checkout/Payment';
+import Review from './views/Checkout/Review';
 
 const routes = [
   {
@@ -50,6 +51,10 @@ const routes = [
   {
     path: '/Payment',
     element: <Payment />,
+  },
+  {
+    path: '/Review',
+    element: <Review />,
   },
 ];
 

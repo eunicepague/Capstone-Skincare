@@ -80,3 +80,13 @@
   background-color: rgb(210, 210, 210);
   transition: 0.5s;
 }
+
+#review-checkout-shipping p {
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #checkout-content {
+    width: 90%;
+  }
+}

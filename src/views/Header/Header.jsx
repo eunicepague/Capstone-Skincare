@@ -69,7 +69,7 @@ const Header = () => {
                 {user.name ? (
                   <>
                     <Nav.Link as={Link} to="/Account">
-                      {user.username}
+                      Hello, {user.username}!
                     </Nav.Link>
                     <Nav.Link onClick={logout}>Logout</Nav.Link>
                   </>
@@ -88,54 +88,69 @@ const Header = () => {
               </Nav>
             </Navbar.Collapse>
           )}
-
-          {/* Offcanvas */}
-          <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav className="me-auto mx-auto">
-                <Nav.Link as={Link} to="/new">
-                  New
-                </Nav.Link>
-                <Nav.Link as={Link} to="/ProductCategories">
-                  Products
-                </Nav.Link>
-                <Nav.Link as={Link} to="/Account">
-                  Skin Care
-                </Nav.Link>
-                <Nav.Link as={Link} to="/cart">
-                  Cart
-                </Nav.Link>
-                <Nav.Link as={Link} to="/order">
-                  Order
-                </Nav.Link>
-              </Nav>
-              <Nav className="ml-auto">
-                {user.name ? (
-                  <>
-                    <Nav.Link as={Link} to="/Account">
-                      {user.username}
-                    </Nav.Link>
-                    <Nav.Link onClick={logout}>Logout</Nav.Link>
-                  </>
-                ) : (
-                  <>
-                    <Nav.Link as={Link} to="/login">
-                      Log in
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/register">
-                      Register
-                    </Nav.Link>
-                  </>
-                )}
-
-                {/* <box-icon name="cart"></box-icon> */}
-              </Nav>
-            </Offcanvas.Body>
-          </Offcanvas>
         </Container>
+        {/* Offcanvas */}
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton></Offcanvas.Header>
+          <Offcanvas.Body>
+            <Offcanvas.Title>
+              {user.name ? (
+                <>
+                  <Nav.Link as={Link} to="/Account">
+                    Hello, {user.username}!
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login">
+                    Log in
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+            </Offcanvas.Title>
+            <Nav className="me-auto mx-auto">
+              <Nav.Link as={Link} to="/new">
+                New
+              </Nav.Link>
+              <Nav.Link as={Link} to="/ProductCategories">
+                Products
+              </Nav.Link>
+              <Nav.Link as={Link} to="/Account">
+                Skin Care
+              </Nav.Link>
+              <Nav.Link as={Link} to="/cart">
+                Cart
+              </Nav.Link>
+              <Nav.Link as={Link} to="/order">
+                Order
+              </Nav.Link>
+            </Nav>
+            <Nav className="ml-auto">
+              {user.name ? (
+                <>
+                  {/* <Nav.Link as={Link} to="/Account">
+                      {user.username}
+                    </Nav.Link> */}
+                  <Nav.Link onClick={logout}>Logout</Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login">
+                    Log in
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+
+              {/* <box-icon name="cart"></box-icon> */}
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
       </Navbar>
     </>
   );

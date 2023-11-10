@@ -1,10 +1,8 @@
-// import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 import './Account.css';
 import { useEffect, useState } from 'react';
 import axios from './../../axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Account = () => {
   const [user, setUser] = useState({});
@@ -27,11 +25,10 @@ const Account = () => {
   return (
     <Container id="account-container">
       <section id="account-content">
-        <Row id="account-left">
-          <Col lg={6} xl={6} className="w-100">
+        <Row>
+          <Col sm={12} md={6} lg={6} id="account-left">
             <h1>Hello,</h1>
             <h1 style={{ textTransform: 'uppercase' }}>
-              {' '}
               {user.username} :-{')'}
             </h1>
             <p className="mt-5">PROFILE</p>
@@ -43,28 +40,27 @@ const Account = () => {
               <p>ORDERS</p>
             </Link>
           </Col>
-        </Row>
 
-        <Row id="account-right">
-          <Col lg={6} xl={6} className="w-100">
+          <Col sm={12} md={6} lg={6} id="account-right">
             <hr className="w-100"></hr>
-            <h6 className="mb-5">PROFILE</h6>
-            <Col id="account-right-p">
-              <p style={{ textTransform: 'uppercase' }}>{user.name}</p>
-              <p className="account-edit">edit</p>
-            </Col>
-            <Col id="account-right-p">
-              <p>{user.email}</p>
-              <p className="account-edit">edit</p>
-            </Col>
-            <Col id="account-right-p">
-              <p>{user.address}</p>
-              <p className="account-edit">edit</p>
-            </Col>
-            <Col id="account-right-p">
-              <p>{user.phone}</p>
-              <p className="account-edit">edit</p>
-            </Col>
+            <h5 className="mb-5">PROFILE</h5>
+            <Row>
+              <Col xs={10} sm={10} md={10} lg={10} id="account-right-data">
+                <p style={{ textTransform: 'uppercase' }}>{user.name}</p>
+
+                <p>{user.email}</p>
+
+                <p>{user.address}</p>
+
+                <p>{user.phone}</p>
+              </Col>
+              <Col xs={2} sm={2} md={2} lg={2} id="account-edit">
+                <p>edit</p>
+                <p>edit</p>
+                <p>edit</p>
+                <p>edit</p>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </section>
@@ -73,3 +69,7 @@ const Account = () => {
 };
 
 export default Account;
+
+{
+  /*  */
+}

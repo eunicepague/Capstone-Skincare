@@ -3,6 +3,7 @@ import Hero from './sections/Hero';
 import Sec1 from './sections/Sec1';
 import Sec2 from './sections/Sec2';
 import Sec3 from './sections/Sec3';
+import Sec4 from './sections/Sec4';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Sec1 />
       <Sec2 />
       <Sec3 />
+      <Sec4 />
     </div>
   );
 };

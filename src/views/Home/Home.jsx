@@ -1,3 +1,4 @@
+import Newhero from './sections/Newhero';
 import Hero from './sections/Hero';
 import Sec1 from './sections/Sec1';
 import Sec2 from './sections/Sec2';
@@ -7,7 +8,8 @@ const Home = () => {
   return (
     <div>
       {/* <Login /> */}
-      <Hero />
+      {/* <Hero /> */}
+      <Newhero />
       <Sec1 />
       <Sec2 />
       <Sec3 />

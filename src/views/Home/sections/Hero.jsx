@@ -2,6 +2,7 @@ import { Container } from 'react-bootstrap';
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import HeroVid3 from './../../../assets/hero-vid-3.mp4';
+import Slowvember from './../../../assets/slowvember.mp4';
 import Pic1 from './../../../assets/pic-1.png';
 import Pic3 from './../../../assets/pic-3.jpg';
 import Pic4 from './../../../assets/pic-4.jpg';
@@ -15,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <Container>
+    <>
       <section id="hero-container">
         <Carousel activeIndex={index} onSelect={handleSelect}>
           {/* ---------- firts carousel ----------  */}
@@ -34,6 +35,7 @@ const Hero = () => {
               <p>This is the first slide with an image (Pic1).</p>
             </Carousel.Caption>
           </Carousel.Item>
+
           {/* ---------- second carousel ----------  */}
           <Carousel.Item>
             <video
@@ -42,13 +44,9 @@ const Hero = () => {
               muted
               style={{ width: '100%', height: '100vh', objectFit: 'cover' }}
             >
-              <source src={HeroVid3} type="video/mp4" />
+              <source src={Slowvember} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
           </Carousel.Item>
           {/* ----------  third carousel ----------  */}
           <Carousel.Item>
@@ -72,7 +70,7 @@ const Hero = () => {
           </Carousel.Item>
         </Carousel>
       </section>
-    </Container>
+    </>
   );
 };
 

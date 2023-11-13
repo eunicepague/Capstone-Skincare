@@ -11,6 +11,7 @@ import Checkout from './views/Checkout/Checkout';
 import Payment from './views/Checkout/Payment';
 import Review from './views/Checkout/Review';
 import About from './views/About/About';
+import Status from './views/Status/Status';
 
 const routes = [
   {
@@ -64,6 +65,10 @@ const routes = [
   {
     path: '/about',
     element: <About />,
+  },
+  {
+    path: '/status',
+    element: <Status />,
   },
 ];
 

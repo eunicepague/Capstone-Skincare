@@ -64,6 +64,9 @@ const Header = () => {
                 <Nav.Link as={Link} to="/order">
                   Order
                 </Nav.Link>
+                <Nav.Link as={Link} to="/status">
+                  Status
+                </Nav.Link>
               </Nav>
               <Nav className="ml-auto">
                 {user.name ? (

@@ -47,6 +47,13 @@ const Sec1 = () => {
       });
     }
   };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <>
       <Container id="sec1-box">
@@ -83,7 +90,11 @@ const Sec1 = () => {
         </button>
       </Container>
       <div className="d-flex justify-content-center">
-        <button id="s1-shop-button">Shop all</button>
+        <Link as={Link} to="/products" style={{ textDecoration: 'none' }}>
+          <button id="s1-shop-button" onClick={scrollToTop}>
+            Shop all
+          </button>
+        </Link>
       </div>
     </>
   );

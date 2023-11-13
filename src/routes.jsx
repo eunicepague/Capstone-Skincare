@@ -10,6 +10,7 @@ import Products from './views/Products/Products';
 import Checkout from './views/Checkout/Checkout';
 import Payment from './views/Checkout/Payment';
 import Review from './views/Checkout/Review';
+import About from './views/About/About';
 
 const routes = [
   {
@@ -41,24 +42,28 @@ const routes = [
     element: <Order />,
   },
   {
-    path: '/Products/:id',
+    path: '/products/:id',
     element: <Order />,
   },
   {
-    path: '/Products',
+    path: '/products',
     element: <Products />,
   },
   {
-    path: '/Checkout',
+    path: '/checkout',
     element: <Checkout />,
   },
   {
-    path: '/Payment',
+    path: '/payment',
     element: <Payment />,
   },
   {
-    path: '/Review',
+    path: '/review',
     element: <Review />,
+  },
+  {
+    path: '/about',
+    element: <About />,
   },
 ];
 

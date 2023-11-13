@@ -55,7 +55,7 @@ const Header = () => {
                 <Nav.Link as={Link} to="/new">
                   New
                 </Nav.Link>
-                <Nav.Link as={Link} to="/Products">
+                <Nav.Link as={Link} to="/products">
                   Products
                 </Nav.Link>
                 <Nav.Link as={Link} to="/cart">
@@ -71,7 +71,7 @@ const Header = () => {
               <Nav className="ml-auto">
                 {user.name ? (
                   <>
-                    <Nav.Link as={Link} to="/Account">
+                    <Nav.Link as={Link} to="/account">
                       Hello, {user.username}!
                     </Nav.Link>
                     <Nav.Link onClick={logout}>Logout</Nav.Link>
@@ -99,7 +99,7 @@ const Header = () => {
             <Offcanvas.Title>
               {user.name ? (
                 <>
-                  <Nav.Link as={Link} to="/Account">
+                  <Nav.Link as={Link} to="/account">
                     Hello, {user.username}!
                   </Nav.Link>
                 </>
@@ -121,7 +121,7 @@ const Header = () => {
               <Nav.Link as={Link} to="/ProductCategories">
                 Products
               </Nav.Link>
-              <Nav.Link as={Link} to="/Account">
+              <Nav.Link as={Link} to="/account">
                 Skin Care
               </Nav.Link>
               <Nav.Link as={Link} to="/cart">
@@ -134,7 +134,7 @@ const Header = () => {
             <Nav className="ml-auto">
               {user.name ? (
                 <>
-                  {/* <Nav.Link as={Link} to="/Account">
+                  {/* <Nav.Link as={Link} to="/account">
                       {user.username}
                     </Nav.Link> */}
                   <Nav.Link onClick={logout}>Logout</Nav.Link>

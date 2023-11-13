@@ -1,9 +1,9 @@
 // import React from 'react'
-import { Container, Row, Col, Form } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
-import "./Login.css";
-import React, { useState } from "react";
-import axios from "axios";
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import './Login.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,11 +19,11 @@ const Login = () => {
       // axios.defaults.headers[
       //   "Authorization"
       // ] = `Bearer ${window.localStorage.getItem("ECOM_TOKEN")}`;
-      navigate('/Account');
+      navigate('/account');
     } catch (error) {
       // Handle authentication error (e.g., show an error message to the user).
-      alert("Invalid Username or Password");
-      console.error("Login failed", error);
+      alert('Invalid Username or Password');
+      console.error('Login failed', error);
     }
   };
   return (

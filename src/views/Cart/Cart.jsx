@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import axios from './../../axios';
-import swal from "sweetalert2";
+import swal from 'sweetalert2';
 
 const Cart = () => {
   const [itemCount, setItemCount] = useState(0);
@@ -95,11 +95,11 @@ const Cart = () => {
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
       swal.fire({
-        position: "top-end",
-        icon: "success",
+        position: 'top-end',
+        icon: 'success',
         title: response.data.message,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     } catch (error) {
       console.error('failed', error);
@@ -229,7 +229,7 @@ const Cart = () => {
                     id="cart-button"
                     Link
                     as={Link}
-                    to="/Checkout"
+                    to="/checkout"
                   >
                     CHECKOUT
                   </Button>

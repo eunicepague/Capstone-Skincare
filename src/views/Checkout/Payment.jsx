@@ -37,8 +37,8 @@ const Payment = () => {
     if (form.checkValidity()) {
       // Perform any additional actions or navigation logic here
       console.log(`Selected payment method: ${selectedPayment}`);
-      // Navigate to /Review if the form is valid
-      window.location.href = '/Review';
+      // Navigate to /review if the form is valid
+      window.location.href = '/review';
     } else {
       // Display an alert if the form is not valid
       alert('Please fill out the required fields.');
@@ -46,8 +46,8 @@ const Payment = () => {
   };
 
   const handleBack = () => {
-    // Navigate to /Checkout when the "Back" button is clicked
-    history.push('/Checkout');
+    // Navigate to /checkout when the "Back" button is clicked
+    history.push('/checkout');
   };
 
   const paymentMethods = [

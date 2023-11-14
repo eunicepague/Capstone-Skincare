@@ -67,6 +67,9 @@ const Header = () => {
                 <Nav.Link as={Link} to="/status">
                   Status
                 </Nav.Link>
+                <Nav.Link as={Link} to="/admin-login">
+                  Admin login
+                </Nav.Link>
               </Nav>
               <Nav className="ml-auto">
                 {user.name ? (

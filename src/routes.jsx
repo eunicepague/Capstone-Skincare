@@ -12,6 +12,7 @@ import Payment from './views/Checkout/Payment';
 import Review from './views/Checkout/Review';
 import About from './views/About/About';
 import Status from './views/Status/Status';
+import Adminlogin from './views/Adminlogin/Adminlogin';
 
 const routes = [
   {
@@ -69,6 +70,10 @@ const routes = [
   {
     path: '/status',
     element: <Status />,
+  },
+  {
+    path: '/admin-login',
+    element: <Adminlogin />,
   },
 ];
 

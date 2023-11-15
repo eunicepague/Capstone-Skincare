@@ -12,9 +12,13 @@ import Payment from './views/Checkout/Payment';
 import Review from './views/Checkout/Review';
 import About from './views/About/About';
 import Status from './views/Status/Status';
+
+import Faqs from './views/Faqs/Faqs';
+
+// admin
+import Admin from './views/Admin/Admin';
 import Adminlogin from './views/Adminlogin/Adminlogin';
 import Adminregister from './views/Adminregister/Adminregister';
-import Faqs from './views/Faqs/Faqs';
 
 const routes = [
   {
@@ -84,6 +88,10 @@ const routes = [
   {
     path: '/faqs',
     element: <Faqs />,
+  },
+  {
+    path: '/admin-page',
+    element: <Admin />,
   },
 ];
 

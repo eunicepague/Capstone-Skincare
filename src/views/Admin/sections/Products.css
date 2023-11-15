@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#adminProduct-content {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 2rem;
+}
+
+#product-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 200rem;
+  height: 10rem;
+  margin-top: 2rem;
+}
+
+#product-table th,
+#product-table td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#product-table th {
+  background-color: #f2f2f2;
+}
+#product-table img {
+  max-width: 100px;
+}
+
+.admin-product {
+  overflow-x: auto;
+}
+
+#adminProduct-tableHead th {
+  text-align: center;
+}
+
+#adminProduct-tableBody img {
+  width: 150px;
+  display: flex;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+#adminProduct-btn {
+  display: flex;
+  justify-content: center;
+}

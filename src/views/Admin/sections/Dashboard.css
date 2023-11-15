@@ -1,0 +1,16 @@
+#dashboard-totals {
+  margin-top: 2rem;
+}
+
+#dashboard-totals h3 {
+  margin-bottom: 2rem;
+}
+
+#dashboard-totals p {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#dashboard-orders {
+  margin: 2rem 0;
+}

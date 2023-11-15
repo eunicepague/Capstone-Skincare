@@ -43,7 +43,11 @@ const Adminlogin = () => {
                         <Form.Label style={{ fontWeight: 'bold' }}>
                           Email
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter email"
+                          required
+                        />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
@@ -52,13 +56,16 @@ const Adminlogin = () => {
                         <Form.Label style={{ fontWeight: 'bold' }}>
                           Password
                         </Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control
+                          type="password"
+                          placeholder="Password"
+                          required
+                        />
                       </Form.Group>
 
                       <div id="admiLogin-remember">
                         <Form.Group className="mb-3">
                           <Form.Check
-                            required
                             label="Remember me"
                             feedbackType="valid"
                           />

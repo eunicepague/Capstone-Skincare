@@ -7,7 +7,7 @@ import Dashboard from './sections/Dashboard';
 import Products from './sections/Products';
 import Category from './sections/Category';
 import Concern from './sections/Concern';
-import Other from './sections/Other';
+import Order from './sections/Order';
 import './Admin.css';
 
 const Admin = () => {
@@ -30,8 +30,8 @@ const Admin = () => {
         return <Category />;
       case 'concern':
         return <Concern />;
-      case 'other':
-        return <Other />;
+      case 'order':
+        return <Order />;
       default:
         return null;
     }
@@ -57,7 +57,7 @@ const Admin = () => {
             <button onClick={() => handleButtonClick('concern')}>
               Concerns
             </button>
-            <button onClick={() => handleButtonClick('other')}>Others</button>
+            <button onClick={() => handleButtonClick('order')}>Orders</button>
           </Col>
           <Col id="admin-right" lg={9}>
             {renderSelectedComponent()}

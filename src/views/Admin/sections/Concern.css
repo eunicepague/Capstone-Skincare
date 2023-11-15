@@ -1,0 +1,25 @@
+#concern-content {
+  margin-top: 2rem;
+}
+#concern-btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+#concern-table {
+  margin-top: 2rem;
+}
+
+#concern-modal {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#concern-modal button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+}

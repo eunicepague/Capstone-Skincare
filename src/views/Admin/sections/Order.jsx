@@ -1,7 +1,7 @@
 // import React from 'react';
 
-const Other = () => {
+const Order = () => {
   return <div></div>;
 };
 
-export default Other;
+export default Order;

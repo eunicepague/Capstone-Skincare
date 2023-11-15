@@ -1,0 +1,25 @@
+#category-content {
+  margin-top: 2rem;
+}
+#category-btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+#category-table {
+  margin-top: 2rem;
+}
+
+#category-modal {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#category-modal button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+}

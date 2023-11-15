@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#faqs-content {
+  margin-top: 7rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#faqs-content h6 {
+  font-weight: bold;
+  margin: 2rem 0;
+}
+
+#faqs-accordion p {
+  font-weight: bold;
+  font-size: 90%;
+  margin: 0;
+}

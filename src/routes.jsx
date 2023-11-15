@@ -14,6 +14,7 @@ import About from './views/About/About';
 import Status from './views/Status/Status';
 import Adminlogin from './views/Adminlogin/Adminlogin';
 import Adminregister from './views/Adminregister/Adminregister';
+import Faqs from './views/Faqs/Faqs';
 
 const routes = [
   {
@@ -79,6 +80,10 @@ const routes = [
   {
     path: '/admin-register',
     element: <Adminregister />,
+  },
+  {
+    path: '/faqs',
+    element: <Faqs />,
   },
 ];
 

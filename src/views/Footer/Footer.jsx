@@ -141,7 +141,7 @@ const Footer = () => {
                     <nav id="footer-nav">
                       <ul>
                         <li>
-                          <Link to="/">FAQ</Link>
+                          <Link to="/faqs">FAQ</Link>
                         </li>
                         <li>
                           <Link to="/">Disposal Instructions</Link>
@@ -163,7 +163,7 @@ const Footer = () => {
                 <nav id="footer-nav">
                   <ul>
                     <li>
-                      <Link to="/">FAQ</Link>
+                      <Link to="/faqs">FAQ</Link>
                     </li>
                     <li>
                       <Link to="/">Disposal Instructions</Link>
@@ -264,26 +264,53 @@ const Footer = () => {
               for more details or Contact Us
             </p>
 
-            <box-icon
-              style={{ marginRight: '1rem', cursor: 'pointer' }}
-              type="logo"
-              name="facebook-circle"
-            ></box-icon>
-            <box-icon
-              style={{ marginRight: '1rem', cursor: 'pointer' }}
-              name="instagram"
-              type="logo"
-            ></box-icon>
-            <box-icon
-              style={{ marginRight: '1rem', cursor: 'pointer' }}
-              name="youtube"
-              type="logo"
-            ></box-icon>
-            <box-icon
-              style={{ marginRight: '1rem', cursor: 'pointer' }}
-              name="twitter"
-              type="logo"
-            ></box-icon>
+            <Link
+              to="https://www.facebook.com/theordinary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <box-icon
+                style={{ marginRight: '1rem', cursor: 'pointer' }}
+                type="logo"
+                name="facebook-circle"
+              ></box-icon>
+            </Link>
+
+            <Link
+              to="https://www.instagram.com/theordinary/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <box-icon
+                style={{ marginRight: '1rem', cursor: 'pointer' }}
+                name="instagram"
+                type="logo"
+              ></box-icon>
+            </Link>
+
+            <Link
+              to="https://www.youtube.com/deciem"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <box-icon
+                style={{ marginRight: '1rem', cursor: 'pointer' }}
+                name="youtube"
+                type="logo"
+              ></box-icon>
+            </Link>
+
+            <Link
+              to="https://twitter.com/theordinary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <box-icon
+                style={{ marginRight: '1rem', cursor: 'pointer' }}
+                name="twitter"
+                type="logo"
+              ></box-icon>
+            </Link>
           </Col>
         </Row>
         <Row>

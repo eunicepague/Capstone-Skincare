@@ -19,6 +19,13 @@ const Adminlogin = () => {
     setValidated(true);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div id="adminLogin-container">
       <Container>
@@ -82,7 +89,9 @@ const Adminlogin = () => {
                       </button>
                       <p style={{ textAlign: 'center' }}>
                         Not a member?
-                        <Link to="/admin-register">Register Now</Link>
+                        <Link to="/admin-register" onClick={scrollToTop}>
+                          Register Now
+                        </Link>
                       </p>
                     </Form>
                   </Card.Text>

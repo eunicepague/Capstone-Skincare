@@ -5,10 +5,17 @@
   margin-top: 2rem;
 }
 
+#product-btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
 #product-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 200rem;
+  /* width: 200rem; */
+  width: 200%;
   height: 10rem;
   margin-top: 2rem;
 }
@@ -45,4 +52,8 @@
 #adminProduct-btn {
   display: flex;
   justify-content: center;
+}
+
+#product-modal h4 {
+  margin-bottom: 2rem;
 }

@@ -1,16 +1,15 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Pic1 from "./../../assets/Toner.jpg";
-import Cart from "./../../assets/cart-icon.png";
+import Cart from "./../../../assets/cart-icon.png";
 
-import Crueltyfree from "./../../assets/cruelty-free.png";
-import Check from "./../../assets/check.png";
-import X from "./../../assets/x.png";
+import Crueltyfree from "./../../../assets/cruelty-free.png";
+import Check from "./../../../assets/check.png";
+import X from "./../../../assets/x.png";
 import { useNavigate, Link } from "react-router-dom";
 
 import "./Single.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import axios from "../../axios";
+import axios from "../../../axios";
 
 const Order = () => {
   const [product, setProduct] = useState({});

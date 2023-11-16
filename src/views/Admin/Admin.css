@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#admin-container {
+  background-color: #ffffff;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+}
+
+#admin-left {
+  background-color: #e4e4e4;
+  padding: 0;
+  text-align: center;
+}
+
+#admin-left img {
+  display: flex;
+  margin: auto;
+  margin-top: 2rem;
+  width: 15%;
+}
+
+#admin-left button {
+  width: 100%;
+  padding: 10px;
+
+  /* border-color: transparent; */
+}

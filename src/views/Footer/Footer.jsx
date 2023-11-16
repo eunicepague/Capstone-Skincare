@@ -32,6 +32,13 @@ const Footer = () => {
     };
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="py-3">
       <hr></hr>
@@ -48,7 +55,9 @@ const Footer = () => {
                     <nav id="footer-nav">
                       <ul>
                         <li>
-                          <Link to="/about">About Us</Link>
+                          <Link to="/about" onClick={scrollToTop}>
+                            About Us
+                          </Link>
                         </li>
                         <li>
                           <Link to="/register">Join Us</Link>
@@ -67,10 +76,14 @@ const Footer = () => {
                 <nav id="footer-nav">
                   <ul>
                     <li>
-                      <Link to="/about">About Us</Link>
+                      <Link to="/about" onClick={scrollToTop}>
+                        About Us
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/register">Join Us</Link>
+                      <Link to="/register" onClick={scrollToTop}>
+                        Join Us
+                      </Link>
                     </li>
                     <li>
                       <Link to="/">Transparency in Supply Chains</Link>
@@ -141,7 +154,9 @@ const Footer = () => {
                     <nav id="footer-nav">
                       <ul>
                         <li>
-                          <Link to="/faqs">FAQ</Link>
+                          <Link to="/faqs" onClick={scrollToTop}>
+                            FAQ
+                          </Link>
                         </li>
                         <li>
                           <Link to="/">Disposal Instructions</Link>
@@ -163,7 +178,9 @@ const Footer = () => {
                 <nav id="footer-nav">
                   <ul>
                     <li>
-                      <Link to="/faqs">FAQ</Link>
+                      <Link to="/faqs" onClick={scrollToTop}>
+                        FAQ
+                      </Link>
                     </li>
                     <li>
                       <Link to="/">Disposal Instructions</Link>

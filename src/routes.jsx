@@ -5,16 +5,20 @@ import Loginmain from "./views/Login/Loginmain";
 import Registermain from "./views/Register/Registermain";
 import Cart from "./views/Cart/Cart";
 import Account from "./views/Profile/Account";
-import Order from "./views/Order/Order"
-import Single from "./views/SingleProduct/Single";
+import Order from "./views/Order/Order";
 import Products from "./views/Products/Products";
 import Checkout from "./views/Checkout/Checkout";
 import Payment from "./views/Checkout/Payment";
 import Review from "./views/Checkout/Review";
 import About from "./views/About/About";
+import Single from "./views/Products/SingleProduct/Single";
+
+import Faqs from "./views/Faqs/Faqs";
+
+// admin
+import Admin from "./views/Admin/Admin";
 import Adminlogin from "./views/Adminlogin/Adminlogin";
 import Adminregister from "./views/Adminregister/Adminregister";
-import Faqs from "./views/Faqs/Faqs";
 
 const routes = [
   {
@@ -80,6 +84,10 @@ const routes = [
   {
     path: "/faqs",
     element: <Faqs />,
+  },
+  {
+    path: "/admin-page",
+    element: <Admin />,
   },
 ];
 

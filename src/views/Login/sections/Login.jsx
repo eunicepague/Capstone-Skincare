@@ -1,12 +1,12 @@
 // import React from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Card } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import { useState } from 'react';
 // import axios from "axios";
 import axios from '../../../axios';
 
-import { Slide } from 'react-awesome-reveal';
+import { Slide, Fade } from 'react-awesome-reveal';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -31,78 +31,86 @@ const Login = () => {
     }
   };
   return (
-    <Container id="login-mainbox">
-      <Row>
-        <Col lg={6} id="left-side">
-          <h5 style={{ fontWeight: ' bold' }} className="mx-5">
-            RETURNING CUSTOMER
-          </h5>
-          <p className="mx-5" style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
-            First time visiting our new site? Create an account here.
-          </p>
+    <Container fluid id="login-container">
+      <section id="login-content">
+        <Row>
+          <Col sm={12} md={6} lg={6} id="login-left">
+            <Fade>
+              <Card id="login-card">
+                <Card.Body>
+                  <h2>RETURNING CUSTOMER</h2>
+                  <p>
+                    First time visiting our new site? Create an account here.
+                  </p>
+                  <Form id="login-form">
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>
+                        <b>Email address</b>
+                      </Form.Label>
+                      <Form.Control
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        placeholder="Enter email"
+                      />
 
-          <Form id="login-form" className="mx-5">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                placeholder="Enter email"
-              />
+                      <Form.Text className="text-muted"></Form.Text>
+                    </Form.Group>
 
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
-          </Form>
-          <button onClick={handleLogin} id="login-button" className="mx-5">
-            Sign-in
-          </button>
-        </Col>
-
-        <Col lg={6} id="right-side">
-          <Slide direction="right">
-            <h5 style={{ fontWeight: ' bold' }}>NEW CUSTOMERS</h5>
-            <hr></hr>
-            <p>
-              Set up an account so we can remember your details and speed up
-              your next visit.
-            </p>
-            <Link to="/register" style={{ textDecoration: 'none' }}>
-              <button id="login-button">Create Account</button>
-            </Link>
-            <hr></hr>
-            <h5
-              style={{
-                fontWeight: ' bold',
-                marginTop: '1rem',
-                marginBottom: '1rem',
-              }}
-            >
-              ORDER TRACKING
-            </h5>
-            <p>
-              Good things are on their way. Track the progress of your order.
-              Track your order
-            </p>
-            <p id="login-track">Track your order here {'>'} </p>
-          </Slide>
-        </Col>
-      </Row>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                      <Form.Label>
+                        <b>Password</b>
+                      </Form.Label>
+                      <Form.Control
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        type="password"
+                        placeholder="Password"
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                      <Form.Check type="checkbox" label="Remember me" />
+                    </Form.Group>
+                  </Form>
+                  <button onClick={handleLogin} id="login-button">
+                    Sign-in
+                  </button>
+                </Card.Body>
+              </Card>
+            </Fade>
+          </Col>
+          {/*  ---------*/}
+          <Col sm={12} md={6} lg={6} id="login-right">
+            <section id="login-right-content">
+              <Slide direction="right">
+                <h2 style={{ fontWeight: ' bold' }}>NEW CUSTOMERS</h2>
+                <hr></hr>
+                <p>
+                  Set up an account so we can remember your details and speed up
+                  your next visit.
+                </p>
+                <Link to="/register" style={{ textDecoration: 'none' }}>
+                  <button id="login-button">Create Account</button>
+                </Link>
+                <hr></hr>
+                <h5
+                  style={{
+                    fontWeight: ' bold',
+                    marginTop: '1rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  ORDER TRACKING
+                </h5>
+                <p>
+                  Good things are on their way. Track the progress of your
+                  order.
+                </p>
+              </Slide>
+            </section>
+          </Col>
+        </Row>
+      </section>
     </Container>
   );
 };

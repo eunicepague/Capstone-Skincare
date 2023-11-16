@@ -1,64 +1,71 @@
-#login-mainbox {
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#login-container {
+  padding-bottom: 7rem;
+  display: flex;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(249, 250, 252);
+}
+
+#login-content {
+}
+
+#login-card {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-#login-form {
-  width: 20rem;
-
-  /* margin: auto; */
+  padding: 3rem 5rem 3rem 5rem;
+  -webkit-box-shadow: 8.5px 9.5px 18px 10.5px #dddddd;
+  -moz-box-shadow: 8.5px 9.5px 18px 10.5px #dddddd;
+  box-shadow: 8.5px 9.5px 18px 10.5px #dddddd;
 }
 
-#left-side {
-  background-color: rgb(245, 245, 245);
-  height: 100vh;
+#login-left {
+  margin-top: 3rem;
+}
+#login-left h2 {
+  font-weight: bold;
+}
+
+#login-left p {
+  font-size: 0.8;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+#login-left h5 {
+  font-weight: bold;
+}
+
+#login-right {
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 10rem;
 }
-
-#right-side {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#login-right-content {
+  margin: auto;
+  width: 60%;
 }
 
 #login-button {
-  background-color: rgb(240, 240, 240);
-  border-color: rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-  display: flex;
+  width: 100%;
+  background-color: rgb(31, 30, 30);
+  border-color: transparent;
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  justify-content: center;
-  align-items: center;
-  height: 1.8rem;
-  width: 20rem;
+  padding: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 #login-button:hover {
   transition: 0.5s;
-  background-color: rgb(53, 52, 52);
-  border-color: rgb(53, 52, 52);
+  background-color: rgb(16, 15, 15);
+  border-color: transparent;
   color: rgb(255, 255, 255);
 }
 
-#login-track {
-  font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-#faqs-upBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-#faqs-upBtn img {
-  width: 50px;
+@media (max-height: 577px) {
+  #login-right {
+    margin-top: 5rem !important;
+  }
 }

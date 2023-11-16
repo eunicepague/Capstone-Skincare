@@ -64,9 +64,6 @@ const Header = () => {
                 <Nav.Link as={Link} to="/order">
                   Order
                 </Nav.Link>
-                <Nav.Link as={Link} to="/status">
-                  Status
-                </Nav.Link>
                 <Nav.Link as={Link} to="/admin-login">
                   Admin login
                 </Nav.Link>
@@ -118,28 +115,28 @@ const Header = () => {
               )}
             </Offcanvas.Title>
             <Nav className="me-auto mx-auto">
-              <Nav.Link as={Link} to="/new">
-                New
-              </Nav.Link>
-              <Nav.Link as={Link} to="/ProductCategories">
-                Products
-              </Nav.Link>
-              <Nav.Link as={Link} to="/account">
-                Skin Care
-              </Nav.Link>
-              <Nav.Link as={Link} to="/cart">
-                Cart
-              </Nav.Link>
-              <Nav.Link as={Link} to="/order">
-                Order
-              </Nav.Link>
+            <Nav.Link as={Link} to="/new">
+                  New
+                </Nav.Link>
+                <Nav.Link as={Link} to="/products">
+                  Products
+                </Nav.Link>
+                <Nav.Link as={Link} to="/cart">
+                  Cart
+                </Nav.Link>
+                <Nav.Link as={Link} to="/order">
+                  Order
+                </Nav.Link>
+                <Nav.Link as={Link} to="/admin-login">
+                  Admin login
+                </Nav.Link>
             </Nav>
             <Nav className="ml-auto">
               {user.name ? (
                 <>
-                  {/* <Nav.Link as={Link} to="/account">
+                  <Nav.Link as={Link} to="/account">
                       {user.username}
-                    </Nav.Link> */}
+                    </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </>
               ) : (

@@ -7,42 +7,42 @@ import {
   Form,
   Accordion,
   Dropdown,
-} from 'react-bootstrap';
-import swal from 'sweetalert2';
-import { useEffect, useState } from 'react';
-import Cart from './../../assets/cart-icon.png';
-import Pic1 from './../../assets/Toner.jpg';
-import yellowStar from './../../assets/yellowStar.png';
-import transStar from './../../assets/transStar.png';
-import axios from './../../axios';
-import './Products.css';
-import { useLocation } from 'react-router';
-import { useNavigate, Link } from 'react-router-dom';
+} from "react-bootstrap";
+import swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import Cart from "./../../assets/cart-icon.png";
+import Pic1 from "./../../assets/Toner.jpg";
+import yellowStar from "./../../assets/yellowStar.png";
+import transStar from "./../../assets/transStar.png";
+import axios from "../../axios";
+import "./Products.css";
+import { useLocation } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const Category = () => {
-  const [selectedItem, setSelectedItem] = useState('Sort Products');
+  const [selectedItem, setSelectedItem] = useState("Sort Products");
   const [products, setProducts] = useState([]);
   const [category_id, setCategoryId] = useState([]);
   const [concern_id, setConcernId] = useState([]);
-  const [orderBy, setOrderBy] = useState('desc');
-  const [sortBy, setSortBy] = useState('id');
+  const [orderBy, setOrderBy] = useState("desc");
+  const [sortBy, setSortBy] = useState("id");
   const location = useLocation();
   const [statusLoad, setStatusLoad] = useState(false);
   const navigate = useNavigate();
 
   const handleItemClick = (itemText) => {
-    if (itemText === 'relevant') {
-      setSortBy('id');
-      setOrderBy('asc');
-    } else if (itemText === 'high price') {
-      setSortBy('price');
-      setOrderBy('desc');
-    } else if (itemText === 'low price') {
-      setSortBy('price');
-      setOrderBy('asc');
-    } else if (itemText === 'Newest') {
-      setSortBy('created_at');
-      setOrderBy('desc');
+    if (itemText === "relevant") {
+      setSortBy("id");
+      setOrderBy("asc");
+    } else if (itemText === "high price") {
+      setSortBy("price");
+      setOrderBy("desc");
+    } else if (itemText === "low price") {
+      setSortBy("price");
+      setOrderBy("asc");
+    } else if (itemText === "Newest") {
+      setSortBy("created_at");
+      setOrderBy("desc");
     }
 
     setSelectedItem(itemText);
@@ -53,8 +53,8 @@ const Category = () => {
     // alert(1);
     const timer = setTimeout(() => {
       const queryParams = new URLSearchParams(location.search);
-      const concern = queryParams.get('concern');
-      const category = queryParams.get('category');
+      const concern = queryParams.get("concern");
+      const category = queryParams.get("category");
       if (statusLoad == false) {
         setConcernId([concern]);
         setCategoryId([category]);
@@ -63,13 +63,13 @@ const Category = () => {
     }, delay);
 
     try {
-      const response = await axios.get('http://localhost:8000/api/products', {
+      const response = await axios.get("http://localhost:8000/api/products", {
         params: { category_id, concern_id, orderBy, sortBy },
       });
       setProducts(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
     clearTimeout(timer);
   };
@@ -93,14 +93,14 @@ const Category = () => {
         product_id,
       });
       swal.fire({
-        position: 'top-end',
-        icon: 'success',
+        position: "top-end",
+        icon: "success",
         title: response.data.message,
         showConfirmButton: false,
         timer: 1500,
       });
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
@@ -109,23 +109,23 @@ const Category = () => {
 
   const getCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/category');
+      const response = await axios.get("http://localhost:8000/api/category");
       setCategories(response.data.data);
 
       console.log(response);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
   const getConcerns = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/concerns');
+      const response = await axios.get("http://localhost:8000/api/concerns");
       setConcerns(response.data.data);
 
       console.log(response);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
@@ -154,7 +154,7 @@ const Category = () => {
       <section id="category-content">
         <Row>
           <Col id="category-left" className="d-none d-lg-flex" lg={3}>
-            <h1 style={{ marginBottom: '3rem' }}>Filter by:</h1>
+            <h1 style={{ marginBottom: "3rem" }}>Filter by:</h1>
 
             <Accordion defaultActiveKey="0">
               {/* ------RATING------ */}
@@ -256,7 +256,7 @@ const Category = () => {
                 <Accordion.Body>
                   <Form>
                     {categories.map((item) =>
-                      ['checkbox'].map((type) => (
+                      ["checkbox"].map((type) => (
                         <div key={item.id} className="mb-3">
                           <Form.Check
                             type={type}
@@ -278,7 +278,7 @@ const Category = () => {
                 <Accordion.Body>
                   <Form>
                     {concerns.map((item) =>
-                      ['checkbox'].map((checkbox) => (
+                      ["checkbox"].map((checkbox) => (
                         <div key={item.id} className="mb-3">
                           <Form.Check
                             type={checkbox}
@@ -457,7 +457,7 @@ const Category = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item
                       href="#"
-                      onClick={() => handleItemClick('relevant')}
+                      onClick={() => handleItemClick("relevant")}
                     >
                       Sort: Most Relevant
                     </Dropdown.Item>
@@ -465,7 +465,7 @@ const Category = () => {
 
                     <Dropdown.Item
                       href="#"
-                      onClick={() => handleItemClick('low price')}
+                      onClick={() => handleItemClick("low price")}
                     >
                       Price low to high
                     </Dropdown.Item>
@@ -473,7 +473,7 @@ const Category = () => {
 
                     <Dropdown.Item
                       href="#"
-                      onClick={() => handleItemClick('high price')}
+                      onClick={() => handleItemClick("high price")}
                     >
                       Price high to low
                     </Dropdown.Item>
@@ -481,7 +481,7 @@ const Category = () => {
 
                     <Dropdown.Item
                       href="#"
-                      onClick={() => handleItemClick('Top Rated')}
+                      onClick={() => handleItemClick("Top Rated")}
                     >
                       Top Rated
                     </Dropdown.Item>
@@ -497,7 +497,7 @@ const Category = () => {
 
                     <Dropdown.Item
                       href="#"
-                      onClick={() => handleItemClick('Newest')}
+                      onClick={() => handleItemClick("Newest")}
                     >
                       Newest
                     </Dropdown.Item>
@@ -507,7 +507,6 @@ const Category = () => {
 
               {products.map((product) => (
                 <Col
-                  onClick={() => navigate(`/products/${product.id}`)}
                   key={product}
                   xs={6}
                   md={4}
@@ -515,6 +514,7 @@ const Category = () => {
                 >
                   <Card id="category-right-card">
                     <Card.Img
+                      onClick={() => navigate(`/products/${product.id}`)}
                       variant="top"
                       src={`/src/assets/${product.image}`}
                       alt={product.name}
@@ -529,7 +529,7 @@ const Category = () => {
                           <img src={yellowStar}></img>
                           <img src={transStar}></img>
                           <span>
-                            {'('}1000+{')'}
+                            {"("}1000+{")"}
                           </span>
                         </div>
 
@@ -537,11 +537,11 @@ const Category = () => {
                           <h6>{product.price}</h6>
                           <hr></hr>
                           <Col>
-                            <h6 style={{ margin: '0' }}>Target</h6>
+                            <h6 style={{ margin: "0" }}>Target</h6>
                             <p>{product.target}</p>
                           </Col>
                           <Col>
-                            <h6 style={{ margin: '0' }}>Suited to</h6>
+                            <h6 style={{ margin: "0" }}>Suited to</h6>
                             <p>{product.suited}</p>
                           </Col>
                         </div>
@@ -550,7 +550,7 @@ const Category = () => {
                         <button onClick={() => addToCart(product.id)}>
                           <img
                             src={Cart}
-                            style={{ width: '20px', marginRight: '0.5rem' }}
+                            style={{ width: "20px", marginRight: "0.5rem" }}
                           ></img>
                           ADD TO CART
                         </button>

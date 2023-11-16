@@ -1,175 +1,28 @@
-#order-container p,
-#order-count-container h6 {
-  margin: 0;
-}
-#order-content {
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#status-content {
+  font-family: 'Raleway', sans-serif;
 }
 
-#order-left {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-right: 5rem;
-}
-
-#order-button {
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-}
-
-#order-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#order-right img {
-  max-width: 35rem;
-  max-height: auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/* IMG FOR SM DEVICE */
-#order-sm {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#order-sm img {
-  max-width: 400px;
-  max-height: auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto;
-}
-
-#order-count-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-#order-counter {
-  border: 1px solid rgb(91, 91, 91);
-  padding: 5px;
-  text-align: center;
+#status-table img {
   width: 100px;
-  /* margin: 0 auto; */
+  max-width: 100px;
 }
 
-#order-count-container button {
-  padding: 5px 10px;
-  border: none;
-  background-color: white;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-#order-basket-container {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
-#order-basket-container img {
-  width: 1.6rem;
-  margin-right: 1rem;
-}
-
-#order-basket button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  width: 20rem;
-  padding: 10px 10px;
-  background-color: black;
-  border: 1px solid rgb(91, 91, 91);
-  border-color: rgb(53, 52, 52);
-}
-
-#order-basket button:hover {
-  transition: 0.5s;
-  background-color: rgb(53, 52, 52);
-  border-color: rgb(53, 52, 52);
-  color: rgb(255, 255, 255);
-}
-
-/* --------ICON CONTAINER */
-#order-icon-container {
-  display: flex;
-  align-items: center;
-  background-color: rgb(249, 248, 247);
-  min-height: 10rem;
-  margin-top: 1rem;
-}
-#order-icon-content {
-  margin: 2rem;
-}
-
-#order-icon-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
+#status-tableHead h5 {
+  font-weight: bolder;
   text-align: center;
 }
 
-#order-icon-col img {
-  width: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-/* ---------OVERVIEW CONTAINER */
-#order-overview-container {
-  margin-top: 5rem;
-}
-
-/* SMALL DEVICE Button */
-#sm-button {
-  display: flex;
-  justify-content: center;
+#status-tableHead p {
+  margin: 0;
   text-align: center;
-  align-items: center;
 }
 
-#sm-button button {
-  width: 100%;
-  height: auto;
-  padding: 20px 0;
-  background-color: black;
-  color: white;
+#status-tableBody h6 {
+  font-weight: bolder;
 }
 
-#sm-button h6 {
-  margin: 0 1rem;
-}
-
-#sm-button img {
-  width: 2rem;
-}
-
-#sm-button button.sticky {
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
-}
-
-@media (max-width: 992px) {
-  #order-right {
-    display: none;
-  }
+#status-tableBody p {
+  font-weight: 100;
 }

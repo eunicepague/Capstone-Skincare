@@ -5,6 +5,7 @@ import Logo from './../../../assets/about-logo.jpg';
 import Shop from './../../../assets/about-shop.jpg';
 import { Fade } from 'react-awesome-reveal';
 import './Sec4.css';
+// import { Slide } from 'react-awesome-reveal';
 
 const Sec4 = () => {
   const scrollToTop = () => {
@@ -25,7 +26,7 @@ const Sec4 = () => {
             </Nav.Link>
 
             <Col id="sec4-left" sm={12} md={6} lg={6}>
-              <p style={{ whiteSpace: 'pre-line' }}>
+              <p>
                 The ordinary is a cosmetic brand that has gained popularity for
                 its approach to skincare based on transparent science and
                 affordable prices. The brand is owned by a deciem, a company
@@ -37,10 +38,14 @@ const Sec4 = () => {
                 it. This allows consumers to understand exactly what they are
                 putting on their skin and how it works.
               </p>
-              <img src={Shop} className="d-none d-md-flex" />
+              <Fade direction="left">
+                <img src={Shop} className="d-none d-md-flex" />
+              </Fade>
             </Col>
             <Col id="sec4-right" sm={12} md={6} lg={6}>
-              <img src={Logo} />
+              <Fade direction="right">
+                <img src={Logo} />
+              </Fade>
               <p className="mt-3">
                 All of this makes The Ordinary popular among those who value a
                 scientific approach to skin care, effectiveness, and

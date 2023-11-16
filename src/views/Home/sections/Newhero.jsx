@@ -4,6 +4,7 @@ import exampleOne from './../../../assets/ex1.png';
 import exampleTwo from './../../../assets/ex2.png';
 import exampleThree from './../../../assets/ex3.png';
 import { motion } from 'framer-motion';
+import { Fade } from 'react-awesome-reveal';
 import './Newhero.css';
 
 const Newhero = () => {
@@ -25,10 +26,12 @@ const Newhero = () => {
         <Row>
           <Col sm={12} md={6} lg={6} id="newhero-left">
             <div className="mx-5">
-              <h6 style={{ whiteSpace: 'pre-line' }}>
-                Clinical formulations{'\n'}with integrity
-              </h6>
-              <h1 id="newhero-h1">The Ordinary.</h1>
+              <Fade direction="left">
+                <h6 style={{ whiteSpace: 'pre-line' }}>
+                  Clinical formulations{'\n'}with integrity
+                </h6>
+                <h1 id="newhero-h1">The Ordinary.</h1>
+              </Fade>
             </div>
           </Col>
           <Col sm={12} md={6} lg={6} id="newhero-right">

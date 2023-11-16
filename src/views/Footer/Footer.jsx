@@ -87,7 +87,9 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Disposal Instructions</Link>
+                            <Link to="/disposal" onClick={scrollToTop}>
+                              Disposal Instructions
+                            </Link>
                           </li>
                           <li>
                             <Link to="/">Return Policy</Link>
@@ -131,7 +133,9 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Disposal Instructions</Link>
+                            <Link to="/disposal" onClick={scrollToTop}>
+                              Disposal Instructions
+                            </Link>
                           </li>
                           <li>
                             <Link to="/">Return Policy</Link>

@@ -13,6 +13,7 @@ import Review from './views/Checkout/Review';
 import About from './views/About/About';
 import Single from './views/Products/SingleProduct/Single';
 
+import Transparency from './views/Footer/sections/Transparency';
 import Faqs from './views/Faqs/Faqs';
 
 // admin
@@ -75,6 +76,10 @@ const routes = [
   {
     path: '/faqs',
     element: <Faqs />,
+  },
+  {
+    path: '/transparency',
+    element: <Transparency />,
   },
   {
     path: '/admin-page',

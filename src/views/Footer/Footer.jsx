@@ -68,7 +68,9 @@ const Footer = () => {
                             <Link to="/register">Join Us</Link>
                           </li>
                           <li>
-                            <Link to="/">Transparency in Supply Chains</Link>
+                            <Link to="/transparency">
+                              Transparency in Supply Chains
+                            </Link>
                           </li>
                         </ul>
                       </nav>
@@ -115,7 +117,9 @@ const Footer = () => {
                           </Link>
                         </li>
                         <li>
-                          <Link to="/">Transparency in Supply Chains</Link>
+                          <Link to="/transparency" onClick={scrollToTop}>
+                            Transparency in Supply Chains
+                          </Link>
                         </li>
                       </ul>
                       <h6 className="mt-3">Customer Care</h6>

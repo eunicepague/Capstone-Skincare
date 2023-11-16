@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import exampleOne from './../../../assets/ex1.png';
+import exampleOne from './../../../assets/Peel.jpg';
 import exampleTwo from './../../../assets/ex2.png';
 import exampleThree from './../../../assets/ex3.png';
 import { motion } from 'framer-motion';

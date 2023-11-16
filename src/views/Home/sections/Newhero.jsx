@@ -27,7 +27,7 @@ const Newhero = () => {
           <Col sm={12} md={6} lg={6} id="newhero-left">
             <div className="mx-5">
               <Fade direction="left">
-                <h6 style={{ whiteSpace: 'pre-line' }}>
+                <h6 id="newhero-h6">
                   Clinical formulations{'\n'}with integrity
                 </h6>
                 <h1 id="newhero-h1">The Ordinary.</h1>

@@ -1,6 +1,6 @@
-// import React from 'react'
 import { Container, Row, Col, Accordion } from 'react-bootstrap';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
+import Up from './../../assets/up.png';
 import './Faqs.css';
 
 const Faqs = () => {
@@ -20,6 +20,24 @@ const Faqs = () => {
       window.scrollTo({ top: elementPosition + yOffset, behavior: 'smooth' });
     }
   };
+
+  // for the btn
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleScroll = () => {
+    const scrollThreshold = window.innerHeight * 0.5;
+    setIsVisible(window.scrollY > scrollThreshold);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  window.addEventListener('scroll', handleScroll);
 
   return (
     <Container>
@@ -340,6 +358,13 @@ const Faqs = () => {
             </Accordion>
           </Col>
         </Row>
+
+        <div
+          id="faqs-upBtn"
+          style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.3s' }}
+        >
+          <img src={Up} onClick={scrollToTop}></img>
+        </div>
       </section>
     </Container>
   );

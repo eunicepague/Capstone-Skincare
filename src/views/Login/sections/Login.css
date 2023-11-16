@@ -53,3 +53,12 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+#faqs-upBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+#faqs-upBtn img {
+  width: 50px;
+}

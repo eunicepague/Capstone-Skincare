@@ -63,6 +63,7 @@ const Sec1 = () => {
             Left
           </box-icon>
         </button>
+
         <div
           id="sec1-container"
           className="scrollable-container"
@@ -86,6 +87,7 @@ const Sec1 = () => {
             ))}
           </div>
         </div>
+
         <button id="sec1-right-button" onClick={scrollRight}>
           <box-icon name="right-arrow">Left</box-icon>
         </button>

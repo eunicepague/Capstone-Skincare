@@ -27,6 +27,11 @@
   margin-top: 3rem;
 }
 
+#sec4-left p {
+  white-space: pre-line;
+  text-indent: 60px;
+}
+
 #sec4-right {
   position: relative;
 }

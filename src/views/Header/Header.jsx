@@ -6,7 +6,6 @@ import axios from './../../axios';
 
 const Header = () => {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [user, setUser] = useState({});
@@ -33,6 +32,13 @@ const Header = () => {
     navigate('/');
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
       <div id="header-top">
@@ -40,7 +46,7 @@ const Header = () => {
       </div>
       <Navbar expand="lg" id="navbar-container">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} to="/" onClick={scrollToTop}>
             The Ordinary.
           </Navbar.Brand>
           <Navbar.Toggle
@@ -52,16 +58,16 @@ const Header = () => {
           {show ? null : (
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto mx-auto">
-                <Nav.Link as={Link} to="/new">
-                  New
+                <Nav.Link as={Link} to="/about" onClick={scrollToTop}>
+                  About
                 </Nav.Link>
-                <Nav.Link as={Link} to="/products">
+                <Nav.Link as={Link} to="/products" onClick={scrollToTop}>
                   Products
                 </Nav.Link>
-                <Nav.Link as={Link} to="/cart">
+                <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
                   Cart
                 </Nav.Link>
-                <Nav.Link as={Link} to="/order">
+                <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
                   Order
                 </Nav.Link>
               </Nav>
@@ -112,16 +118,16 @@ const Header = () => {
               )}
             </Offcanvas.Title>
             <Nav className="me-auto mx-auto">
-              <Nav.Link as={Link} to="/new">
-                New
+              <Nav.Link as={Link} to="/about" onClick={scrollToTop}>
+                About
               </Nav.Link>
-              <Nav.Link as={Link} to="/products">
+              <Nav.Link as={Link} to="/products" onClick={scrollToTop}>
                 Products
               </Nav.Link>
-              <Nav.Link as={Link} to="/cart">
+              <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
                 Cart
               </Nav.Link>
-              <Nav.Link as={Link} to="/order">
+              <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
                 Order
               </Nav.Link>
             </Nav>

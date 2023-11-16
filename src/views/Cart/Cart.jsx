@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useEffect, useState } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 // import Pic1 from "./../../assets/Toner.jpg";
-import { Link } from "react-router-dom";
-import "./Cart.css";
-import axios from "./../../axios";
-import swal from "sweetalert2";
+import { Link } from 'react-router-dom';
+import './Cart.css';
+import axios from './../../axios';
+import swal from 'sweetalert2';
 
 const Cart = () => {
   const [itemCount, setItemCount] = useState(0);
@@ -13,14 +13,14 @@ const Cart = () => {
 
   const getCarts = async () => {
     try {
-      const response = await axios.get("/carts");
+      const response = await axios.get('/carts');
       setCarts(response.data.data);
       setItemCount(response.data.data.length);
       setTotalPrice(response.data.total_cart);
 
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -56,7 +56,7 @@ const Cart = () => {
 
       setCarts(updatedCarts);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -78,7 +78,7 @@ const Cart = () => {
       });
       setCarts(updatedCarts);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
   const removeFromCart = async (item) => {
@@ -88,14 +88,14 @@ const Cart = () => {
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
       swal.fire({
-        position: "top-end",
-        icon: "success",
+        position: 'top-end',
+        icon: 'success',
         title: response.data.message,
         showConfirmButton: false,
         timer: 1500,
       });
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -124,18 +124,18 @@ const Cart = () => {
                         alt={item.product.name}
                       />
                       <Col className="product-content" xl={6}>
-                        <p style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+                        <p style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
                           {item.product.name}
                         </p>
                         <p>Category: {item.product.category.name}</p>
                         <p>
-                          {"Targets: "}
-                          <span style={{ color: "black" }}>
+                          {'Targets: '}
+                          <span style={{ color: 'black' }}>
                             {item.product.target}
                           </span>
                         </p>
                         <p
-                          style={{ color: "gray", cursor: "pointer" }}
+                          style={{ color: 'gray', cursor: 'pointer' }}
                           onClick={() => removeFromCart(item)}
                         >
                           Remove
@@ -163,11 +163,11 @@ const Cart = () => {
                   </Col>
                   <Col xl={2}>
                     <p>PRICE</p>
-                    <h6 style={{ marginTop: "3rem" }}>{item.price}</h6>
+                    <h6 style={{ marginTop: '3rem' }}>{item.price}</h6>
                   </Col>
                   <Col xl={2}>
                     <p>TOTAL</p>
-                    <h6 style={{ marginTop: "3rem" }}>{item.total_price}</h6>
+                    <h6 style={{ marginTop: '3rem' }}>{item.total_price}</h6>
                   </Col>
                 </Row>
               ))}
@@ -175,7 +175,7 @@ const Cart = () => {
               {/* You can repeat the product details section for additional items */}
             </div>
           </Col>
-          <Col md={4} style={{ backgroundColor: "rgb(245, 245, 245" }}>
+          <Col md={4} style={{ backgroundColor: 'rgb(245, 245, 245' }}>
             <section id="cart-right-container">
               <Row id="cart-right-content" lg={4} xl={4}>
                 <Col className="w-100">
@@ -187,7 +187,10 @@ const Cart = () => {
                   <p>TOTAL</p>
                 </Col>
                 {carts.map((item) => (
-                  <Col className="d-flex justify-content-between w-100">
+                  <Col
+                    key={item.product.id}
+                    className="d-flex justify-content-between w-100"
+                  >
                     <p>{item.product.name}</p>
                     <p>{item.total_price}</p>
                   </Col>
@@ -202,7 +205,7 @@ const Cart = () => {
                   <Button
                     type="submit"
                     className={`w-100 mb-5 mt-5 ${
-                      itemCount > 0 ? "" : "disabled"
+                      itemCount > 0 ? '' : 'disabled'
                     }`}
                     id="cart-button"
                     Link

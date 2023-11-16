@@ -3,6 +3,7 @@
 #about-left {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #about-right {
@@ -15,7 +16,7 @@
 #about-right h1 {
   display: flex;
   width: 90%;
-  margin: 5rem auto;
+  margin: 3rem auto;
   font-weight: bold;
 }
 
@@ -24,4 +25,5 @@
   margin: auto;
   width: 90%;
   margin-bottom: 5rem;
+  text-indent: 60px;
 }

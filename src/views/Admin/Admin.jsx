@@ -1,7 +1,7 @@
 // import React from 'react';
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Logo from './../../assets/admin-logo2.png';
+import Logo from './../../assets/profile.png';
 
 import Dashboard from './sections/Dashboard';
 import Products from './sections/Products';
@@ -41,10 +41,11 @@ const Admin = () => {
     <div id="admin-container">
       <Container fluid>
         <Row>
-          <Col id="admin-left" lg={3}>
+          <Col id="admin-left" lg={2}>
             <img src={Logo}></img>
             <h2>Admin</h2>
             <p style={{ marginBottom: '2rem' }}>The Ordinary Admin</p>
+            <hr></hr>
             <button onClick={() => handleButtonClick('dashboard')}>
               Dashboard
             </button>
@@ -59,7 +60,7 @@ const Admin = () => {
             </button>
             <button onClick={() => handleButtonClick('order')}>Orders</button>
           </Col>
-          <Col id="admin-right" lg={9}>
+          <Col id="admin-right" lg={10}>
             {renderSelectedComponent()}
           </Col>
         </Row>

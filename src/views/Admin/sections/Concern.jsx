@@ -29,10 +29,10 @@ const Concern = () => {
 
         <Row>
           <Col>
-            <Table striped id="concern-table">
+            <Table striped style={{ marginTop: '2rem ' }}>
               <tbody>
                 <tr>
-                  <td>1. Concern Sample</td>
+                  <td id="concern-table">1. Concern Sample</td>
                 </tr>
               </tbody>
             </Table>
@@ -47,7 +47,9 @@ const Concern = () => {
           keyboard={false}
         >
           <Modal.Body id="concern-modal">
-            <h4 style={{ marginBottom: '2rem' }}>ADD A CONCERN</h4>
+            <h4 style={{ marginBottom: '2rem', fontWeight: 'bold' }}>
+              ADD A CONCERN
+            </h4>
             <Form>
               <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Control

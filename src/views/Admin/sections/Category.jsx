@@ -29,10 +29,10 @@ const Category = () => {
 
         <Row>
           <Col>
-            <Table striped id="category-table">
+            <Table striped style={{ marginTop: '2rem ' }}>
               <tbody>
                 <tr>
-                  <td>1. Sample</td>
+                  <td id="category-table">1. Sample</td>
                 </tr>
               </tbody>
             </Table>
@@ -47,7 +47,9 @@ const Category = () => {
           keyboard={false}
         >
           <Modal.Body id="category-modal">
-            <h4 style={{ marginBottom: '2rem' }}>ADD A CATEGORY</h4>
+            <h4 style={{ marginBottom: '2rem', fontWeight: 'bold' }}>
+              ADD A CATEGORY
+            </h4>
             <Form>
               <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Control

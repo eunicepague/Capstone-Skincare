@@ -15,7 +15,7 @@ import stepThreeGray from './../../assets/checkout-3gray.png';
 import stepThree from './../../assets/checkout-3blk.png';
 import Check from './../../assets/check.png';
 
-import Paypal from './../../assets/paypal.png';
+import Paypal from './../../assets/Paypal.png';
 import Visa from './../../assets/visa.png';
 import Gcash from './../../assets/gcash.png';
 import Paymaya from './../../assets/paymaya.png';

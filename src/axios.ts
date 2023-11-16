@@ -3,7 +3,7 @@ import swal from "sweetalert2";
 
 axios.defaults.withCredentials = true;
 
-const api = "http://localhost:8000/api";
+const api = import.meta.env.VITE_API;
 
 const axiosRequest = axios.create({
   baseURL: api,

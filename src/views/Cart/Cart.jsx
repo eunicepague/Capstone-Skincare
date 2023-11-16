@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+// import Pic1 from "./../../assets/Toner.jpg";
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import axios from './../../axios';
@@ -12,9 +13,10 @@ const Cart = () => {
 
   const getCarts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/carts');
+      const response = await axios.get('/carts');
       setCarts(response.data.data);
       setItemCount(response.data.data.length);
+      setTotalPrice(response.data.total_cart);
 
       console.log(response);
     } catch (error) {
@@ -34,15 +36,12 @@ const Cart = () => {
     const total = carts.map((item) => {
       totals = totals + parseFloat(item.total_price);
     });
-    setTotalPrice(totals);
+    // setTotalPrice(totals);
   };
   const incrementQuantity = async (item) => {
     try {
       let quantity = item.quantity + 1;
-      const response = await axios.put(
-        `http://localhost:8000/api/carts/${item.id}`,
-        { quantity }
-      );
+      const response = await axios.put(`/carts/${item.id}`, { quantity });
 
       const updatedCarts = carts.map((cartItem) => {
         if (cartItem.id === item.id) {
@@ -66,10 +65,7 @@ const Cart = () => {
 
     try {
       let quantity = item.quantity - 1;
-      const response = await axios.put(
-        `http://localhost:8000/api/carts/${item.id}`,
-        { quantity }
-      );
+      const response = await axios.put(`/carts/${item.id}`, { quantity });
       const updatedCarts = carts.map((cartItem) => {
         if (cartItem.id === item.id) {
           return {
@@ -87,9 +83,7 @@ const Cart = () => {
   };
   const removeFromCart = async (item) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:8000/api/carts/${item.id}`
-      );
+      const response = await axios.delete(`/carts/${item.id}`);
       const updatedCarts = carts.filter((cartItem) => cartItem.id !== item.id);
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
@@ -190,41 +184,29 @@ const Cart = () => {
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
                   <p>ITEMS {itemCount}</p>
-                  <p>₱{totalPrice}</p>
+                  <p>TOTAL</p>
                 </Col>
-                <Col>
-                  <p>SHIPPING</p>
-
-                  <Form.Select
-                    aria-label="Default select example"
-                    id="cart-select"
+                {carts.map((item) => (
+                  <Col
+                    key={item.product.id}
+                    className="d-flex justify-content-between w-100"
                   >
-                    <option value="1">Standard Deliver - P100</option>
-                    <option value="2">Fast Deliver - P300</option>
-                  </Form.Select>
-                </Col>
-                <Col className="w-100">
-                  <p>PROMO CODE</p>
-                  <Form.Control
-                    type="text"
-                    placeholder="Normal text"
-                    id="cart-select"
-                  />
-                  <Button type="submit" id="cart-button">
-                    APPLY
-                  </Button>
-                  <br />
-                </Col>
+                    <p>{item.product.name}</p>
+                    <p>{item.total_price}</p>
+                  </Col>
+                ))}
 
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
                   <h6>TOTAL COST</h6>
-                  <h6>P1000</h6>
+                  <h6>₱{totalPrice}</h6>
                 </Col>
                 <Col className="w-100 d-flex justify-content-center">
                   <Button
                     type="submit"
-                    className="w-100 mb-5 mt-5"
+                    className={`w-100 mb-5 mt-5 ${
+                      itemCount > 0 ? '' : 'disabled'
+                    }`}
                     id="cart-button"
                     Link
                     as={Link}

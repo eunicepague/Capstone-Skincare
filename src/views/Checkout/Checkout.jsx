@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from "react";
 import {
   Container,
   Row,
@@ -7,40 +7,83 @@ import {
   FloatingLabel,
   Button,
   Card,
-} from 'react-bootstrap';
-import stepOne from './../../assets/checkout-1blk.png';
-import stepTwoGray from './../../assets/checkout-2gray.png';
-import stepTwo from './../../assets/checkout-2blk.png';
-import stepThreeGray from './../../assets/checkout-3gray.png';
-import stepThree from './../../assets/checkout-3blk.png';
-import Check from './../../assets/check.png';
+} from "react-bootstrap";
+import stepOne from "./../../assets/checkout-1blk.png";
+import stepTwoGray from "./../../assets/checkout-2gray.png";
+import stepTwo from "./../../assets/checkout-2blk.png";
+import stepThreeGray from "./../../assets/checkout-3gray.png";
+import stepThree from "./../../assets/checkout-3blk.png";
+import Check from "./../../assets/check.png";
 
-import Paypal from './../../assets/Paypal.png';
-import Visa from './../../assets/visa.png';
-import Gcash from './../../assets/gcash.png';
-import Paymaya from './../../assets/paymaya.png';
-import Mastercard from './../../assets/mastercard.png';
-import './Checkout.css';
+import Paypal from "./../../assets/paypal.png";
+import Visa from "./../../assets/visa.png";
+import Gcash from "./../../assets/gcash.png";
+import Paymaya from "./../../assets/paymaya.png";
+import Mastercard from "./../../assets/mastercard.png";
+// import { useEffect, useState } from "react";
+import axios from "./../../axios";
+import "./Checkout.css";
+import { useNavigate, Link } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [validated, setValidated] = useState(false);
+  const [carts, setCarts] = useState([]);
   const formRef = useRef(null);
+  const navigate = useNavigate();
+
+  const Checkout = async () => {
+    try {
+      const response = await axios.post("/orders", formData);
+      swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/order");
+      console.log(response);
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+
+  const getCarts = async () => {
+    try {
+      const response = await axios.get("/carts");
+      setCarts(response.data.data);
+
+      console.log(response);
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+
+  useEffect(() => {
+    getCarts();
+  }, []);
 
   // State for form data for activestep1
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    addressOne: '',
-    addressTwo: '',
-    city: '',
-    zipCode: '',
+    first_name: "",
+    last_name: "",
+    address_1: "",
+    address_2: "",
+    city: "",
+    zip_code: "",
+    payment_type: "",
   });
 
-  const [selectedPayment, setSelectedPayment] = useState('');
+  const [selectedPayment, setSelectedPayment] = useState("");
 
   const handlePaymentSelection = (event) => {
     setSelectedPayment(event.target.value);
+    setFormData((prevData) => ({
+      ...prevData,
+      payment_type: event.target.value,
+    }));
   };
 
   const handleStepChange = (step, event, isBack = false) => {
@@ -82,15 +125,13 @@ const Checkout = () => {
     // Check if a payment method is selected
     if (!selectedPayment) {
       // Display an alert if no payment method is selected
-      alert('Please select a payment method.');
+      alert("Please select a payment method.");
       return;
-    } else {
-      alert(`Successfully selected ${selectedPayment}`);
     }
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -99,39 +140,39 @@ const Checkout = () => {
 
   const paymentMethods = [
     {
-      id: 'Paypal',
+      id: "Paypal",
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">
-            <img src={Paypal} style={{ width: '100px' }} className="mx-3" />
-            <img src={Visa} style={{ width: '50px' }} alt="Visa" />
-            <img src={Mastercard} style={{ width: '50px' }} alt="Mastercard" />
+            <img src={Paypal} style={{ width: "100px" }} className="mx-3" />
+            <img src={Visa} style={{ width: "50px" }} alt="Visa" />
+            <img src={Mastercard} style={{ width: "50px" }} alt="Mastercard" />
           </span>
         </div>
       ),
     },
     {
-      id: 'Gcash',
+      id: "GCash",
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">
-            <img src={Gcash} style={{ width: '100px' }} className="mx-3" />
+            <img src={Gcash} style={{ width: "100px" }} className="mx-3" />
           </span>
         </div>
       ),
     },
     {
-      id: 'Paymaya',
+      id: "PayMaya",
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">
-            <img src={Paymaya} style={{ width: '100px' }} className="mx-3" />
+            <img src={Paymaya} style={{ width: "100px" }} className="mx-3" />
           </span>
         </div>
       ),
     },
     {
-      id: 'COD',
+      id: "Cash On Delivery",
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">Cash On Delivery ( COD )</span>
@@ -146,7 +187,7 @@ const Checkout = () => {
         <Container>
           {activeStep === 1 && (
             <>
-              <h3 style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
                 Checkout
               </h3>
               <Container>
@@ -159,9 +200,9 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={stepOne} alt="Step One" />
-                      <p style={{ fontWeight: '700' }}>Shipping address</p>
+                      <p style={{ fontWeight: "700" }}>Shipping address</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -174,7 +215,7 @@ const Checkout = () => {
                       <img src={stepTwoGray} alt="Step Two" />
                       <p>Payment details</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -212,8 +253,8 @@ const Checkout = () => {
                             pattern="[A-Za-z\s]+"
                             isInvalid={validated}
                             placeholder="first name"
-                            name="firstName"
-                            value={formData.firstName}
+                            name="first_name"
+                            value={formData.first_name}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -231,8 +272,8 @@ const Checkout = () => {
                             pattern="[A-Za-z\s]+"
                             isInvalid={validated}
                             placeholder="last name"
-                            name="lastName"
-                            value={formData.lastName}
+                            name="last_name"
+                            value={formData.last_name}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -250,8 +291,8 @@ const Checkout = () => {
                         type="text"
                         placeholder="address one"
                         isInvalid={validated}
-                        name="addressOne"
-                        value={formData.addressOne}
+                        name="address_1"
+                        value={formData.address_1}
                         onChange={handleInputChange}
                       ></Form.Control>
                     </FloatingLabel>
@@ -267,8 +308,8 @@ const Checkout = () => {
                         type="text"
                         placeholder="address two"
                         isInvalid={validated}
-                        name="addressTwo"
-                        value={formData.addressTwo}
+                        name="address_2"
+                        value={formData.address_2}
                         onChange={handleInputChange}
                       ></Form.Control>
                     </FloatingLabel>
@@ -306,8 +347,8 @@ const Checkout = () => {
                             required
                             type="number"
                             placeholder="zip code"
-                            name="zipCode"
-                            value={formData.zipCode}
+                            name="zip_code"
+                            value={formData.zip_code}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -331,7 +372,7 @@ const Checkout = () => {
 
           {activeStep === 2 && (
             <>
-              <h3 style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
                 Checkout
               </h3>
               <Container>
@@ -344,9 +385,9 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={Check} alt="Step One" />
-                      <p style={{ fontWeight: '700' }}>Shipping address</p>
+                      <p style={{ fontWeight: "700" }}>Shipping address</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -357,9 +398,9 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={stepTwo} alt="Step Two" />
-                      <p style={{ fontWeight: '700' }}>Payment details</p>
+                      <p style={{ fontWeight: "700" }}>Payment details</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -382,7 +423,7 @@ const Checkout = () => {
                     <Card key={method.id}>
                       <Form.Check
                         type="radio"
-                        name="payment-method"
+                        name="payment_type"
                         className="d-flex align-items-center mx-3"
                         id={method.id}
                         value={method.id}
@@ -407,7 +448,7 @@ const Checkout = () => {
                     onClick={(event) =>
                       selectedPayment
                         ? handleStepChange(3, event)
-                        : alert('Please select a payment method')
+                        : alert("Please select a payment method")
                     }
                     id="checkout-button"
                   >
@@ -420,7 +461,7 @@ const Checkout = () => {
 
           {activeStep === 3 && (
             <>
-              <h3 style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
                 Checkout
               </h3>
               <Container>
@@ -433,9 +474,9 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={Check} alt="Step One" />
-                      <p style={{ fontWeight: '700' }}>Shipping address</p>
+                      <p style={{ fontWeight: "700" }}>Shipping address</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -446,9 +487,9 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={Check} alt="Step Two" />
-                      <p style={{ fontWeight: '700' }}>Payment details</p>
+                      <p style={{ fontWeight: "700" }}>Payment details</p>
                       <hr
-                        style={{ width: '3rem' }}
+                        style={{ width: "3rem" }}
                         className="d-none d-md-flex"
                       />
                     </Col>
@@ -459,30 +500,36 @@ const Checkout = () => {
                       lg={4}
                     >
                       <img src={stepThree} alt="Step Three" />
-                      <p style={{ fontWeight: '700' }}>Review your order</p>
+                      <p style={{ fontWeight: "700" }}>Review your order</p>
                     </Col>
                   </Row>
                 </div>
               </Container>
+
               <Container>
                 <h5 className="mt-5 mb-4">Order Summary</h5>
                 <div>
                   <Row>
-                    <Col className="d-flex justify-content-between mb-3">
-                      <h6>Product Name Data goes here</h6>
-                      <h6>Price Data Goes here</h6>
-                    </Col>
+                    {carts.map((item) => (
+                      <Col className="d-flex justify-content-between mb-3">
+                        <h6>{item.product.name}</h6>
+                        <h6>{item.product.price}</h6>
+                      </Col>
+                    ))}
                   </Row>
                   <Row className="mt-5">
                     <Col id="review-checkout-shipping">
                       <h5>Shipping</h5>
-                      <p>Name Data goes here</p>
-                      <p>Adress 1 Data goes here</p>
-                      <p>Zip Code Data goes here</p>
+                      <p>
+                        {formData.first_name}
+                        {formData.last_name}
+                      </p>
+                      <p>{formData.address_1}</p>
+                      <p>{formData.zip_code}</p>
                     </Col>
                     <Col>
                       <h5>Payment Details</h5>
-                      <p>Payment Data goes here</p>
+                      <p>{formData.payment_type}</p>
                     </Col>
                   </Row>
                 </div>
@@ -497,10 +544,7 @@ const Checkout = () => {
                     Back
                   </Button>
                   {/* You can handle the final step or order confirmation here */}
-                  <Button
-                    onClick={() => alert('Order confirmed!')}
-                    id="checkout-button"
-                  >
+                  <Button onClick={() => Checkout()} id="checkout-button">
                     Confirm Order
                   </Button>
                 </div>

@@ -1,21 +1,42 @@
 // import React from 'react'
-import { Component, useEffect, useState } from 'react';
-import { Container, Card, Row, Col, Button } from 'react-bootstrap';
+import { Component, useEffect, useState } from "react";
+import { Container, Card, Row, Col, Button } from "react-bootstrap";
 // import Fade from 'react-reveal/Fade';
 
-import './Sec2.css';
-import axios from 'axios';
-
+import "./Sec2.css";
+// import axios from "axios";
+import axios from "./../../../axios";
+import swal from "sweetalert2";
 const Sec2 = () => {
   const [products, setProducts] = useState([]);
 
+  const addToCart = async (product) => {
+    try {
+      let quantity = 1;
+      let product_id = product;
+      const response = await axios.post(`/carts`, {
+        quantity,
+        product_id,
+      });
+      swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+
   const getProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/products');
+      const response = await axios.get("/products");
       setProducts(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error('Fetching products failed', error);
+      console.error("Fetching products failed", error);
     }
   };
 
@@ -42,7 +63,12 @@ const Sec2 = () => {
                     <Card.Body id="s2-cardbody">
                       <Card.Text id="s2-cardtitle">
                         {item.name}
-                        <Button id="s2-button">SHOP NOW</Button>
+                        <Button
+                          onClick={() => addToCart(item.id)}
+                          id="s2-button"
+                        >
+                          SHOP NOW
+                        </Button>
                       </Card.Text>
                     </Card.Body>
                   </Card>

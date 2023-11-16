@@ -16,6 +16,7 @@ const Cart = () => {
       const response = await axios.get('http://localhost:8000/api/carts');
       setCarts(response.data.data);
       setItemCount(response.data.data.length);
+      setTotalPrice(response.data.total_cart);
 
       console.log(response);
     } catch (error) {
@@ -35,7 +36,7 @@ const Cart = () => {
     const total = carts.map((item) => {
       totals = totals + parseFloat(item.total_price);
     });
-    setTotalPrice(totals);
+    // setTotalPrice(totals);
   };
   const incrementQuantity = async (item) => {
     try {
@@ -191,36 +192,20 @@ const Cart = () => {
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
                   <p>ITEMS {itemCount}</p>
-                  <p>₱{totalPrice}</p>
+                  <p>TOTAL</p>
                 </Col>
-                <Col>
-                  <p>SHIPPING</p>
+                {carts.map((item) => (
+                  <Col className="d-flex justify-content-between w-100">
+                  <p>{item.product.name}</p>
+                  <p>{item.total_price}</p>
+                </Col>
+                ))}
 
-                  <Form.Select
-                    aria-label="Default select example"
-                    id="cart-select"
-                  >
-                    <option value="1">Standard Deliver - P100</option>
-                    <option value="2">Fast Deliver - P300</option>
-                  </Form.Select>
-                </Col>
-                <Col className="w-100">
-                  <p>PROMO CODE</p>
-                  <Form.Control
-                    type="text"
-                    placeholder="Normal text"
-                    id="cart-select"
-                  />
-                  <Button type="submit" id="cart-button">
-                    APPLY
-                  </Button>
-                  <br />
-                </Col>
 
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
                   <h6>TOTAL COST</h6>
-                  <h6>P1000</h6>
+                  <h6>₱{totalPrice}</h6>
                 </Col>
                 <Col className="w-100 d-flex justify-content-center">
                   <Button

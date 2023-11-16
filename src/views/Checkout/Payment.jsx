@@ -64,7 +64,7 @@ const Payment = () => {
       ),
     },
     {
-      id: 'Gcash',
+      id: 'GCash',
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">
@@ -74,7 +74,7 @@ const Payment = () => {
       ),
     },
     {
-      id: 'Paymaya',
+      id: 'PayMaya',
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">
@@ -84,7 +84,7 @@ const Payment = () => {
       ),
     },
     {
-      id: 'COD',
+      id: 'Cash On Delivery',
       label: (
         <div className="d-flex justify-content-center align-items-center mx-3">
           <span className="d-flex">Cash On Delivery ( COD )</span>

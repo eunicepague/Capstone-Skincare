@@ -511,7 +511,7 @@ const Category = () => {
                     <Card.Img
                       onClick={() => navigate(`/products/${product.id}`)}
                       variant="top"
-                      src={`/${product.image}`}
+                      src={`/products/${product.image}`}
                       alt={product.name}
                     />
                     <Card.Body>

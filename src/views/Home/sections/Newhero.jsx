@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import exampleOne from './../../../assets/Peel.jpg';
-import exampleTwo from './../../../assets/ex2.png';
-import exampleThree from './../../../assets/ex3.png';
-import { motion } from 'framer-motion';
-import { Fade } from 'react-awesome-reveal';
-import './Newhero.css';
+import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import exampleOne from "./../../../assets/ex1.png";
+import exampleTwo from "./../../../assets/ex2.png";
+import exampleThree from "./../../../assets/ex3.png";
+import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal";
+import "./Newhero.css";
 
 const Newhero = () => {
   const images = [exampleOne, exampleTwo, exampleThree];
@@ -16,7 +16,7 @@ const Newhero = () => {
   };
 
   const slideVariants = {
-    hidden: { opacity: 0, x: '20%' },
+    hidden: { opacity: 0, x: "20%" },
     visible: { opacity: 1, x: 0 },
   };
 
@@ -28,7 +28,7 @@ const Newhero = () => {
             <div className="mx-5">
               <Fade direction="left">
                 <h6 id="newhero-h6">
-                  Clinical formulations{'\n'}with integrity
+                  Clinical formulations{"\n"}with integrity
                 </h6>
                 <h1 id="newhero-h1">The Ordinary.</h1>
               </Fade>
@@ -48,7 +48,7 @@ const Newhero = () => {
                   src={image}
                   alt={`slide-${index}`}
                   className={`carousel-image ${
-                    index === activeIndex ? 'active' : ''
+                    index === activeIndex ? "active" : ""
                   }`}
                 />
               ))}
@@ -58,7 +58,7 @@ const Newhero = () => {
             {images.map((_, index) => (
               <div
                 key={index}
-                className={`circle ${index === activeIndex ? 'active' : ''}`}
+                className={`circle ${index === activeIndex ? "active" : ""}`}
                 onClick={() => handleCircleClick(index)}
               />
             ))}

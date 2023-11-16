@@ -59,7 +59,7 @@ const Sec2 = () => {
                       <Card.Img
                         id="s2-cardimg"
                         variant="top"
-                        src={`/assets/${item.image}`}
+                        src={`/${item.image}`}
                       />
                       <Card.Body id="s2-cardbody">
                         <Card.Text id="s2-cardtitle">

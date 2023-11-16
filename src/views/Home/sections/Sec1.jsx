@@ -1,9 +1,10 @@
-import { Container, Card } from "react-bootstrap";
-import "./Sec1.css";
+import { Container, Card } from 'react-bootstrap';
+import './Sec1.css';
 // import axios from "axios";
-import axios from "./../../../axios";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import axios from './../../../axios';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 const Sec1 = () => {
   const containerRef = useRef(null);
@@ -12,11 +13,11 @@ const Sec1 = () => {
 
   const getConcerns = async () => {
     try {
-      const response = await axios.get("/concerns");
+      const response = await axios.get('/concerns');
       setConcerns(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("Login failed", error);
+      console.error('Login failed', error);
     }
   };
 
@@ -34,7 +35,7 @@ const Sec1 = () => {
       const targetScrollLeft = container.scrollLeft - 500; // Adjust the scrolling amount as needed
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -44,7 +45,7 @@ const Sec1 = () => {
       const targetScrollLeft = container.scrollLeft + 500;
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -52,14 +53,14 @@ const Sec1 = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
   return (
     <>
       <Container id="sec1-box">
         <button id="sec1-left-button" onClick={scrollLeft}>
-          <box-icon name="left-arrow" style={{ width: "2rem" }}>
+          <box-icon name="left-arrow" style={{ width: '2rem' }}>
             Left
           </box-icon>
         </button>
@@ -70,21 +71,23 @@ const Sec1 = () => {
           ref={containerRef}
         >
           <div className="scrollable-content d-flex">
-            {concerns.map((item) => (
-              <Card key={item.id} id="sec1-card" className="mx-2">
-                <Card.Img
-                  onClick={() => filterByConcern(item.id)}
-                  variant="top"
-                  id="sec1-card-img"
-                  src={`/src/assets/concerns/${item.name}.jpg`}
-                />
-                <Card.Body id="sec1-card-body">
-                  <Card.Text style={{ textAlign: "center" }}>
-                    {item.name}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
+            <Fade>
+              {concerns.map((item) => (
+                <Card key={item.id} id="sec1-card" className="mx-2">
+                  <Card.Img
+                    onClick={() => filterByConcern(item.id)}
+                    variant="top"
+                    id="sec1-card-img"
+                    src={`/src/assets/concerns/${item.name}.jpg`}
+                  />
+                  <Card.Body id="sec1-card-body">
+                    <Card.Text style={{ textAlign: 'center' }}>
+                      {item.name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </Fade>
           </div>
         </div>
 
@@ -93,7 +96,7 @@ const Sec1 = () => {
         </button>
       </Container>
       <div className="d-flex justify-content-center">
-        <Link as={Link} to="/products" style={{ textDecoration: "none" }}>
+        <Link as={Link} to="/products" style={{ textDecoration: 'none' }}>
           <button id="s1-shop-button" onClick={scrollToTop}>
             Shop all
           </button>

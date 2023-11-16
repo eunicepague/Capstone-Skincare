@@ -1,5 +1,22 @@
+#footer-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .medium-screen .company-section {
   display: none;
+}
+
+#footer-img img {
+  width: 50%;
+  display: flex;
+  margin: auto;
+}
+
+#footer-second {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .medium-screen .company-section-hidden {

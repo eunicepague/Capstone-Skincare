@@ -1,5 +1,5 @@
 // import React from 'react'
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { Slide } from 'react-awesome-reveal';
 
@@ -54,7 +54,7 @@ const Sec2 = () => {
               {/* Map through the products and add a key prop */}
               {products.slice(0, 4).map((item) => (
                 <Col key={item.id} xs={6} sm={6} md={3} lg={3}>
-                  <Slide direction="up">
+                  <Slide direction="left">
                     <Card id="s2-card-box" className="mx-auto mt-3 ">
                       <Card.Img
                         id="s2-cardimg"

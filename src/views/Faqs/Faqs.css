@@ -5,6 +5,11 @@
   font-family: 'Raleway', sans-serif;
 }
 
+#faqs-title h1 {
+  font-size: 8.5vh;
+  font-weight: bold;
+}
+
 #faqs-content h6 {
   font-weight: bold;
   margin: 2rem 0;

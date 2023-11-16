@@ -8,10 +8,12 @@ import { useEffect, useRef, useState } from 'react';
 // import Peptides from "./../../../assets/peptides.jpg";
 // import Retinoids from "./../../../assets/retinoids.jpg";
 // import Hydrators from "./../../../assets/hydrators.jpg";
-import './Sec3.css';
+
 // import axios from "axios";
+import './Sec3.css';
 import axios from './../../../axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 const Sec3 = () => {
   const containerRef = useRef(null);
@@ -72,21 +74,23 @@ const Sec3 = () => {
           ref={containerRef}
         >
           <div className="scrollable-content d-flex">
-            {categories.map((item) => (
-              <Card key={item.id} id="sec3-card" className="mx-2">
-                <Card.Img
-                  onClick={() => filterByCategory(item.id)}
-                  variant="top"
-                  id="sec3-card-img"
-                  src={`/src/assets/category/${item.name}.jpg`}
-                />
-                <Card.Body id="sec3-card-body">
-                  <Card.Text style={{ textAlign: 'center' }}>
-                    {item.name}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
+            <Fade>
+              {categories.map((item) => (
+                <Card key={item.id} id="sec3-card" className="mx-2">
+                  <Card.Img
+                    onClick={() => filterByCategory(item.id)}
+                    variant="top"
+                    id="sec3-card-img"
+                    src={`/src/assets/category/${item.name}.jpg`}
+                  />
+                  <Card.Body id="sec3-card-body">
+                    <Card.Text style={{ textAlign: 'center' }}>
+                      {item.name}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </Fade>
           </div>
         </div>
         <button id="sec3-right-button" onClick={scrollRight}>

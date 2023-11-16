@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-// import Pic1 from "./../../assets/Toner.jpg";
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import axios from './../../axios';

@@ -5,6 +5,8 @@
 }
 #newhero-content {
   position: relative;
+  height: 90vh;
+  display: flex;
 }
 
 #newhero-content img {

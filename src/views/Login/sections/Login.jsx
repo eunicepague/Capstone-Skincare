@@ -3,7 +3,9 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../axios";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

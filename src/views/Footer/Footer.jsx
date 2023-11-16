@@ -92,7 +92,9 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Return Policy</Link>
+                            <Link to="/return-policy" onClick={scrollToTop}>
+                              Return Policy
+                            </Link>
                           </li>
                           <li>
                             <Link to="/">Promition Terms & Conditions</Link>
@@ -138,7 +140,9 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Return Policy</Link>
+                            <Link to="/return-policy" onClick={scrollToTop}>
+                              Return Policy
+                            </Link>
                           </li>
                           <li>
                             <Link to="/">Promition Terms & Conditions</Link>

@@ -43,7 +43,7 @@ const Faqs = () => {
     <Container>
       <section id="faqs-content">
         <Row>
-          <Col id="faqs-title">
+          <Col id="faqs-title" lg={4}>
             <h1 style={{ fontWeight: 'bold', marginBottom: '2rem' }}>FAQ.</h1>
             <p onClick={() => scrollToSection(contactRef)}>Contact</p>
             <p onClick={() => scrollToSection(orderInquiryRef)}>
@@ -61,7 +61,7 @@ const Faqs = () => {
             </p>
           </Col>
 
-          <Col id="faqs-accordion">
+          <Col id="faqs-accordion" lg={8}>
             {/* --- CONTACT --- */}
             <h6 ref={contactRef}>CONTACT</h6>
             <Accordion flush>

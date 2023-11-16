@@ -16,6 +16,7 @@ import Single from './views/Products/SingleProduct/Single';
 import Transparency from './views/Footer/sections/Transparency';
 import Faqs from './views/Faqs/Faqs';
 import Disposal from './views/Footer/sections/Disposal';
+import Return from './views/Footer/sections/Return';
 
 // admin
 import Admin from './views/Admin/Admin';
@@ -85,6 +86,10 @@ const routes = [
   {
     path: '/disposal',
     element: <Disposal />,
+  },
+  {
+    path: '/return-policy',
+    element: <Return />,
   },
   {
     path: '/admin-page',

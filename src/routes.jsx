@@ -17,8 +17,6 @@ import Faqs from './views/Faqs/Faqs';
 
 // admin
 import Admin from './views/Admin/Admin';
-import Adminlogin from './views/Adminlogin/Adminlogin';
-import Adminregister from './views/Adminregister/Adminregister';
 import AdminFooter from './views/Footer/adminFooter';
 
 const routes = [
@@ -73,14 +71,6 @@ const routes = [
   {
     path: '/about',
     element: <About />,
-  },
-  {
-    path: '/admin-login',
-    element: <Adminlogin />,
-  },
-  {
-    path: '/admin-register',
-    element: <Adminregister />,
   },
   {
     path: '/faqs',

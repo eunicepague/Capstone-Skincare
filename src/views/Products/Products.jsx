@@ -11,7 +11,7 @@ import {
 import swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import Cart from "./../../assets/cart-icon.png";
-import Pic1 from "./../../assets/Toner.jpg";
+// import Pic1 from "./../../assets/Toner.jpg";
 import yellowStar from "./../../assets/yellowStar.png";
 import transStar from "./../../assets/transStar.png";
 import axios from "../../axios";

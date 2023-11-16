@@ -37,9 +37,9 @@ const Category = () => {
   const createOrUpdate = async () => {
     try {
       if (id) {
-        const response = await axios.put(`/category/${id}}`, { name: name });
+        const response = await axios.put(`/concerns/${id}}`, { name: name });
       } else {
-        const response = await axios.post("/category", { name: name });
+        const response = await axios.post("/concerns", { name: name });
       }
       handleClose();
       await getCategories();
@@ -61,7 +61,7 @@ const Category = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(`/category/${id}`);
+          const response = await axios.delete(`/concerns/${id}`);
           await getCategories();
           Swal.fire({
             title: "Deleted!",
@@ -69,7 +69,6 @@ const Category = () => {
             icon: "success",
           });
 
-          
           // Assuming getCategories function is defined elsewhere
         } catch (error) {
           console.error("Error:", error);

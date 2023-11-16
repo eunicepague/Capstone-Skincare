@@ -30,7 +30,7 @@ const Return = () => {
         <Row>
           <Col id="return-left" lg={5}>
             <Bounce>
-              <h1>Return Policy</h1>
+              <h1>Return Policy.</h1>
             </Bounce>
           </Col>
           <Col id="return-right" lg={7}>

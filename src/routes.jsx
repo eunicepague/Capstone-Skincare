@@ -17,6 +17,7 @@ import Transparency from './views/Footer/sections/Transparency';
 import Faqs from './views/Faqs/Faqs';
 import Disposal from './views/Footer/sections/Disposal';
 import Return from './views/Footer/sections/Return';
+import Promotion from './views/Footer/sections/Promotion';
 
 // admin
 import Admin from './views/Admin/Admin';
@@ -90,6 +91,10 @@ const routes = [
   {
     path: '/return-policy',
     element: <Return />,
+  },
+  {
+    path: '/promotional-offer-terms',
+    element: <Promotion />,
   },
   {
     path: '/admin-page',

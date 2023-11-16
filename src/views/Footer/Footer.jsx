@@ -97,7 +97,12 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Promition Terms & Conditions</Link>
+                            <Link
+                              to="promotional-offer-terms/"
+                              onClick={scrollToTop}
+                            >
+                              Promition Terms & Conditions
+                            </Link>
                           </li>
                         </ul>
                       </nav>
@@ -145,7 +150,12 @@ const Footer = () => {
                             </Link>
                           </li>
                           <li>
-                            <Link to="/">Promition Terms & Conditions</Link>
+                            <Link
+                              to="/promotional-offer-terms"
+                              onClick={scrollToTop}
+                            >
+                              Promotion Terms & Conditions
+                            </Link>
                           </li>
                         </ul>
                       </nav>

@@ -16,7 +16,7 @@ import axios from "axios";
 
 const Register = () => {
   const [validated, setValidated] = useState(false);
-  const [username, setUsername] =useState("");
+  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,7 @@ const Register = () => {
     // }
     // setValidated(true);
     try {
-      const response = await axios.post("http://localhost:8000/api/register", {
+      const response = await axios.post("/register", {
         username,
         name,
         email,

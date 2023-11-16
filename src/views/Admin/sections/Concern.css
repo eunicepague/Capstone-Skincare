@@ -1,5 +1,9 @@
 #concern-content {
-  margin-top: 2rem;
+  margin-top: 3rem;
+}
+
+#concern-content h3 {
+  font-weight: bold;
 }
 #concern-btnContainer {
   display: flex;
@@ -7,8 +11,59 @@
   margin-right: 2rem;
 }
 
+/* ---- */
+
+#concern-btn {
+  background-color: #a84275;
+  color: white;
+  font-weight: bold;
+  border-color: transparent;
+  padding: 7px;
+  animation: concern-btnbounce 4s infinite;
+  cursor: pointer;
+}
+
+@keyframes concern-btnbounce {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1) rotate(-5deg);
+  }
+
+  25% {
+    transform: scale(1) rotate(5deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  35% {
+    transform: scale(1) rotate(2deg);
+  }
+
+  40% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* ---- */
+
 #concern-table {
-  margin-top: 2rem;
+  -webkit-box-shadow: 8.5px 2.5px 18px 4px #dddddd;
+  -moz-box-shadow: 8.5px 2.5px 18px 4px #dddddd;
+  box-shadow: 8.5px 2.5px 18px 4px #dddddd;
 }
 
 #concern-modal {
@@ -22,4 +77,6 @@
   padding: 0.5rem;
   border-radius: 10px;
   font-weight: bold;
+  background-color: #198754;
+  color: white;
 }

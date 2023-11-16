@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useEffect, useState } from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 // import Pic1 from "./../../assets/Toner.jpg";
-import { Link } from 'react-router-dom';
-import './Cart.css';
-import axios from './../../axios';
-import swal from 'sweetalert2';
+import { Link } from "react-router-dom";
+import "./Cart.css";
+import axios from "./../../axios";
+import swal from "sweetalert2";
 
 const Cart = () => {
   const [itemCount, setItemCount] = useState(0);
@@ -13,14 +13,14 @@ const Cart = () => {
 
   const getCarts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/carts');
+      const response = await axios.get("/carts");
       setCarts(response.data.data);
       setItemCount(response.data.data.length);
       setTotalPrice(response.data.total_cart);
 
       console.log(response);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
@@ -41,10 +41,7 @@ const Cart = () => {
   const incrementQuantity = async (item) => {
     try {
       let quantity = item.quantity + 1;
-      const response = await axios.put(
-        `http://localhost:8000/api/carts/${item.id}`,
-        { quantity }
-      );
+      const response = await axios.put(`/carts/${item.id}`, { quantity });
 
       const updatedCarts = carts.map((cartItem) => {
         if (cartItem.id === item.id) {
@@ -59,7 +56,7 @@ const Cart = () => {
 
       setCarts(updatedCarts);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
@@ -68,10 +65,7 @@ const Cart = () => {
 
     try {
       let quantity = item.quantity - 1;
-      const response = await axios.put(
-        `http://localhost:8000/api/carts/${item.id}`,
-        { quantity }
-      );
+      const response = await axios.put(`/carts/${item.id}`, { quantity });
       const updatedCarts = carts.map((cartItem) => {
         if (cartItem.id === item.id) {
           return {
@@ -84,26 +78,24 @@ const Cart = () => {
       });
       setCarts(updatedCarts);
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
   const removeFromCart = async (item) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:8000/api/carts/${item.id}`
-      );
+      const response = await axios.delete(`/carts/${item.id}`);
       const updatedCarts = carts.filter((cartItem) => cartItem.id !== item.id);
       setItemCount(updatedCarts.length);
       setCarts(updatedCarts);
       swal.fire({
-        position: 'top-end',
-        icon: 'success',
+        position: "top-end",
+        icon: "success",
         title: response.data.message,
         showConfirmButton: false,
         timer: 1500,
       });
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
@@ -132,18 +124,18 @@ const Cart = () => {
                         alt={item.product.name}
                       />
                       <Col className="product-content" xl={6}>
-                        <p style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
+                        <p style={{ fontSize: "0.9rem", fontWeight: "bold" }}>
                           {item.product.name}
                         </p>
                         <p>Category: {item.product.category.name}</p>
                         <p>
-                          {'Targets: '}
-                          <span style={{ color: 'black' }}>
+                          {"Targets: "}
+                          <span style={{ color: "black" }}>
                             {item.product.target}
                           </span>
                         </p>
                         <p
-                          style={{ color: 'gray', cursor: 'pointer' }}
+                          style={{ color: "gray", cursor: "pointer" }}
                           onClick={() => removeFromCart(item)}
                         >
                           Remove
@@ -171,11 +163,11 @@ const Cart = () => {
                   </Col>
                   <Col xl={2}>
                     <p>PRICE</p>
-                    <h6 style={{ marginTop: '3rem' }}>{item.price}</h6>
+                    <h6 style={{ marginTop: "3rem" }}>{item.price}</h6>
                   </Col>
                   <Col xl={2}>
                     <p>TOTAL</p>
-                    <h6 style={{ marginTop: '3rem' }}>{item.total_price}</h6>
+                    <h6 style={{ marginTop: "3rem" }}>{item.total_price}</h6>
                   </Col>
                 </Row>
               ))}
@@ -183,7 +175,7 @@ const Cart = () => {
               {/* You can repeat the product details section for additional items */}
             </div>
           </Col>
-          <Col md={4} style={{ backgroundColor: 'rgb(245, 245, 245' }}>
+          <Col md={4} style={{ backgroundColor: "rgb(245, 245, 245" }}>
             <section id="cart-right-container">
               <Row id="cart-right-content" lg={4} xl={4}>
                 <Col className="w-100">
@@ -196,11 +188,10 @@ const Cart = () => {
                 </Col>
                 {carts.map((item) => (
                   <Col className="d-flex justify-content-between w-100">
-                  <p>{item.product.name}</p>
-                  <p>{item.total_price}</p>
-                </Col>
+                    <p>{item.product.name}</p>
+                    <p>{item.total_price}</p>
+                  </Col>
                 ))}
-
 
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
@@ -210,7 +201,9 @@ const Cart = () => {
                 <Col className="w-100 d-flex justify-content-center">
                   <Button
                     type="submit"
-                    className="w-100 mb-5 mt-5"
+                    className={`w-100 mb-5 mt-5 ${
+                      itemCount > 0 ? "" : "disabled"
+                    }`}
                     id="cart-button"
                     Link
                     as={Link}

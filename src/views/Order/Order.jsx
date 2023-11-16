@@ -10,7 +10,7 @@ const Status = () => {
 
   const getOrder = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/orders");
+      const response = await axios.get("/orders");
       setOrder(response.data.data);
       setItemCount(response.data.data.length);
 
@@ -76,43 +76,44 @@ const Status = () => {
               <tbody>
                 <tr>
                   <td colSpan={5} id="status-tableBody">
-                    
-                    {item.order_items.map((orderItem) =>(
+                    {item.order_items.map((orderItem) => (
                       <Table>
-                      <thead>
-                        <tr>
-                          <th>
-                            <Col>
-                              <img src={`/src/assets/${orderItem.product.image}`}></img>
-                            </Col>
-                          </th>
-                          <th>
-                            <Col>
-                              <h6>Product Name</h6>
-                              <p>{orderItem.product.name}</p>
-                            </Col>
-                          </th>
-                          <th>
-                            <Col>
-                              <h6>Quantity</h6>
-                              <p>{orderItem.quantity}</p>
-                            </Col>
-                          </th>
-                          <th>
-                            <Col>
-                              <h6>Price</h6>
-                              <p>{orderItem.product.price}</p>
-                            </Col>
-                          </th>
-                          <th>
-                            <Col>
-                              <h6>Total Price</h6>
-                              <p>{orderItem.total}</p>
-                            </Col>
-                          </th>
-                        </tr>
-                      </thead>
-                    </Table> 
+                        <thead>
+                          <tr>
+                            <th>
+                              <Col>
+                                <img
+                                  src={`/src/assets/${orderItem.product.image}`}
+                                ></img>
+                              </Col>
+                            </th>
+                            <th>
+                              <Col>
+                                <h6>Product Name</h6>
+                                <p>{orderItem.product.name}</p>
+                              </Col>
+                            </th>
+                            <th>
+                              <Col>
+                                <h6>Quantity</h6>
+                                <p>{orderItem.quantity}</p>
+                              </Col>
+                            </th>
+                            <th>
+                              <Col>
+                                <h6>Price</h6>
+                                <p>{orderItem.product.price}</p>
+                              </Col>
+                            </th>
+                            <th>
+                              <Col>
+                                <h6>Total Price</h6>
+                                <p>{orderItem.total}</p>
+                              </Col>
+                            </th>
+                          </tr>
+                        </thead>
+                      </Table>
                     ))}
                   </td>
                 </tr>
@@ -120,7 +121,6 @@ const Status = () => {
             </Table>
           </Row>
         ))}
-        
       </section>
     </Container>
   );

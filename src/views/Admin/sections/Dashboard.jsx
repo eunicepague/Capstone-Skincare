@@ -10,34 +10,36 @@ const Dashboard = () => {
           <h3>Dashboard</h3>
           <Col>
             {/* total sales */}
-            <Card>
+            <Card className="dashboard-card" id="dashboardCard-one">
               <Card.Body>
                 <h5>Total Sales</h5>
-                <p>total sales data here</p>
+                <p>data here</p>
               </Card.Body>
             </Card>
           </Col>
 
           <Col>
             {/* total orders */}
-            <Card>
+            <Card className="dashboard-card" id="dashboardCard-two">
               <Card.Body>
                 <h5>Total Orders</h5>
-                <p>total orders data here</p>
+                <p>data here</p>
               </Card.Body>
             </Card>
           </Col>
 
           <Col>
             {/* total products */}
-            <Card>
+            <Card className="dashboard-card" id="dashboardCard-three">
               <Card.Body>
                 <h5>Total Products</h5>
-                <p>total products data here</p>
+                <p>data here</p>
               </Card.Body>
             </Card>
           </Col>
         </Row>
+
+        {/* ----table---- */}
         <Row id="dashboard-orders">
           <Col className="p-0">
             <Table striped>

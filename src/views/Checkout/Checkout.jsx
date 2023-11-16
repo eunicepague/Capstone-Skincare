@@ -23,20 +23,27 @@ import Mastercard from "./../../assets/mastercard.png";
 // import { useEffect, useState } from "react";
 import axios from "./../../axios";
 import "./Checkout.css";
+import { useNavigate, Link } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [validated, setValidated] = useState(false);
   const [carts, setCarts] = useState([]);
   const formRef = useRef(null);
+  const navigate = useNavigate();
 
   const Checkout = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/orders",
-        formData
-      );
-
+      const response = await axios.post("/orders", formData);
+      swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: response.data.message,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/order");
       console.log(response);
     } catch (error) {
       console.error("failed", error);
@@ -45,7 +52,7 @@ const Checkout = () => {
 
   const getCarts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/carts");
+      const response = await axios.get("/carts");
       setCarts(response.data.data);
 
       console.log(response);
@@ -56,7 +63,7 @@ const Checkout = () => {
 
   useEffect(() => {
     getCarts();
-  },[]);
+  }, []);
 
   // State for form data for activestep1
   const [formData, setFormData] = useState({
@@ -73,6 +80,10 @@ const Checkout = () => {
 
   const handlePaymentSelection = (event) => {
     setSelectedPayment(event.target.value);
+    setFormData((prevData) => ({
+      ...prevData,
+      payment_type: event.target.value,
+    }));
   };
 
   const handleStepChange = (step, event, isBack = false) => {
@@ -116,13 +127,11 @@ const Checkout = () => {
       // Display an alert if no payment method is selected
       alert("Please select a payment method.");
       return;
-    } else {
-      alert(`Successfully selected ${selectedPayment}`);
     }
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -244,8 +253,8 @@ const Checkout = () => {
                             pattern="[A-Za-z\s]+"
                             isInvalid={validated}
                             placeholder="first name"
-                            name="firstName"
-                            value={formData.firstName}
+                            name="first_name"
+                            value={formData.first_name}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -263,8 +272,8 @@ const Checkout = () => {
                             pattern="[A-Za-z\s]+"
                             isInvalid={validated}
                             placeholder="last name"
-                            name="lastName"
-                            value={formData.lastName}
+                            name="last_name"
+                            value={formData.last_name}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -282,8 +291,8 @@ const Checkout = () => {
                         type="text"
                         placeholder="address one"
                         isInvalid={validated}
-                        name="addressOne"
-                        value={formData.addressOne}
+                        name="address_1"
+                        value={formData.address_1}
                         onChange={handleInputChange}
                       ></Form.Control>
                     </FloatingLabel>
@@ -299,8 +308,8 @@ const Checkout = () => {
                         type="text"
                         placeholder="address two"
                         isInvalid={validated}
-                        name="addressTwo"
-                        value={formData.addressTwo}
+                        name="address_2"
+                        value={formData.address_2}
                         onChange={handleInputChange}
                       ></Form.Control>
                     </FloatingLabel>
@@ -338,8 +347,8 @@ const Checkout = () => {
                             required
                             type="number"
                             placeholder="zip code"
-                            name="zipCode"
-                            value={formData.zipCode}
+                            name="zip_code"
+                            value={formData.zip_code}
                             onChange={handleInputChange}
                           ></Form.Control>
                         </FloatingLabel>
@@ -414,7 +423,7 @@ const Checkout = () => {
                     <Card key={method.id}>
                       <Form.Check
                         type="radio"
-                        name="payment-method"
+                        name="payment_type"
                         className="d-flex align-items-center mx-3"
                         id={method.id}
                         value={method.id}
@@ -511,7 +520,10 @@ const Checkout = () => {
                   <Row className="mt-5">
                     <Col id="review-checkout-shipping">
                       <h5>Shipping</h5>
-                      <p>{formData.first_name}{formData.last_name}</p>
+                      <p>
+                        {formData.first_name}
+                        {formData.last_name}
+                      </p>
                       <p>{formData.address_1}</p>
                       <p>{formData.zip_code}</p>
                     </Col>

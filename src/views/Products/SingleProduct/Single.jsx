@@ -37,9 +37,7 @@ const Order = () => {
 
   const getSingle = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/api/products/${id}`
-      );
+      const response = await axios.get(`/products/${id}`);
       setProduct(response.data.data);
       console.log(response);
     } catch (error) {
@@ -51,7 +49,7 @@ const Order = () => {
     try {
       let quantity = count;
       let product_id = id;
-      const response = await axios.post(`http://localhost:8000/api/carts`, {
+      const response = await axios.post(`/carts`, {
         quantity,
         product_id,
       });

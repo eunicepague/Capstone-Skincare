@@ -1,5 +1,5 @@
-import { Container, Card } from 'react-bootstrap';
-import { useEffect, useRef, useState } from 'react';
+import { Container, Card } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
 // import Moisturizer from "./../../../assets/moisturizer.jpg";
 // import Exfoliants from "./../../../assets/exfoliants.jpg";
 // import EyeSerums from "./../../../assets/eyeserum.jpg";
@@ -8,9 +8,10 @@ import { useEffect, useRef, useState } from 'react';
 // import Peptides from "./../../../assets/peptides.jpg";
 // import Retinoids from "./../../../assets/retinoids.jpg";
 // import Hydrators from "./../../../assets/hydrators.jpg";
-import './Sec3.css';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import "./Sec3.css";
+// import axios from "axios";
+import axios from "./../../../axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const Sec3 = () => {
   const containerRef = useRef(null);
@@ -20,11 +21,11 @@ const Sec3 = () => {
 
   const getCatgories = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/category');
+      const response = await axios.get("/category");
       setCategories(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
     }
   };
   const filterByCategory = async (id) => {
@@ -42,7 +43,7 @@ const Sec3 = () => {
       const targetScrollLeft = container.scrollLeft - 500; // Adjust the scrolling amount as needed
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -52,7 +53,7 @@ const Sec3 = () => {
       const targetScrollLeft = container.scrollLeft + 500;
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -61,7 +62,7 @@ const Sec3 = () => {
       <h1 id="sec3-greetings">SHOP BY CATEGORY</h1>
       <Container id="sec3-box">
         <button id="sec3-left-button" onClick={scrollLeft}>
-          <box-icon name="left-arrow" style={{ width: '2rem' }}>
+          <box-icon name="left-arrow" style={{ width: "2rem" }}>
             Left
           </box-icon>
         </button>
@@ -80,7 +81,7 @@ const Sec3 = () => {
                   src={`/src/assets/category/${item.name}.jpg`}
                 />
                 <Card.Body id="sec3-card-body">
-                  <Card.Text style={{ textAlign: 'center' }}>
+                  <Card.Text style={{ textAlign: "center" }}>
                     {item.name}
                   </Card.Text>
                 </Card.Body>

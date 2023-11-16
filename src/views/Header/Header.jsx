@@ -64,9 +64,6 @@ const Header = () => {
                 <Nav.Link as={Link} to="/order">
                   Order
                 </Nav.Link>
-                <Nav.Link as={Link} to="/admin-login">
-                  Admin login
-                </Nav.Link>
               </Nav>
               <Nav className="ml-auto">
                 {user.name ? (
@@ -115,28 +112,25 @@ const Header = () => {
               )}
             </Offcanvas.Title>
             <Nav className="me-auto mx-auto">
-            <Nav.Link as={Link} to="/new">
-                  New
-                </Nav.Link>
-                <Nav.Link as={Link} to="/products">
-                  Products
-                </Nav.Link>
-                <Nav.Link as={Link} to="/cart">
-                  Cart
-                </Nav.Link>
-                <Nav.Link as={Link} to="/order">
-                  Order
-                </Nav.Link>
-                <Nav.Link as={Link} to="/admin-login">
-                  Admin login
-                </Nav.Link>
+              <Nav.Link as={Link} to="/new">
+                New
+              </Nav.Link>
+              <Nav.Link as={Link} to="/products">
+                Products
+              </Nav.Link>
+              <Nav.Link as={Link} to="/cart">
+                Cart
+              </Nav.Link>
+              <Nav.Link as={Link} to="/order">
+                Order
+              </Nav.Link>
             </Nav>
             <Nav className="ml-auto">
               {user.name ? (
                 <>
                   <Nav.Link as={Link} to="/account">
-                      {user.username}
-                    </Nav.Link>
+                    {user.username}
+                  </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </>
               ) : (

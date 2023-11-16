@@ -7,7 +7,7 @@ const Order = () => {
     <Container fluid>
       <section id="adminOrder-content">
         <Row>
-          <h3>Dashboard</h3>
+          <h3>Orders</h3>
           <Col>
             <div className="admin-Order">
               <table id="order-table">

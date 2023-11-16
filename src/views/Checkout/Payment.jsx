@@ -5,7 +5,7 @@ import { Container, Row, Col, Form, Card } from 'react-bootstrap';
 import Check from './../../assets/check.png';
 import stepTwo from './../../assets/checkout-2blk.png';
 import stepThreeGray from './../../assets/checkout-3gray.png';
-import Paypal from './../../assets/paypal.png';
+import Paypal from './../../assets/Paypal.png';
 import Visa from './../../assets/visa.png';
 import Gcash from './../../assets/gcash.png';
 import Paymaya from './../../assets/paymaya.png';
@@ -141,7 +141,7 @@ const Payment = () => {
               <Card key={method.id}>
                 <Form.Check
                   type="radio"
-                  name="payment-method"
+                  name="payment_type"
                   className="d-flex align-items-center mx-3"
                   id={method.id}
                   value={method.id}

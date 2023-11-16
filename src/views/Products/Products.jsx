@@ -63,7 +63,7 @@ const Category = () => {
     }, delay);
 
     try {
-      const response = await axios.get("http://localhost:8000/api/products", {
+      const response = await axios.get("/products", {
         params: { category_id, concern_id, orderBy, sortBy },
       });
       setProducts(response.data.data);
@@ -88,7 +88,7 @@ const Category = () => {
     try {
       let quantity = 1;
       let product_id = product;
-      const response = await axios.post(`http://localhost:8000/api/carts`, {
+      const response = await axios.post(`/carts`, {
         quantity,
         product_id,
       });
@@ -109,7 +109,7 @@ const Category = () => {
 
   const getCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/category");
+      const response = await axios.get("/category");
       setCategories(response.data.data);
 
       console.log(response);
@@ -120,7 +120,7 @@ const Category = () => {
 
   const getConcerns = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/concerns");
+      const response = await axios.get("/concerns");
       setConcerns(response.data.data);
 
       console.log(response);
@@ -506,12 +506,7 @@ const Category = () => {
               </div>
 
               {products.map((product) => (
-                <Col
-                  key={product}
-                  xs={6}
-                  md={4}
-                  className="mb-4"
-                >
+                <Col key={product} xs={6} md={4} className="mb-4">
                   <Card id="category-right-card">
                     <Card.Img
                       onClick={() => navigate(`/products/${product.id}`)}

@@ -2,7 +2,10 @@
 
 #adminProduct-content {
   font-family: 'Raleway', sans-serif;
-  margin-top: 2rem;
+  margin-top: 3rem;
+}
+#adminProduct-content h3 {
+  font-weight: bold;
 }
 
 #product-btnContainer {
@@ -10,14 +13,64 @@
   justify-content: flex-end;
   margin-right: 2rem;
 }
+/* ----------- */
 
+#product-btn {
+  background-color: #a84275;
+  color: white;
+  font-weight: bold;
+  border-color: transparent;
+  padding: 7px;
+  animation: product-btnbounce 4s infinite;
+  cursor: pointer;
+}
+
+@keyframes product-btnbounce {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1) rotate(-5deg);
+  }
+
+  25% {
+    transform: scale(1) rotate(5deg);
+  }
+
+  30% {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  35% {
+    transform: scale(1) rotate(2deg);
+  }
+
+  40% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* ----------- */
 #product-table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   /* width: 200rem; */
   width: 200%;
-  height: 10rem;
+  /* height: 5rem; */
   margin-top: 2rem;
+
+  -webkit-box-shadow: 8.5px 2.5px 18px 4px #dddddd;
+  -moz-box-shadow: 8.5px 2.5px 18px 4px #dddddd;
+  box-shadow: 8.5px 2.5px 18px 4px #dddddd;
 }
 
 #product-table th,
@@ -56,4 +109,14 @@
 
 #product-modal h4 {
   margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+#product-submitBtn {
+  background-color: #198754;
+  width: 15%;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-color: transparent;
 }

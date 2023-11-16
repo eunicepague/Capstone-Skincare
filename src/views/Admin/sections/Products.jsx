@@ -248,7 +248,9 @@ const Products = () => {
 
               <Form.Group as={Row} className="mb-3">
                 <Col sm={{ span: 10, offset: 10 }}>
-                  <button type="submit">Submit</button>
+                  <button type="submit" id="product-submitBtn">
+                    Submit
+                  </button>
                 </Col>
               </Form.Group>
             </Form>

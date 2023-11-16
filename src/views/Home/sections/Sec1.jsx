@@ -1,8 +1,9 @@
-import { Container, Card } from 'react-bootstrap';
-import './Sec1.css';
-import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Container, Card } from "react-bootstrap";
+import "./Sec1.css";
+// import axios from "axios";
+import axios from "./../../../axios";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Sec1 = () => {
   const containerRef = useRef(null);
@@ -11,11 +12,11 @@ const Sec1 = () => {
 
   const getConcerns = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/concerns');
+      const response = await axios.get("/concerns");
       setConcerns(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
     }
   };
 
@@ -33,7 +34,7 @@ const Sec1 = () => {
       const targetScrollLeft = container.scrollLeft - 500; // Adjust the scrolling amount as needed
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -43,7 +44,7 @@ const Sec1 = () => {
       const targetScrollLeft = container.scrollLeft + 500;
       container.scrollTo({
         left: targetScrollLeft,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -51,14 +52,14 @@ const Sec1 = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
   return (
     <>
       <Container id="sec1-box">
         <button id="sec1-left-button" onClick={scrollLeft}>
-          <box-icon name="left-arrow" style={{ width: '2rem' }}>
+          <box-icon name="left-arrow" style={{ width: "2rem" }}>
             Left
           </box-icon>
         </button>
@@ -77,7 +78,7 @@ const Sec1 = () => {
                   src={`/src/assets/concerns/${item.name}.jpg`}
                 />
                 <Card.Body id="sec1-card-body">
-                  <Card.Text style={{ textAlign: 'center' }}>
+                  <Card.Text style={{ textAlign: "center" }}>
                     {item.name}
                   </Card.Text>
                 </Card.Body>
@@ -90,7 +91,7 @@ const Sec1 = () => {
         </button>
       </Container>
       <div className="d-flex justify-content-center">
-        <Link as={Link} to="/products" style={{ textDecoration: 'none' }}>
+        <Link as={Link} to="/products" style={{ textDecoration: "none" }}>
           <button id="s1-shop-button" onClick={scrollToTop}>
             Shop all
           </button>

@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import axios from "../../../axios";
 import "./Category.css";
+import Swal from "sweetalert2";
 
 const Category = () => {
   const [show, setShow] = useState(false);
@@ -18,11 +19,12 @@ const Category = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [name, setName] = useState("");
+  const [id, setId] = useState(null);
 
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
-  const getCatgories = async () => {
+  const getCategories = async () => {
     try {
       const response = await axios.get("/category");
       setCategories(response.data.data);
@@ -32,20 +34,65 @@ const Category = () => {
     }
   };
 
-  const addCategories = async () => {
+  const createOrUpdate = async () => {
     try {
-      const response = await axios.post("/category", { name: name });
-      handleClose()
-      
+      if (id) {
+        const response = await axios.put(`/category/${id}}`, { name: name });
+      } else {
+        const response = await axios.post("/category", { name: name });
+      }
+      handleClose();
+      await getCategories();
       console.log(response);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
+  const delCategory = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await axios.delete(`/category/${id}`);
+          await getCategories();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+
+          
+          // Assuming getCategories function is defined elsewhere
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    });
+  };
+
+  const addCategory = async () => {
+    handleShow();
+    setId(null);
+    setName("");
+  };
+
+  const editCategory = async (item) => {
+    setName(item.name);
+    setId(item.id);
+    handleShow();
+  };
+
   useEffect(() => {
     // When the component mounts, load categories
-    getCatgories();
+    getCategories();
   }, []);
 
   return (
@@ -53,7 +100,7 @@ const Category = () => {
       <section id="category-content">
         <h3>Category</h3>
         <div id="category-btnContainer">
-          <button id="category-btn" onClick={handleShow}>
+          <button id="category-btn" onClick={() => addCategory()}>
             Add Category
           </button>
         </div>
@@ -75,10 +122,19 @@ const Category = () => {
                       <td>{index}</td>
                       <td>{item.name}</td>
                       <td className="text-center">
-                        <Button variant="success" className="mx-2">
+                        <Button
+                          variant="success"
+                          className="mx-2"
+                          onClick={() => editCategory(item)}
+                        >
                           Edit
                         </Button>
-                        <Button variant="danger">Delete</Button>
+                        <Button
+                          onClick={() => delCategory(item.id)}
+                          variant="danger"
+                        >
+                          Delete
+                        </Button>
                       </td>
                     </tr>
                   </>
@@ -108,9 +164,9 @@ const Category = () => {
                   value={name}
                   onChange={handleInputChange}
                 />
-                
               </Form.Group>
-            </Form><button onClick={() => addCategories()}>Submit</button>
+            </Form>
+            <button onClick={() => createOrUpdate()}>Submit</button>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

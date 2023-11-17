@@ -120,7 +120,7 @@ const Cart = () => {
                     <p>PRODUCT DETAILS</p>
                     <div className="product-info-container">
                       <img
-                        src={`/src/assets/${item.product.image}`}
+                        src={`/products/${item.product.image}`}
                         alt={item.product.name}
                       />
                       <Col className="product-content" xl={6}>

@@ -82,7 +82,7 @@ const Sec1 = () => {
                     onClick={() => filterByConcern(item.id)}
                     variant="top"
                     id="sec1-card-img"
-                    src={`/src/assets/concerns/${item.name}.jpg`}
+                    src={`/concerns/${item.name}.jpg`}
                   />
                   <Card.Body id="sec1-card-body">
                     <Card.Text style={{ textAlign: 'center' }}>

@@ -11,13 +11,12 @@ import {
 import swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import Cart from './../../assets/cart-icon.png';
-// import Pic1 from "./../../assets/Toner.jpg";
 import yellowStar from './../../assets/yellowStar.png';
 import transStar from './../../assets/transStar.png';
 import axios from '../../axios';
 import './Products.css';
 import { useLocation } from 'react-router';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Category = () => {
   const [selectedItem, setSelectedItem] = useState('Sort Products');
@@ -293,151 +292,6 @@ const Category = () => {
                 </Accordion.Body>
               </Accordion.Item>
               {/* ------SKIN TYPE------ */}
-              {/* <Accordion.Item eventKey="3">
-                <Accordion.Header>
-                  <h6>Skin Type</h6>
-                </Accordion.Header>
-                <Accordion.Body>
-                  <Form>
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-allType`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-allType`}
-                          label={`All Skin Types `}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-acneProne`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-acneProne`}
-                          label={`Acne-Prone Skin `}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-drySkin`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-drySkin`}
-                          label={`Dry Skin`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-oilySkin`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-oilySkin`}
-                          label={`Oily Skin `}
-                        />
-                      </div>
-                    ))}
-                  </Form>
-                </Accordion.Body>
-              </Accordion.Item> */}
-              {/* ------FORMAT------  */}
-              {/* <Accordion.Item eventKey="4">
-                <Accordion.Header>
-                  <h6>Format</h6>
-                </Accordion.Header>
-                <Accordion.Body>
-                  <Form>
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-anhydrousSerum`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-anhydrousSerum`}
-                          label={`Anhydrous Serum `}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-balm`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-balm`}
-                          label={`Balm `}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-emulsion`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-emulsion`}
-                          label={`Emulsion`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-masque`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-masque`}
-                          label={`Masque`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-oil`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-oil`}
-                          label={`Oil`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-powder`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-powder`}
-                          label={`Powder`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-suspesion`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-suspesion`}
-                          label={`Suspesion`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-waterbasedSerum`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-waterbasedSerum`}
-                          label={`Water-Based Serum`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-waterbasedGel`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-waterbasedGel`}
-                          label={`Water-Based Gel`}
-                        />
-                      </div>
-                    ))}
-                    {['checkbox'].map((checkbox) => (
-                      <div key={`default-waterbasedToner`} className="mb-3">
-                        <Form.Check
-                          type={checkbox}
-                          id={`default-waterbasedToner`}
-                          label={`Water-Based Toner`}
-                        />
-                      </div>
-                    ))}
-                  </Form>
-                </Accordion.Body>
-              </Accordion.Item> */}
             </Accordion>
           </Col>
           <Col id="category-right" lg={9}>
@@ -514,8 +368,8 @@ const Category = () => {
                       src={`/products/${product.image}`}
                       alt={product.name}
                     />
-                    {/* <Card.Body className="flex-grow-1"> */}
-                    <Card.Body>
+
+                    <Card.Body className="d-flex flex-column justify-content-between">
                       <h5>{product.name}</h5>
                       <Card.Text>
                         <div id="category-stars">

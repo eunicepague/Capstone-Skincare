@@ -36,7 +36,7 @@ const Newhero = () => {
           </Col>
           <Col sm={12} md={6} lg={6} id="newhero-right">
             <motion.div
-              key={activeIndex} // Add key attribute
+              key={activeIndex}
               className="mx-5"
               initial="hidden"
               animate="visible"

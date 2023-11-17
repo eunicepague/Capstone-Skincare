@@ -1,8 +1,27 @@
 // import React from 'react';
 import { Container, Card, Row, Col, Table } from 'react-bootstrap';
 import './Dashboard.css';
+// import axios from 'axios';
+import axios from "../../../axios";
+import { useEffect, useState } from 'react';
 
 const Dashboard = () => {
+const [dashboard, setDashboard] = useState({})
+
+  const getDashboard = async  () => {
+    try {
+      const response = await axios.get(`/dashboard`) 
+      setDashboard(response.data)
+      console.log(response);
+    }catch (error){
+      console.log(error)
+    }
+  }
+  
+  useEffect (() =>{
+    getDashboard();
+  })
+
   return (
     <Container fluid>
       <section>
@@ -13,7 +32,7 @@ const Dashboard = () => {
             <Card className="dashboard-card" id="dashboardCard-one">
               <Card.Body>
                 <h5>Total Sales</h5>
-                <p>data here</p>
+                <p>{dashboard.total_sale}</p>
               </Card.Body>
             </Card>
           </Col>
@@ -23,7 +42,7 @@ const Dashboard = () => {
             <Card className="dashboard-card" id="dashboardCard-two">
               <Card.Body>
                 <h5>Total Orders</h5>
-                <p>data here</p>
+                <p>{dashboard.total_order}</p>
               </Card.Body>
             </Card>
           </Col>
@@ -33,7 +52,7 @@ const Dashboard = () => {
             <Card className="dashboard-card" id="dashboardCard-three">
               <Card.Body>
                 <h5>Total Products</h5>
-                <p>data here</p>
+                <p>{dashboard.total_products}</p>
               </Card.Body>
             </Card>
           </Col>

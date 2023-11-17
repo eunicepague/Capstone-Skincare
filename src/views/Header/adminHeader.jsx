@@ -1,10 +1,10 @@
 // import React from 'react';
 
-import { useState, useEffect } from 'react';
-import { Nav, Navbar, Offcanvas, Container } from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
-import './Header.css';
-import axios from './../../axios';
+import { useState, useEffect } from "react";
+import { Nav, Navbar, Offcanvas, Container } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import "./Header.css";
+import axios from "./../../axios";
 
 const adminHeader = () => {
   const [show, setShow] = useState(false);
@@ -16,7 +16,7 @@ const adminHeader = () => {
 
   const userLogged = async () => {
     await axios
-      .get('/authUser')
+      .get("/authUser")
       .then((res) => {
         setUser(res.data.user);
       })
@@ -29,9 +29,9 @@ const adminHeader = () => {
   }, []);
 
   const logout = async () => {
-    await axios.post('/logout');
+    await axios.post("/logout");
     setUser({});
-    navigate('/admin-page');
+    window.location.href = "/";
   };
 
   return (

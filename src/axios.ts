@@ -1,5 +1,6 @@
 import axios from "axios";
 import swal from "sweetalert2";
+import router from "./routes";
 
 axios.defaults.withCredentials = true;
 
@@ -12,7 +13,6 @@ const axiosRequest = axios.create({
     Authorization: `Bearer ${window.localStorage.getItem("ECCOM_TOKEN")}`,
   },
 });
-
 // RESPONSE
 // Add a response interceptor
 axiosRequest.interceptors.response.use(
@@ -52,12 +52,15 @@ axiosRequest.interceptors.response.use(
     if (error.response.status == 401) {
       // store.commit("SET_ERROR", 401);
       // router.push("/login");
-      swal.fire({
-        title: "Session Expired.",
-        text: "Please login again.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
+      const currentURL = window.location.pathname;
+      if (
+        currentURL != "/login" &&
+        window.localStorage.getItem("ECCOM_TOKEN") == null
+      ) {
+        window.location.href = "/login";
+      } else if (window.localStorage.getItem("ECCOM_TOKEN") != null) {
+        window.location.href = "/";
+      }
     }
     if (error.response.status == 422) {
       const item = error.response.data.errors;

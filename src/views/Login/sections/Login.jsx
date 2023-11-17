@@ -1,33 +1,37 @@
 // import React from 'react'
-import { Container, Row, Col, Form, Card } from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
-import './Login.css';
-import { useState } from 'react';
+import { Container, Row, Col, Form, Card } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import "./Login.css";
+import { useState } from "react";
 // import axios from "axios";
-import axios from '../../../axios';
+import axios from "../../../axios";
 
-import { Slide, Fade } from 'react-awesome-reveal';
+import { Slide, Fade } from "react-awesome-reveal";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/login', {
+      const response = await axios.post("/login", {
         email,
         password,
       });
-      window.localStorage.setItem('ECCOM_TOKEN', response.data.token);
+      window.localStorage.setItem("ECCOM_TOKEN", response.data.token);
       // axios.defaults.headers[
       //   "Authorization"
       // ] = `Bearer ${window.localStorage.getItem("ECOM_TOKEN")}`;
-      navigate('/account');
+      if (response.data.user.usertype == "user") {
+        window.location.href = "/account";
+      } else {
+        window.location.href = "/admin-page";
+      }
     } catch (error) {
       // Handle authentication error (e.g., show an error message to the user).
-      alert('Invalid Username or Password');
-      console.error('Login failed', error);
+      alert("Invalid Username or Password");
+      console.error("Login failed", error);
     }
   };
   return (
@@ -83,21 +87,21 @@ const Login = () => {
           <Col sm={12} md={6} lg={6} id="login-right">
             <section id="login-right-content">
               <Slide direction="right">
-                <h2 style={{ fontWeight: ' bold' }}>NEW CUSTOMERS</h2>
+                <h2 style={{ fontWeight: " bold" }}>NEW CUSTOMERS</h2>
                 <hr></hr>
                 <p>
                   Set up an account so we can remember your details and speed up
                   your next visit.
                 </p>
-                <Link to="/register" style={{ textDecoration: 'none' }}>
+                <Link to="/register" style={{ textDecoration: "none" }}>
                   <button id="login-button">Create Account</button>
                 </Link>
                 <hr></hr>
                 <h5
                   style={{
-                    fontWeight: ' bold',
-                    marginTop: '1rem',
-                    marginBottom: '1rem',
+                    fontWeight: " bold",
+                    marginTop: "1rem",
+                    marginBottom: "1rem",
                   }}
                 >
                   ORDER TRACKING

@@ -83,7 +83,7 @@ const Status = () => {
                             <th>
                               <Col>
                                 <img
-                                  src={`/src/assets/${orderItem.product.image}`}
+                                  src={`/products/${orderItem.product.image}`}
                                 ></img>
                               </Col>
                             </th>

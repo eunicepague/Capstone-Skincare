@@ -9,15 +9,15 @@ const Sec5 = () => {
       <section id="sec5-content">
         <Fade>
           <Row>
-            <h1 className="mx-5">OUR BLOG.</h1>
-            <Col id="sec5-left">
+            <h1>OUR BLOG.</h1>
+            <Col id="sec5-left" sm={12} md={6} lg={6}>
               <img src="https://johnlewis.scene7.com/is/image/JohnLewis/the-ordinarry-l-7-160222"></img>
               <p>
                 All of this makes The Ordinary. poplular among those who value a
                 scientific approach to skin care.
               </p>
             </Col>
-            <Col id="sec5-right">
+            <Col id="sec5-right" sm={12} md={6} lg={6}>
               <img src="https://blogscdn.thehut.net/app/uploads/sites/2/2021/09/0913-STDCRE-21708-LF-EJ-Deciem-Brand-Batching-Shot-031200-x-672_1631611118.jpg"></img>
               <p>
                 All of this makes The Ordinary. poplular among those who value a

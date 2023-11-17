@@ -49,7 +49,7 @@ const Products = () => {
                   <td className="text-center">Lorem ipsum dolor sit amet.</td>
                   <td className="text-center">Lorem ipsum dolor sit amet.</td>
                   <td className="text-center">
-                    <img src={SamplePic}></img>
+                    {/* <img src={SamplePic}></img> */}
                   </td>
                   <td className="text-center">
                     <Col id="adminProduct-btn">

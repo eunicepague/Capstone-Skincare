@@ -74,7 +74,7 @@ const Order = () => {
                 {/* visible only when in small screen */}
                 <section id="order-sm" className="d-md-block d-lg-none">
                   <img
-                    src={`/src/assets/${product.image}`}
+                    src={`/products/${product.image}`}
                     alt={product.name}
                   />
                 </section>
@@ -177,7 +177,7 @@ const Order = () => {
 
             <Col sm={12} md={12} lg={6} xl={7}>
               <section id="order-right" className="mt-5">
-                <img src={`/src/assets/${product.image}`} alt={product.name} />
+                <img src={`/products/${product.image}`} alt={product.name} />
               </section>
             </Col>
           </Row>

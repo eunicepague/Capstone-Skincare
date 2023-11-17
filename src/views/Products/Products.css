@@ -22,9 +22,10 @@
   margin-bottom: 1rem;
 }
 
-/* #category-right-card {
-  display: flex;
-} */
+#category-right-card {
+  /* display: flex; */
+  height: 100%;
+}
 
 #category-right-card button {
   width: 100%;

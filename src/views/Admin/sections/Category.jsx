@@ -37,7 +37,7 @@ const Category = () => {
   const createOrUpdate = async () => {
     try {
       if (id) {
-        const response = await axios.put(`/category/${id}}`, { name: name });
+        const response = await axios.put(`/category/${id}`, { name: name });
       } else {
         const response = await axios.post("/category", { name: name });
       }

@@ -13,9 +13,9 @@ import axios from "../../../axios";
 import "./Category.css";
 import Swal from "sweetalert2";
 
-const Category = () => {
+const Concern = () => {
   const [show, setShow] = useState(false);
-  const [categories, setCategories] = useState([]);
+  const [concerns, setConcerns] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [name, setName] = useState("");
@@ -24,10 +24,10 @@ const Category = () => {
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
-  const getCategories = async () => {
+  const getConcerns = async () => {
     try {
-      const response = await axios.get("/category");
-      setCategories(response.data.data);
+      const response = await axios.get("/concerns");
+      setConcerns(response.data.data);
       console.log(response);
     } catch (error) {
       console.error("Login failed", error);
@@ -37,19 +37,19 @@ const Category = () => {
   const createOrUpdate = async () => {
     try {
       if (id) {
-        const response = await axios.put(`/concerns/${id}}`, { name: name });
+        const response = await axios.put(`/concerns/${id}`, { name: name });
       } else {
         const response = await axios.post("/concerns", { name: name });
       }
       handleClose();
-      await getCategories();
+      await getConcerns();
       console.log(response);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  const delCategory = async (id) => {
+  const delConcern = async (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -62,7 +62,7 @@ const Category = () => {
       if (result.isConfirmed) {
         try {
           const response = await axios.delete(`/concerns/${id}`);
-          await getCategories();
+          await getConcerns();
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -77,13 +77,13 @@ const Category = () => {
     });
   };
 
-  const addCategory = async () => {
+  const addConcern = async () => {
     handleShow();
     setId(null);
     setName("");
   };
 
-  const editCategory = async (item) => {
+  const editConcern = async (item) => {
     setName(item.name);
     setId(item.id);
     handleShow();
@@ -91,16 +91,16 @@ const Category = () => {
 
   useEffect(() => {
     // When the component mounts, load categories
-    getCategories();
+    getConcerns();
   }, []);
 
   return (
     <Container fluid>
       <section id="category-content">
-        <h3>Category</h3>
+        <h3>Concern</h3>
         <div id="category-btnContainer">
-          <button id="category-btn" onClick={() => addCategory()}>
-            Add Category
+          <button id="category-btn" onClick={() => addConcern()}>
+            Add Concern
           </button>
         </div>
 
@@ -115,7 +115,7 @@ const Category = () => {
                 </tr>
               </thead>
               <tbody>
-                {categories.map((item, index) => (
+                {concerns.map((item, index) => (
                   <>
                     <tr>
                       <td>{index}</td>
@@ -124,12 +124,12 @@ const Category = () => {
                         <Button
                           variant="success"
                           className="mx-2"
-                          onClick={() => editCategory(item)}
+                          onClick={() => editConcern(item)}
                         >
                           Edit
                         </Button>
                         <Button
-                          onClick={() => delCategory(item.id)}
+                          onClick={() => delConcern(item.id)}
                           variant="danger"
                         >
                           Delete
@@ -152,12 +152,12 @@ const Category = () => {
         >
           <Modal.Body id="category-modal">
             <h4 style={{ marginBottom: "2rem", fontWeight: "bold" }}>
-              ADD A CATEGORY
+              ADD A CONCERN
             </h4>
             <Form>
               <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Control
-                  placeholder="Write a Category Name"
+                  placeholder="Write a Concern Name"
                   style={{ height: "3rem" }}
                   name="name"
                   value={name}
@@ -178,4 +178,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Concern;

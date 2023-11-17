@@ -30,6 +30,7 @@ const adminHeader = () => {
 
   const logout = async () => {
     await axios.post("/logout");
+    window.localStorage.removeItem("ECCOM_TOKEN");
     setUser({});
     window.location.href = "/";
   };

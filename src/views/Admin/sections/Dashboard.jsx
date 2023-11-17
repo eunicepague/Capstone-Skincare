@@ -6,21 +6,35 @@ import axios from "../../../axios";
 import { useEffect, useState } from 'react';
 
 const Dashboard = () => {
-const [dashboard, setDashboard] = useState({})
+const [dashboard, setDashboard] = useState({});
+const [allOrder, setAllOrder] = useState([]);
 
   const getDashboard = async  () => {
     try {
       const response = await axios.get(`/dashboard`) 
       setDashboard(response.data)
+
       console.log(response);
     }catch (error){
       console.log(error)
     }
   }
   
+const getallOrder = async () => {
+  try {
+    const response = await axios.get('/all_orders')
+    setAllOrder(response.data.data)
+
+    console.log(response)
+  }catch(error){
+    console.log(error)
+  }
+}
+
   useEffect (() =>{
     getDashboard();
-  })
+    getallOrder();
+  },[])
 
   return (
     <Container fluid>
@@ -73,14 +87,19 @@ const [dashboard, setDashboard] = useState({})
                 </tr>
               </thead>
               <tbody>
+              {allOrder.map((item) => (
+                <>
                 <tr>
-                  <td>Order data</td>
-                  <td>Client Name data </td>
-                  <td>Client Email data </td>
-                  <td>Product Cost data </td>
-                  <td>Status data </td>
-                  <td>Date data </td>
+                <td>{item.id}</td>
+                <td>{item.first_name}{" "}{item.last_name}</td>
+                <td>{item.user.email} </td>
+                <td>{item.total} </td>
+                <td>{item.status}</td>
+                <td>{item.created_at}</td>
                 </tr>
+                </>
+              ))}
+                
               </tbody>
             </Table>
           </Col>

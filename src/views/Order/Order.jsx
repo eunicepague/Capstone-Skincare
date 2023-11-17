@@ -1,5 +1,5 @@
 import { Container, Row, Col, Table } from "react-bootstrap";
-import Pic1 from "./../../assets/Ascorbyl.jpg";
+// import Pic1 from "./../../assets/Ascorbyl.jpg";
 import { useEffect, useState } from "react";
 import axios from "./../../axios";
 import "./Order.css";

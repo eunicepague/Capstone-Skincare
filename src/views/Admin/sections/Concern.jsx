@@ -26,7 +26,7 @@ const Category = () => {
   };
   const getCategories = async () => {
     try {
-      const response = await axios.get("/concerns");
+      const response = await axios.get("/category");
       setCategories(response.data.data);
       console.log(response);
     } catch (error) {

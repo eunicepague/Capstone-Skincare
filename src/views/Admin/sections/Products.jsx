@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useState } from 'react';
 import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-import SamplePic from './../../../assets/Azelaic.jpg';
+// import SamplePic from './../../../assets/Azelaic.jpg';
 import './Products.css';
 
 const Products = () => {

@@ -28,7 +28,7 @@ const Newhero = () => {
             <div className="mx-5">
               <Fade direction="left">
                 <h6 id="newhero-h6">
-                  xxxxxxClinical formulations{'\n'}with integrity
+                  Clinical formulations{'\n'}with integrity
                 </h6>
                 <h1 id="newhero-h1">The Ordinary.</h1>
               </Fade>

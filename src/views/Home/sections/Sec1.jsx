@@ -59,7 +59,11 @@ const Sec1 = () => {
   return (
     <>
       <Container id="sec1-box">
-        <button id="sec1-left-button" onClick={scrollLeft}>
+        <button
+          id="sec1-left-button"
+          className="d-none d-lg-flex"
+          onClick={scrollLeft}
+        >
           <box-icon name="left-arrow" style={{ width: '2rem' }}>
             Left
           </box-icon>
@@ -91,7 +95,11 @@ const Sec1 = () => {
           </div>
         </div>
 
-        <button id="sec1-right-button" onClick={scrollRight}>
+        <button
+          id="sec1-right-button"
+          className="d-none d-lg-flex"
+          onClick={scrollRight}
+        >
           <box-icon name="right-arrow">Left</box-icon>
         </button>
       </Container>

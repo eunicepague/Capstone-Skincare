@@ -53,14 +53,16 @@ axiosRequest.interceptors.response.use(
       // store.commit("SET_ERROR", 401);
       // router.push("/login");
       const currentURL = window.location.pathname;
-      if (
-        currentURL != "/login" &&
-        window.localStorage.getItem("ECCOM_TOKEN") == null
-      ) {
-        window.location.href = "/login";
-      } else if (window.localStorage.getItem("ECCOM_TOKEN") != null) {
-        window.location.href = "/";
-      }
+      // if (
+      //   currentURL != "/login" &&
+      //   window.localStorage.getItem("ECCOM_TOKEN") == null
+      // ) {
+      //   window.location.href = "/login";
+      // }
+
+      // else if (window.localStorage.getItem("ECCOM_TOKEN") != null) {
+      //   window.location.href = "/";
+      // }
     }
     if (error.response.status == 422) {
       const item = error.response.data.errors;

@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   font-weight: bold;
+  font-family: 'Raleway', sans-serif;
 }
 
 #s2-content {
@@ -25,6 +26,7 @@
   font-size: 2rem;
   text-align: center;
   margin: 4rem 0;
+  font-weight: bold;
 }
 
 #s2-cardtitle {

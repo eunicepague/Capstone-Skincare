@@ -29,3 +29,13 @@
   width: 80%;
   margin: auto;
 }
+
+#faqs-upBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.up-btn-img {
+  width: 40px;
+  height: auto;
+}

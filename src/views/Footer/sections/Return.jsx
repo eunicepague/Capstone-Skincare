@@ -176,7 +176,7 @@ const Return = () => {
         id="faqs-upBtn"
         style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.3s' }}
       >
-        <img src={Up} onClick={scrollToTop}></img>
+        <img src={Up} onClick={scrollToTop} className="up-btn-img"></img>
       </div>
     </Container>
   );

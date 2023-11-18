@@ -65,11 +65,12 @@ const Sec2 = () => {
                         src={`./products/${item.image}`}
                       />
                       <Card.Body id="s2-cardbody">
-                        <h5>{item.name}</h5>
+                        <h5 className="m-0">{item.name}</h5>
 
                         <Button
                           onClick={() => addToCart(item.id)}
                           id="s2-button"
+                          className="mt-xs-5"
                         >
                           <h6> SHOP NOW</h6>
                         </Button>

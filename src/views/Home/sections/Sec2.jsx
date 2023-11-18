@@ -1,13 +1,13 @@
 // import React from 'react'
-import { useEffect, useState } from "react";
-import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Container, Card, Row, Col, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
-import { Slide } from "react-awesome-reveal";
+import { Slide } from 'react-awesome-reveal';
 
-import "./Sec2.css";
-import axios from "./../../../axios";
-import swal from "sweetalert2";
+import './Sec2.css';
+import axios from './../../../axios';
+import swal from 'sweetalert2';
 
 const Sec2 = () => {
   const [products, setProducts] = useState([]);
@@ -22,24 +22,24 @@ const Sec2 = () => {
         product_id,
       });
       swal.fire({
-        position: "top-end",
-        icon: "success",
+        position: 'top-end',
+        icon: 'success',
         title: response.data.message,
         showConfirmButton: false,
         timer: 1500,
       });
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("/products");
+      const response = await axios.get('/products');
       setProducts(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("Fetching products failed", error);
+      console.error('Fetching products failed', error);
     }
   };
 
@@ -54,27 +54,25 @@ const Sec2 = () => {
 
           <div id="s2-card-container">
             <Row className="mx-auto">
-              {/* Map through the products and add a key prop */}
               {products.slice(0, 4).map((item) => (
-                <Col key={item.id} xs={6} sm={6} md={3} lg={3}>
+                <Col key={item.id} xs={6} sm={6} md={6} lg={3}>
                   <Slide direction="left">
-                    <Card id="s2-card-box" className="mx-auto mt-3 ">
+                    <Card id="s2-card-box" className="mx-auto mt-5">
                       <Card.Img
                         onClick={() => navigate(`/products/${item.id}`)}
-                        id="s2-cardimg"
+                        // id="s2-cardimg"
                         variant="top"
                         src={`./products/${item.image}`}
                       />
                       <Card.Body id="s2-cardbody">
-                        <Card.Text id="s2-cardtitle">
-                          {item.name}
-                          <Button
-                            onClick={() => addToCart(item.id)}
-                            id="s2-button"
-                          >
-                            SHOP NOW
-                          </Button>
-                        </Card.Text>
+                        <h5>{item.name}</h5>
+
+                        <Button
+                          onClick={() => addToCart(item.id)}
+                          id="s2-button"
+                        >
+                          <h6> SHOP NOW</h6>
+                        </Button>
                       </Card.Body>
                     </Card>
                   </Slide>

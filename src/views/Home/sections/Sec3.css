@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
 #sec3-box {
   height: 20rem;
   display: flex;
   align-items: center;
+  font-family: 'Raleway', sans-serif;
 }
 
 #sec3-greetings {
   font-size: 2rem;
+  font-weight: bold;
   text-align: center;
   margin-top: 4rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 #sec3-left-button {

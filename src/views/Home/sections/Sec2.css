@@ -19,9 +19,7 @@
   margin-bottom: 5rem;
   font-family: 'Raleway', sans-serif;
 }
-#s2-card-box {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+
 #s2-h1 {
   font-size: 2rem;
   text-align: center;
@@ -29,23 +27,45 @@
   font-weight: bold;
 }
 
-#s2-cardtitle {
-  text-align: center;
+#s2-card-box {
+  flex: 1;
+  align-self: stretch;
+  /* height: 100%; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#s2-cardbody {
+  flex: 1;
+
   display: flex;
   flex-direction: column;
-  height: 100%;
-  margin-top: 0.5rem;
+  margin: auto;
+  width: 100%;
   justify-content: space-between;
+  align-self: stretch;
+}
+
+#s2-cardbody h5 {
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
 }
 
 #s2-button {
-  background-color: transparent;
-  border-color: rgb(53, 52, 52);
-  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 1.8rem;
+  background-color: transparent;
+  border-color: rgb(53, 52, 52);
+  color: black;
+  width: 100%;
+  font-size: 90%;
+  margin-top: 0.8rem;
+}
+#s2-button h6 {
+  margin: 0;
+  font-size: 0.6;
+  font-weight: bold;
 }
 
 #s2-button:hover {
@@ -53,12 +73,4 @@
   background-color: rgb(53, 52, 52);
   border-color: rgb(53, 52, 52);
   color: rgb(255, 255, 255);
-}
-#s2-cardbody {
-  display: flex;
-  min-height: 8rem;
-  height: 8.3rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

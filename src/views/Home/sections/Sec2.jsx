@@ -52,7 +52,7 @@ const Sec2 = () => {
         <Container id="s2-content">
           <h1 id="s2-h1">THE ORDINARY BEST SELLERS</h1>
 
-          <div id="s2-card-container">
+          <section id="s2-card-container">
             <Row className="mx-auto">
               {products.slice(0, 4).map((item) => (
                 <Col key={item.id} xs={6} sm={6} md={6} lg={3}>
@@ -79,7 +79,7 @@ const Sec2 = () => {
                 </Col>
               ))}
             </Row>
-          </div>
+          </section>
         </Container>
       </section>
     </>

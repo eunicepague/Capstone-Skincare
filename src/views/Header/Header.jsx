@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { Nav, Navbar, Offcanvas, Container } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
-import "./Header.css";
-import axios from "./../../axios";
+import { useState, useEffect } from 'react';
+import { Nav, Navbar, Offcanvas, Container } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import './Header.css';
+import axios from './../../axios';
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
 
   const userLogged = async () => {
     await axios
-      .get("/authUser")
+      .get('/authUser')
       .then((res) => {
         setUser(res.data.user);
       })
@@ -27,16 +27,16 @@ const Header = () => {
   }, []);
 
   const logout = async () => {
-    await axios.post("/logout");
-    window.localStorage.removeItem("ECCOM_TOKEN");
+    await axios.post('/logout');
+    window.localStorage.removeItem('ECCOM_TOKEN');
     setUser({});
-    navigate("/");
+    navigate('/');
   };
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 

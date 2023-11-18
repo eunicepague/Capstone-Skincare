@@ -52,7 +52,11 @@ const Sec3 = () => {
     <>
       <h1 id="sec3-greetings">SHOP BY CATEGORY</h1>
       <Container id="sec3-box">
-        <button id="sec3-left-button" onClick={scrollLeft}>
+        <button
+          className="d-none d-lg-flex"
+          id="sec3-left-button"
+          onClick={scrollLeft}
+        >
           <box-icon name="left-arrow" style={{ width: '2rem' }}>
             Left
           </box-icon>
@@ -84,7 +88,11 @@ const Sec3 = () => {
             </Fade>
           </div>
         </div>
-        <button id="sec3-right-button" onClick={scrollRight}>
+        <button
+          className="d-none d-lg-flex"
+          id="sec3-right-button"
+          onClick={scrollRight}
+        >
           <box-icon name="right-arrow">Left</box-icon>
         </button>
       </Container>

@@ -1,11 +1,27 @@
 // import React from 'react'
-import { useState } from 'react';
-import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
-// import SamplePic from './../../../assets/Azelaic.jpg';
-import './Products.css';
+import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import axios from "../../../axios";
+import "./Products.css";
+import { interpolate } from "framer-motion";
 
 const Products = () => {
   const [lgShow, setLgShow] = useState(false);
+  const [allProduct, setAllProduct] = useState([]);
+
+  const getAllProducts = async () => {
+    try {
+      const response = await axios.get(`/all_products`);
+      setAllProduct(response.data.data);
+      console.log(response);
+    } catch (error) {
+      console.error("failed", error);
+    }
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <Container fluid>
@@ -21,45 +37,47 @@ const Products = () => {
             <div className="admin-product">
               <table id="product-table">
                 <tr id="adminProduct-tableHead">
-                  <th style={{ width: '22rem' }}>Product Title</th>
-                  <th style={{ width: '20rem' }}>Main Description</th>
-                  <th style={{ width: '10rem' }}>Target</th>
-                  <th style={{ width: '10rem' }}>Suited</th>
-                  <th style={{ width: '10rem' }}>Format</th>
-                  <th style={{ width: '20rem' }}>Ingredients</th>
-                  <th style={{ width: '20rem' }}>Description</th>
-                  <th style={{ width: '7rem' }}>Quantity</th>
-                  <th style={{ width: '7rem' }}>Price</th>
-                  <th style={{ width: '7rem' }}>Product Category</th>
-                  <th style={{ width: '7rem' }}>Product Concern</th>
-                  <th style={{ width: '10rem' }}>Product Image Here</th>
-                  <th style={{ width: '7rem' }}>Action</th>
+                  <th style={{ width: "22rem" }}>Product Title</th>
+                  <th style={{ width: "20rem" }}>Main Description</th>
+                  <th style={{ width: "10rem" }}>Target</th>
+                  <th style={{ width: "10rem" }}>Suited</th>
+                  <th style={{ width: "10rem" }}>Format</th>
+                  <th style={{ width: "20rem" }}>Ingredients</th>
+                  <th style={{ width: "20rem" }}>Description</th>
+                  <th style={{ width: "7rem" }}>Quantity</th>
+                  <th style={{ width: "7rem" }}>Price</th>
+                  <th style={{ width: "7rem" }}>Product Category</th>
+                  <th style={{ width: "7rem" }}>Product Concern</th>
+                  <th style={{ width: "10rem" }}>Product Image Here</th>
+                  <th style={{ width: "7rem" }}>Action</th>
                 </tr>
-                <tr id="adminProduct-tableBody">
-                  <td>sample sample sample</td>
-                  <td>sample sample sample</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
 
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">Lorem ipsum dolor sit amet.</td>
-                  <td className="text-center">
-                    {/* <img src={SamplePic}></img> */}
-                  </td>
-                  <td className="text-center">
-                    <Col id="adminProduct-btn">
-                      <Button variant="success" className="mx-2">
-                        Edit
-                      </Button>
-                      <Button variant="danger">Delete</Button>
-                    </Col>
-                  </td>
-                </tr>
+                {allProduct.map((item) => (
+                  <tr id="adminProduct-tableBody">
+                    <td>{item.name}</td>
+                    <td>{item.main_description}</td>
+                    <td className="text-center">{item.target}</td>
+                    <td className="text-center">{item.suited}</td>
+                    <td className="text-center">{item.format}</td>
+                    <td>{item.ingredients}</td>
+                    <td>{item.description}</td>
+                    <td className="text-center">{item.quantity}</td>
+                    <td className="text-center">{item.price}</td>
+                    <td className="text-center">{item.category_id}</td>
+                    <td className="text-center">{item.concern_id}</td>
+                    <td className="text-center">
+                      <img src={`./products/${item.image}`} alt={item.name}></img>
+                    </td>
+                    <td className="text-center">
+                      <Col id="adminProduct-btn">
+                        <Button variant="success" className="mx-2">
+                          Edit
+                        </Button>
+                        <Button variant="danger">Delete</Button>
+                      </Col>
+                    </td>
+                  </tr>
+                ))}
               </table>
             </div>
           </Col>

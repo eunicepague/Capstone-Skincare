@@ -4,7 +4,7 @@ import Cart from "./../../../assets/cart-icon.png";
 import Crueltyfree from "./../../../assets/cruelty-free.png";
 import Check from "./../../../assets/check.png";
 import X from "./../../../assets/x.png";
-import { useNavigate, Link } from "react-router-dom";
+
 
 import "./Single.css";
 import { useParams } from "react-router";
@@ -16,7 +16,7 @@ const Order = () => {
   const [isContentVisible, setContentVisibility] = useState(false);
   const [count, setCount] = useState(1);
   const { id } = useParams();
-  const navigate = useNavigate();
+ 
 
   const toggleContent = () => {
     setContentVisibility(!isContentVisible);

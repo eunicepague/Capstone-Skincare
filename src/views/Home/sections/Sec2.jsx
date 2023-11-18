@@ -1,14 +1,17 @@
 // import React from 'react'
-import { useEffect, useState } from 'react';
-import { Container, Card, Row, Col, Button } from 'react-bootstrap';
-import { Slide } from 'react-awesome-reveal';
+import { useEffect, useState } from "react";
+import { Container, Card, Row, Col, Button } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
 
-import './Sec2.css';
-// import axios from "axios";
-import axios from './../../../axios';
-import swal from 'sweetalert2';
+import { Slide } from "react-awesome-reveal";
+
+import "./Sec2.css";
+import axios from "./../../../axios";
+import swal from "sweetalert2";
+
 const Sec2 = () => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   const addToCart = async (product) => {
     try {
@@ -19,24 +22,24 @@ const Sec2 = () => {
         product_id,
       });
       swal.fire({
-        position: 'top-end',
-        icon: 'success',
+        position: "top-end",
+        icon: "success",
         title: response.data.message,
         showConfirmButton: false,
         timer: 1500,
       });
     } catch (error) {
-      console.error('failed', error);
+      console.error("failed", error);
     }
   };
 
   const getProducts = async () => {
     try {
-      const response = await axios.get('/products');
+      const response = await axios.get("/products");
       setProducts(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error('Fetching products failed', error);
+      console.error("Fetching products failed", error);
     }
   };
 
@@ -57,6 +60,7 @@ const Sec2 = () => {
                   <Slide direction="left">
                     <Card id="s2-card-box" className="mx-auto mt-3 ">
                       <Card.Img
+                        onClick={() => navigate(`/products/${item.id}`)}
                         id="s2-cardimg"
                         variant="top"
                         src={`./products/${item.image}`}

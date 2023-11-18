@@ -1,8 +1,8 @@
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table } from 'react-bootstrap';
 // import Pic1 from "./../../assets/Ascorbyl.jpg";
-import { useEffect, useState } from "react";
-import axios from "./../../axios";
-import "./Order.css";
+import { useEffect, useState } from 'react';
+import axios from './../../axios';
+import './Order.css';
 
 const Status = () => {
   const [orders, setOrder] = useState([]);
@@ -10,13 +10,13 @@ const Status = () => {
 
   const getOrder = async () => {
     try {
-      const response = await axios.get("/orders");
+      const response = await axios.get('/orders');
       setOrder(response.data.data);
       setItemCount(response.data.data.length);
 
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -29,7 +29,7 @@ const Status = () => {
       <section id="status-content">
         <Row className="mt-5">
           <Col>
-            <h4 style={{ fontWeight: "bold" }}>ORDER</h4>
+            <h4 style={{ fontWeight: 'bold' }}>ORDER</h4>
           </Col>
           <Col>{itemCount} Items</Col>
           <hr className="mb-5"></hr>
@@ -37,7 +37,7 @@ const Status = () => {
 
         {/* -------SAMPLE FIRST TABLE------- */}
         {orders.map((item) => (
-          <Row className="mb-3">
+          <Row key={item.id} className="mb-3">
             <Table striped bordered hover id="status-table" responsive="lg">
               <thead id="status-tableHead">
                 <tr>
@@ -77,7 +77,7 @@ const Status = () => {
                 <tr>
                   <td colSpan={5} id="status-tableBody">
                     {item.order_items.map((orderItem) => (
-                      <Table>
+                      <Table key={orderItem.id}>
                         <thead>
                           <tr>
                             <th>

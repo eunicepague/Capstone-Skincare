@@ -79,7 +79,11 @@ const Header = () => {
               <Nav className="ml-auto">
                 {user.name ? (
                   <>
-                    <Nav.Link as={Link} to="/account">
+                    <Nav.Link
+                      as={Link}
+                      to="/account"
+                      style={{ textTransform: 'capitalize' }}
+                    >
                       Hello, {user.username}!
                     </Nav.Link>
                     <Nav.Link onClick={logout}>Logout</Nav.Link>
@@ -107,7 +111,11 @@ const Header = () => {
             <Offcanvas.Title>
               {user.name ? (
                 <>
-                  <Nav.Link as={Link} to="/account">
+                  <Nav.Link
+                    as={Link}
+                    to="/account"
+                    style={{ textTransform: 'capitalize' }}
+                  >
                     Hello, {user.username}!
                   </Nav.Link>
                 </>

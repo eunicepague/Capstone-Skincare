@@ -129,12 +129,16 @@ const Header = () => {
               <Nav.Link as={Link} to="/products" onClick={scrollToTop}>
                 Products
               </Nav.Link>
-              <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
-                Cart
-              </Nav.Link>
-              <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
-                Order
-              </Nav.Link>
+              {user.name ? (
+                <>
+                  <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
+                    Cart
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
+                    Order
+                  </Nav.Link>
+                </>
+              ) : null}
             </Nav>
             <Nav className="ml-auto">
               {user.name ? (

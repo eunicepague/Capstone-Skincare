@@ -65,6 +65,9 @@ const Header = () => {
                 <Nav.Link as={Link} to="/products" onClick={scrollToTop}>
                   Products
                 </Nav.Link>
+                <Nav.Link as={Link} to="/blog" onClick={scrollToTop}>
+                  Blog
+                </Nav.Link>
                 {user.name ? (
                   <>
                     <Nav.Link as={Link} to="/carts" onClick={scrollToTop}>
@@ -82,6 +85,7 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to="/account"
+                      onClick={scrollToTop}
                       style={{ textTransform: 'capitalize' }}
                     >
                       Hello, {user.username}!
@@ -90,10 +94,10 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Nav.Link as={Link} to="/login">
+                    <Nav.Link as={Link} to="/login" onClick={scrollToTop}>
                       Log in
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/register">
+                    <Nav.Link as={Link} to="/register" onClick={scrollToTop}>
                       Register
                     </Nav.Link>
                   </>
@@ -136,6 +140,9 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link as={Link} to="/products" onClick={scrollToTop}>
                 Products
+              </Nav.Link>
+              <Nav.Link as={Link} to="/blog" onClick={scrollToTop}>
+                Blog
               </Nav.Link>
               {user.name ? (
                 <>

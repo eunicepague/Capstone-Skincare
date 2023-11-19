@@ -11,6 +11,7 @@ import Checkout from './views/Checkout/Checkout';
 import Payment from './views/Checkout/Payment';
 import About from './views/About/About';
 import Single from './views/Products/SingleProduct/Single';
+import Blog from './views/Blog/Blog';
 
 import Transparency from './views/Footer/sections/Transparency';
 import Faqs from './views/Faqs/Faqs';
@@ -70,6 +71,10 @@ const routes = [
   {
     path: '/about',
     element: <About />,
+  },
+  {
+    path: '/blog',
+    element: <Blog />,
   },
   {
     path: '/faqs',

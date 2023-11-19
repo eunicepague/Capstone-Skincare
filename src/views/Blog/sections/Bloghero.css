@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#bloghero-container {
+  font-family: 'Raleway', sans-serif;
+}
+
+#blog-hero-content {
+  margin-top: 3rem;
+  height: 100%;
+}
+
+#blog-hero-container {
+  height: 100%;
+}
+
+#blog-hero-container h1 {
+  font-size: 60px;
+  width: 40%;
+  margin-left: 2rem;
+  font-weight: bold;
+}
+
+#blog-hero-container img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  width: 350px;
+}
+
+#blog-hero-p {
+  margin-top: 10rem;
+  width: 70%;
+  margin: auto;
+}
+
+#blog-hero-p p {
+  display: flex;
+  margin: 10rem 0;
+}

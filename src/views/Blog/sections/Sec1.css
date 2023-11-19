@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#blog-sec1 {
+  font-family: 'Raleway', sans-serif;
+  margin: 5rem 0;
+}
+
+#blog-sec1-left h1 {
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+#blog-sec1-left p {
+  text-align: justify;
+}

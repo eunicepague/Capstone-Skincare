@@ -21,9 +21,7 @@ const Category = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState(null);
 
-  const handleInputChange = (e) => {
-    setName(e.target.value);
-  };
+
   const getCategories = async () => {
     try {
       const response = await axios.get("/category");

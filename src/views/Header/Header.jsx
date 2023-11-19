@@ -67,10 +67,10 @@ const Header = () => {
                 </Nav.Link>
                 {user.name ? (
                   <>
-                    <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
+                    <Nav.Link as={Link} to="/carts" onClick={scrollToTop}>
                       Cart
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
+                    <Nav.Link as={Link} to="/orders" onClick={scrollToTop}>
                       Order
                     </Nav.Link>
                   </>
@@ -139,10 +139,10 @@ const Header = () => {
               </Nav.Link>
               {user.name ? (
                 <>
-                  <Nav.Link as={Link} to="/cart" onClick={scrollToTop}>
+                  <Nav.Link as={Link} to="/carts" onClick={scrollToTop}>
                     Cart
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/order" onClick={scrollToTop}>
+                  <Nav.Link as={Link} to="/orders" onClick={scrollToTop}>
                     Order
                   </Nav.Link>
                 </>

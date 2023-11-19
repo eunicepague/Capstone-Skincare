@@ -23,7 +23,7 @@ import Mastercard from './../../assets/mastercard.png';
 // import { useEffect, useState } from "react";
 import axios from './../../axios';
 import './Checkout.css';
-import { useNavigate, Link } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert2';
 
 const Checkout = () => {
@@ -31,7 +31,7 @@ const Checkout = () => {
   const [validated, setValidated] = useState(false);
   const [carts, setCarts] = useState([]);
   const formRef = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const Checkout = async () => {
     try {
@@ -43,7 +43,7 @@ const Checkout = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate('/order');
+      // navigate('/orders');
       console.log(response);
     } catch (error) {
       console.error('failed', error);
@@ -510,8 +510,11 @@ const Checkout = () => {
                 <h5 className="mt-5 mb-4">Order Summary</h5>
                 <div>
                   <Row>
-                    {carts.map((item) => (
-                      <Col className="d-flex justify-content-between mb-3">
+                    {carts.map((item, index) => (
+                      <Col
+                        key={index}
+                        className="d-flex justify-content-between mb-3"
+                      >
                         <h6>{item.product.name}</h6>
                         <h6>{item.product.price}</h6>
                       </Col>

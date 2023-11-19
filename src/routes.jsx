@@ -1,107 +1,102 @@
 // import React from 'react'
-import Home from "./views/Home/Home";
-import Footer from "./views/Footer/Footer";
-import Loginmain from "./views/Login/Loginmain";
-import Registermain from "./views/Register/Registermain";
-import Cart from "./views/Cart/Cart";
-import Account from "./views/Profile/Account";
-import Order from "./views/Order/Order";
-import Products from "./views/Products/Products";
-import Checkout from "./views/Checkout/Checkout";
-import Payment from "./views/Checkout/Payment";
-import Review from "./views/Checkout/Review";
-import About from "./views/About/About";
-import Single from "./views/Products/SingleProduct/Single";
+import Home from './views/Home/Home';
+import Footer from './views/Footer/Footer';
+import Loginmain from './views/Login/Loginmain';
+import Registermain from './views/Register/Registermain';
+import Cart from './views/Cart/Cart';
+import Account from './views/Profile/Account';
+import Order from './views/Order/Order';
+import Products from './views/Products/Products';
+import Checkout from './views/Checkout/Checkout';
+import Payment from './views/Checkout/Payment';
+import About from './views/About/About';
+import Single from './views/Products/SingleProduct/Single';
 
-import Transparency from "./views/Footer/sections/Transparency";
-import Faqs from "./views/Faqs/Faqs";
-import Disposal from "./views/Footer/sections/Disposal";
-import Return from "./views/Footer/sections/Return";
-import Promotion from "./views/Footer/sections/Promotion";
+import Transparency from './views/Footer/sections/Transparency';
+import Faqs from './views/Faqs/Faqs';
+import Disposal from './views/Footer/sections/Disposal';
+import Return from './views/Footer/sections/Return';
+import Promotion from './views/Footer/sections/Promotion';
 
 // admin
-import Admin from "./views/Admin/Admin";
-import AdminFooter from "./views/Footer/adminFooter";
+import Admin from './views/Admin/Admin';
+import AdminFooter from './views/Footer/adminFooter';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/footer",
+    path: '/footer',
     element: <Footer />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Loginmain />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Registermain />,
   },
   {
-    path: "/cart",
+    path: '/carts',
     element: <Cart />,
   },
   {
-    path: "/account",
+    path: '/account',
     element: <Account />,
   },
   {
-    path: "/order",
+    path: '/orders',
     element: <Order />,
   },
   {
-    path: "/products/:id",
+    path: '/products/:id',
     element: <Single />,
   },
   {
-    path: "/products",
+    path: '/products',
     element: <Products />,
   },
   {
-    path: "/checkout",
+    path: '/checkout',
     element: <Checkout />,
   },
   {
-    path: "/payment",
+    path: '/payment',
     element: <Payment />,
   },
   {
-    path: "/review",
-    element: <Review />,
-  },
-  {
-    path: "/about",
+    path: '/about',
     element: <About />,
   },
   {
-    path: "/faqs",
+    path: '/faqs',
     element: <Faqs />,
   },
   {
-    path: "/transparency",
+    path: '/transparency',
     element: <Transparency />,
   },
   {
-    path: "/disposal",
+    path: '/disposal',
     element: <Disposal />,
   },
   {
-    path: "/return-policy",
+    path: '/return-policy',
     element: <Return />,
   },
   {
-    path: "/promotional-offer-terms",
+    path: '/promotional-offer-terms',
     element: <Promotion />,
   },
   {
-    path: "/admin-page",
+    path: '/admin-page',
     element: <Admin />,
   },
   {
-    path: "/admin-footer",
+    path: '/admin-footer',
     element: <AdminFooter />,
   },
 ];

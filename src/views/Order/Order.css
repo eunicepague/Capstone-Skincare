@@ -2,6 +2,13 @@
 
 #status-content {
   font-family: 'Raleway', sans-serif;
+  margin-top: 4rem;
+}
+
+#status-table {
+  -webkit-box-shadow: 0 0 20px 0 #dddddd;
+  -moz-box-shadow: 0 0 20px 0 #dddddd;
+  box-shadow: 0 0 20px 0 #dddddd;
 }
 
 #status-table img {
@@ -9,14 +16,26 @@
   max-width: 100px;
 }
 
+#status-tableHead th {
+  background-color: rgb(39, 39, 39);
+}
+
 #status-tableHead h5 {
   font-weight: bolder;
   text-align: center;
+  color: rgb(240, 240, 240);
+  margin-bottom: 1rem;
 }
 
 #status-tableHead p {
   margin: 0;
   text-align: center;
+  color: rgb(240, 240, 240);
+  margin-bottom: 0.5rem;
+}
+
+#table-body {
+  background-color: rgb(245, 244, 249);
 }
 
 #status-tableBody h6 {
@@ -25,4 +44,5 @@
 
 #status-tableBody p {
   font-weight: 100;
+  font-size: 1.2rem;
 }

@@ -161,9 +161,11 @@ const Category = () => {
       <section id="category-content">
         <Row>
           <Col id="category-left" className="d-none d-lg-flex" lg={3}>
-            <h1 style={{ marginBottom: '3rem' }}>Filter by:</h1>
+            <h2 style={{ marginTop: '5rem', fontWeight: 'bold' }}>
+              Filter by:
+            </h2>
 
-            <Accordion defaultActiveKey="0">
+            <Accordion defaultActiveKey="0" id="category-accordion">
               {/* ------RATING------ */}
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
@@ -374,9 +376,16 @@ const Category = () => {
                 >
                   Show all Filters
                 </Button>
-                <Offcanvas show={show} onHide={handleClose} placement="end">
+                <Offcanvas
+                  show={show}
+                  onHide={handleClose}
+                  placement="end"
+                  id="category-offcanvas"
+                >
                   <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Filter by:</Offcanvas.Title>
+                    <Offcanvas.Title>
+                      <b>Filter by:</b>
+                    </Offcanvas.Title>
                   </Offcanvas.Header>
                   <Offcanvas.Body>
                     <Accordion flush defaultActiveKey="0">
@@ -548,7 +557,7 @@ const Category = () => {
                         </div>
 
                         <div className="mt-5">
-                          <h6>{product.price}</h6>
+                          <h5>₱{product.price}</h5>
                           <hr></hr>
                           <Col>
                             <h6 style={{ margin: '0' }}>Target</h6>

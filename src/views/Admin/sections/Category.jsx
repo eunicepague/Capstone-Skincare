@@ -21,6 +21,9 @@ const Category = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState(null);
 
+  const handleInputChange = (e) => {
+    setName(e.target.value);
+  };
 
   const getCategories = async () => {
     try {
@@ -115,8 +118,7 @@ const Category = () => {
               </thead>
               <tbody>
                 {categories.map((item, index) => (
-                  <>
-                    <tr>
+                    <tr key={item.id}>
                       <td>{index}</td>
                       <td>{item.name}</td>
                       <td className="text-center">
@@ -135,7 +137,6 @@ const Category = () => {
                         </Button>
                       </td>
                     </tr>
-                  </>
                 ))}
               </tbody>
             </Table>

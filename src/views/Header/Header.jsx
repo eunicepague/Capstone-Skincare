@@ -90,7 +90,7 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Nav.Link as={Link} to="/login">
+                    <Nav.Link as={Link} to="/">
                       Log in
                     </Nav.Link>
                     <Nav.Link as={Link} to="/register">
@@ -158,7 +158,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/login">
+                  <Nav.Link as={Link} to="/">
                     Log in
                   </Nav.Link>
                   <Nav.Link as={Link} to="/register">

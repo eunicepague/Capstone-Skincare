@@ -1,18 +1,18 @@
 // import React from 'react';
-import { Container, Row, Col, Button } from "react-bootstrap";
-import axios from "../../../axios";
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import "./Order.css";
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import axios from '../../../axios';
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import './Order.css';
 
 const Order = () => {
   const [allOrder, setAllOrder] = useState([]);
-  const [status, setStatus] = useState("");
-  const [btnColor, setBtnColor] = useState("");
+  const [status, setStatus] = useState('');
+  const [btnColor, setBtnColor] = useState('');
 
   const getallOrder = async () => {
     try {
-      const response = await axios.get("/all_orders");
+      const response = await axios.get('/all_orders');
       setAllOrder(response.data.data);
 
       console.log(response);
@@ -23,13 +23,13 @@ const Order = () => {
 
   const submitStatus = async (status, id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, update it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -37,11 +37,11 @@ const Order = () => {
           await getallOrder();
           Swal.fire({
             title: status,
-            text: "Order status has been updated!",
-            icon: "success",
+            text: 'Order status has been updated!',
+            icon: 'success',
           });
         } catch (error) {
-          console.error("Error:", error);
+          console.error('Error:', error);
         }
       }
     });
@@ -61,12 +61,12 @@ const Order = () => {
               <table id="order-table">
                 <tr id="adminOrder-tableHead">
                   <th>Order Id</th>
-                  <th style={{ width: "10rem" }}>Date</th>
-                  <th style={{ width: "20rem" }}>Client Name</th>
-                  <th style={{ width: "20rem" }}>Product List</th>
-                  <th style={{ width: "10rem" }}>Product Cost</th>
-                  <th style={{ width: "10rem" }}>Status</th>
-                  <th style={{ width: "10rem" }}>Action</th>
+                  <th style={{ width: '10rem' }}>Date</th>
+                  <th style={{ width: '20rem' }}>Client Name</th>
+                  <th style={{ width: '20rem' }}>Product List</th>
+                  <th style={{ width: '10rem' }}>Product Cost</th>
+                  <th style={{ width: '10rem' }}>Status</th>
+                  <th style={{ width: '10rem' }}>Action</th>
                 </tr>
                 {allOrder.map((item) => (
                   <tr key={item.id} id="adminOrdertableBody">
@@ -84,10 +84,10 @@ const Order = () => {
                     </td>
                     <td>{item.total}</td>
                     <td>{item.status}</td>
-                    <td>
-                      {item.status === "Pending" && (
+                    <td id="adminOrder-action">
+                      {item.status === 'Pending' && (
                         <Button
-                          onClick={() => submitStatus("For Packaging", item.id)}
+                          onClick={() => submitStatus('For Packaging', item.id)}
                           size="sm"
                           variant="primary"
                         >
@@ -95,11 +95,11 @@ const Order = () => {
                         </Button>
                       )}
 
-                      {item.status === "For Packaging" && (
+                      {item.status === 'For Packaging' && (
                         <Button
                           size="sm"
                           onClick={() =>
-                            submitStatus("Out for Delivery", item.id)
+                            submitStatus('Out for Delivery', item.id)
                           }
                           variant="warning"
                         >
@@ -107,39 +107,30 @@ const Order = () => {
                         </Button>
                       )}
 
-                      {item.status === "Out for Delivery" && (
+                      {item.status === 'Out for Delivery' && (
                         <Button
                           size="sm"
-                          onClick={() => submitStatus("Delivered", item.id)}
+                          onClick={() => submitStatus('Delivered', item.id)}
                           variant="info"
                         >
                           Deliver
                         </Button>
                       )}
-                      {item.status === "Delivered" && (
-                        <Button
-                        disabled
-                          size="sm"
-                          variant="success"
-                        >
+                      {item.status === 'Delivered' && (
+                        <Button disabled size="sm" variant="success">
                           Delivered
                         </Button>
                       )}
-                       {item.status === "Cancelled" && (
-                        <Button
-                        disabled
-                          size="sm"
-                     
-                          variant="danger"
-                        >
+                      {item.status === 'Cancelled' && (
+                        <Button disabled size="sm" variant="danger">
                           Cancelled
                         </Button>
                       )}
-                      {(item.status === "Pending" ||
-                        item.status === "For Packaging") && (
+                      {(item.status === 'Pending' ||
+                        item.status === 'For Packaging') && (
                         <Button
                           size="sm"
-                          onClick={() => submitStatus("Cancelled", item.id)}
+                          onClick={() => submitStatus('Cancelled', item.id)}
                           variant="danger"
                         >
                           Cancel

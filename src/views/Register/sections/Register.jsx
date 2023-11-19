@@ -12,7 +12,8 @@ import {
 import { useNavigate, Link } from 'react-router-dom';
 import Logo from './../../../assets/logo.png';
 import './Register.css';
-import axios from 'axios';
+// import axios from 'axios';
+import axios from "../../../axios";
 import { Fade } from 'react-awesome-reveal';
 
 const Register = () => {

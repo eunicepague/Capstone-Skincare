@@ -1,40 +1,39 @@
 // import React from 'react';
-import { Container, Card, Row, Col, Table } from 'react-bootstrap';
-import './Dashboard.css';
-// import axios from 'axios';
+import { Container, Card, Row, Col, Table } from "react-bootstrap";
+import "./Dashboard.css";
 import axios from "../../../axios";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
-const [dashboard, setDashboard] = useState({});
-const [allOrder, setAllOrder] = useState([]);
+  const [dashboard, setDashboard] = useState({});
+  const [allOrder, setAllOrder] = useState([]);
 
-  const getDashboard = async  () => {
+  const getDashboard = async () => {
     try {
-      const response = await axios.get(`/dashboard`) 
-      setDashboard(response.data)
+      const response = await axios.get(`/dashboard`);
+      setDashboard(response.data);
 
       console.log(response);
-    }catch (error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
-  
-const getallOrder = async () => {
-  try {
-    const response = await axios.get('/all_orders')
-    setAllOrder(response.data.data)
+  };
 
-    console.log(response)
-  }catch(error){
-    console.log(error)
-  }
-}
+  const getallOrder = async () => {
+    try {
+      const response = await axios.get("/all_orders");
+      setAllOrder(response.data.data);
 
-  useEffect (() =>{
-    getDashboard();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getDashboard()
     getallOrder();
-  },[])
+  }, []);
 
   return (
     <Container fluid>
@@ -87,19 +86,20 @@ const getallOrder = async () => {
                 </tr>
               </thead>
               <tbody>
-              {allOrder.map((item) => (
-                <>
-                <tr>
-                <td>{item.id}</td>
-                <td>{item.first_name}{" "}{item.last_name}</td>
-                <td>{item.user.email} </td>
-                <td>{item.total} </td>
-                <td>{item.status}</td>
-                <td>{item.created_at}</td>
-                </tr>
-                </>
-              ))}
-                
+                {allOrder.map((item) => (
+                  <>
+                    <tr>
+                      <td>{item.id}</td>
+                      <td>
+                        {item.first_name} {item.last_name}
+                      </td>
+                      <td>{item.user.email} </td>
+                      <td>{item.total} </td>
+                      <td>{item.status}</td>
+                      <td>{item.created_at}</td>
+                    </tr>
+                  </>
+                ))}
               </tbody>
             </Table>
           </Col>

@@ -116,8 +116,7 @@ const Concern = () => {
               </thead>
               <tbody>
                 {concerns.map((item, index) => (
-                  <>
-                    <tr>
+                    <tr key={item.id}>
                       <td>{index}</td>
                       <td>{item.name}</td>
                       <td className="text-center">
@@ -136,7 +135,6 @@ const Concern = () => {
                         </Button>
                       </td>
                     </tr>
-                  </>
                 ))}
               </tbody>
             </Table>

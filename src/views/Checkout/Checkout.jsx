@@ -23,7 +23,7 @@ import Mastercard from './../../assets/mastercard.png';
 // import { useEffect, useState } from "react";
 import axios from './../../axios';
 import './Checkout.css';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert2';
 
 const Checkout = () => {
@@ -510,8 +510,11 @@ const Checkout = () => {
                 <h5 className="mt-5 mb-4">Order Summary</h5>
                 <div>
                   <Row>
-                    {carts.map((item) => (
-                      <Col className="d-flex justify-content-between mb-3">
+                    {carts.map((item, index) => (
+                      <Col
+                        key={index}
+                        className="d-flex justify-content-between mb-3"
+                      >
                         <h6>{item.product.name}</h6>
                         <h6>{item.product.price}</h6>
                       </Col>

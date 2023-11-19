@@ -11,6 +11,7 @@ const Status = () => {
   const getOrder = async () => {
     try {
       const response = await axios.get('/orders');
+
       setOrder(response.data.data);
       setItemCount(response.data.data.length);
 

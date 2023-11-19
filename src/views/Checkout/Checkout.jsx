@@ -23,7 +23,7 @@ import Mastercard from './../../assets/mastercard.png';
 // import { useEffect, useState } from "react";
 import axios from './../../axios';
 import './Checkout.css';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert2';
 
 const Checkout = () => {

@@ -40,7 +40,7 @@ const routes = [
     element: <Registermain />,
   },
   {
-    path: '/cart',
+    path: '/carts',
     element: <Cart />,
   },
   {
@@ -48,7 +48,7 @@ const routes = [
     element: <Account />,
   },
   {
-    path: '/order',
+    path: '/orders',
     element: <Order />,
   },
   {

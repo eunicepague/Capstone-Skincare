@@ -31,7 +31,7 @@ const Checkout = () => {
   const [validated, setValidated] = useState(false);
   const [carts, setCarts] = useState([]);
   const formRef = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const Checkout = async () => {
     try {
@@ -43,7 +43,7 @@ const Checkout = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate('/order');
+      // navigate('/orders');
       console.log(response);
     } catch (error) {
       console.error('failed', error);

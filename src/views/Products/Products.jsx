@@ -398,7 +398,7 @@ const Category = () => {
                                     <img src={yellowStar} />
                                     <img src={yellowStar} />
                                     <img src={yellowStar} />
-                                    <img src={yellowStar} /> 5 stars
+                                    <img src={yellowStar} /> 5 stars shbgtfh
                                   </div>
                                 }
                               />
@@ -524,7 +524,7 @@ const Category = () => {
               </div>
 
               {products.map((product) => (
-                <Col key={product} xs={6} md={4} className="mb-4">
+                <Col key={product.id} xs={6} md={4} className="mb-4">
                   <Card id="category-right-card">
                     <Card.Img
                       onClick={() => navigate(`/products/${product.id}`)}

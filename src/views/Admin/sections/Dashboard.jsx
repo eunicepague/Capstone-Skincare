@@ -31,7 +31,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getDashboard()
+    getDashboard();
     getallOrder();
   }, []);
 
@@ -87,18 +87,16 @@ const Dashboard = () => {
               </thead>
               <tbody>
                 {allOrder.map((item) => (
-                  <>
-                    <tr>
-                      <td>{item.id}</td>
-                      <td>
-                        {item.first_name} {item.last_name}
-                      </td>
-                      <td>{item.user.email} </td>
-                      <td>{item.total} </td>
-                      <td>{item.status}</td>
-                      <td>{item.created_at}</td>
-                    </tr>
-                  </>
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>
+                      {item.first_name} {item.last_name}
+                    </td>
+                    <td>{item.user.email} </td>
+                    <td>{item.total} </td>
+                    <td>{item.status}</td>
+                    <td>{item.created_at}</td>
+                  </tr>
                 ))}
               </tbody>
             </Table>

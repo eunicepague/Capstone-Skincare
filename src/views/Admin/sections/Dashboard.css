@@ -16,17 +16,26 @@
 }
 
 #dashboardCard-one {
-  background-color: #a84275;
+  background-color: #1a1e23;
   color: white;
+  -webkit-box-shadow: 0 0 11px 0.5px #595959;
+  -moz-box-shadow: 0 0 11px 0.5px #595959;
+  box-shadow: 0 0 11px 0.5px #595959;
 }
 
 #dashboardCard-two {
-  background-color: #198754;
+  background-color: #1a1e23;
   color: white;
+  -webkit-box-shadow: 0 0 11px 0.5px #595959;
+  -moz-box-shadow: 0 0 11px 0.5px #595959;
+  box-shadow: 0 0 11px 0.5px #595959;
 }
 #dashboardCard-three {
-  background-color: #0989a2;
+  background-color: #1a1e23;
   color: white;
+  -webkit-box-shadow: 0 0 11px 0.5px #595959;
+  -moz-box-shadow: 0 0 11px 0.5px #595959;
+  box-shadow: 0 0 11px 0.5px #595959;
 }
 
 #dashboard-totals h3 {

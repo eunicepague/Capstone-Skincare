@@ -1,8 +1,8 @@
 // import React from 'react';
-import { Container, Card, Row, Col, Table } from "react-bootstrap";
-import "./Dashboard.css";
-import axios from "../../../axios";
-import { useEffect, useState } from "react";
+import { Container, Card, Row, Col, Table } from 'react-bootstrap';
+import './Dashboard.css';
+import axios from '../../../axios';
+import { useEffect, useState } from 'react';
 
 const Dashboard = () => {
   const [dashboard, setDashboard] = useState({});
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   const getallOrder = async () => {
     try {
-      const response = await axios.get("/all_orders");
+      const response = await axios.get('/all_orders');
       setAllOrder(response.data.data);
 
       console.log(response);
@@ -31,7 +31,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getDashboard()
+    getDashboard();
     getallOrder();
   }, []);
 

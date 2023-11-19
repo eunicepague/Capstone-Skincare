@@ -37,7 +37,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       const response = await axios.get(`/products`, {
-        params: { orderBy: 'desc', sortBy: 'created_at' },
+        params: { orderBy: "desc", sortBy: "created_at" },
       });
 
       setAllProduct(response.data.data);
@@ -154,40 +154,40 @@ const Products = () => {
             <div className="admin-product">
               <table id="product-table">
                 <tr id="adminProduct-tableHead">
-                  <th style={{ width: '22rem' }}>Product Name</th>
-                  <th style={{ width: '20rem' }}>Main Description</th>
-                  <th style={{ width: '10rem' }}>Target</th>
-                  <th style={{ width: '10rem' }}>Suited</th>
-                  <th style={{ width: '10rem' }}>Format</th>
-                  <th style={{ width: '20rem' }}>Ingredients</th>
-                  <th style={{ width: '20rem' }}>Description</th>
-                  <th style={{ width: '7rem' }}>Quantity</th>
-                  <th style={{ width: '7rem' }}>Price</th>
-                  <th style={{ width: '7rem' }}> Category</th>
-                  <th style={{ width: '7rem' }}> Concern</th>
-                  <th style={{ width: '10rem' }}> Image</th>
-                  <th style={{ width: '7rem' }}>Action</th>
+                  <th style={{ width: "10rem" }}>Product Image</th>
+                  <th style={{ width: "10rem" }}>Product Title</th>
+                  <th style={{ width: "10rem" }}>Main Description</th>
+                  {/* <th style={{ width: "10rem" }}>Target</th>
+                  <th style={{ width: "10rem" }}>Suited</th>
+                  <th style={{ width: "10rem" }}>Format</th>
+                  <th style={{ width: "20rem" }}>Ingredients</th>
+                  <th style={{ width: "20rem" }}>Description</th> */}
+                  <th style={{ width: "2rem" }}>Quantity</th>
+                  <th style={{ width: "2rem" }}>Price</th>
+                  <th style={{ width: "2rem" }}>Product Category</th>
+                  <th style={{ width: "2rem" }}>Product Concern</th>
+                  <th style={{ width: "1rem" }}>Action</th>
                 </tr>
 
                 {allProduct.map((item) => (
-                  <tr key={item.id} id="adminProduct-tableBody">
-                    <td>{item.name}</td>
-                    <td>{item.main_description}</td>
-                    <td className="text-center">{item.target}</td>
-                    <td className="text-center">{item.suited}</td>
-                    <td className="text-center">{item.format}</td>
-                    <td>{item.ingredients}</td>
-                    <td>{item.description}</td>
-                    <td className="text-center">{item.quantity}</td>
-                    <td className="text-center">{item.price}</td>
-                    <td className="text-center">{item.category.name}</td>
-                    <td className="text-center">{item.concern?.name}</td>
+                  <tr id="adminProduct-tableBody">
                     <td className="text-center">
                       <img
                         src={`./products/${item.image}`}
                         alt={item.name}
                       ></img>
                     </td>
+                    <td>{item.name}</td>
+                    <td>{item.main_description}</td>
+                    {/* <td className="text-center">{item.target}</td>
+                    <td className="text-center">{item.suited}</td>
+                    <td className="text-center">{item.format}</td>
+                    <td>{item.ingredients}</td>
+                    <td>{item.description}</td> */}
+                    <td className="text-center">{item.quantity}</td>
+                    <td className="text-center">{item.price}</td>
+                    <td className="text-center">{item.category.name}</td>
+                    <td className="text-center">{item.concern?.name}</td>
                     <td className="text-center">
                       <Col id="adminProduct-btn">
                         <Button

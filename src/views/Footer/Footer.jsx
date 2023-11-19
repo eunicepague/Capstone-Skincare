@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   Container,
   Row,
@@ -8,10 +8,11 @@ import {
   OverlayTrigger,
   Tooltip,
   Accordion,
-} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Logo from './../../assets/the-ordinary-logo-vector.png';
-import './Footer.css';
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Logo from "./../../assets/the-ordinary-logo-vector.png";
+import swal from "sweetalert2";
+import "./Footer.css";
 
 const Footer = () => {
   const [isMediumScreen, setIsMediumScreen] = useState(false);
@@ -25,18 +26,31 @@ const Footer = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
+    });
+  };
+  const [name, setName] = useState("");
+  const handleInputChange = (e) => {
+    setName(e.target.value);
+  };
+  const sendEmail = () => {
+    swal.fire({
+      position: "top-end",
+      icon: "success",
+      title:`Email sent to ${name} successfully!`,
+      showConfirmButton: false,
+      timer: 1500,
     });
   };
 
@@ -49,7 +63,7 @@ const Footer = () => {
             <Col md={12} lg={4} className="d-none d-lg-flex" id="footer-img">
               <img src={Logo}></img>
             </Col>
-            <Col md={12} lg={4} className={isMediumScreen ? 'order-third' : ''}>
+            <Col md={12} lg={4} className={isMediumScreen ? "order-third" : ""}>
               {isMediumScreen ? (
                 <Accordion flush className="mt-2">
                   <Accordion.Item eventKey="0">
@@ -166,7 +180,7 @@ const Footer = () => {
             </Col>
             {/* NEXT  */}
 
-            <Col md={12} lg={4} className={isMediumScreen ? 'order-first' : ''}>
+            <Col md={12} lg={4} className={isMediumScreen ? "order-first" : ""}>
               <h6>Stay in Touch.</h6>
               <Form.Group
                 as={Col}
@@ -183,18 +197,25 @@ const Footer = () => {
                   }
                 >
                   <Form.Control
-                    style={{ margin: '0' }}
-                    type="email"
+                    style={{ margin: "0" }}
+                    name="name"
+                    value={name}
+                    onChange={handleInputChange}
                     placeholder="Email"
                     aria-describedby="inputGroupPrepend"
                     required
                   />
                 </OverlayTrigger>
-                <Button type="submit" className="mb-3 w-100" id="footer-button">
+                <Button
+                  onClick={() => sendEmail()}
+                  type="submit"
+                  className="mb-3 w-100"
+                  id="footer-button"
+                >
                   SUBMIT
                 </Button>
               </Form.Group>
-              <p style={{ fontSize: '0.6rem', width: '85%' }}>
+              <p style={{ fontSize: "0.6rem", width: "85%" }}>
                 *By checking the above box you are agreeing to receive email
                 communications from DECIEM Inc., it affiliates, brands (The
                 Ordinary and NIOD) and/or marketing partners. This can be
@@ -208,7 +229,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <box-icon
-                  style={{ marginRight: '1rem', cursor: 'pointer' }}
+                  style={{ marginRight: "1rem", cursor: "pointer" }}
                   type="logo"
                   name="facebook-circle"
                 ></box-icon>
@@ -220,7 +241,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <box-icon
-                  style={{ marginRight: '1rem', cursor: 'pointer' }}
+                  style={{ marginRight: "1rem", cursor: "pointer" }}
                   name="instagram"
                   type="logo"
                 ></box-icon>
@@ -232,7 +253,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <box-icon
-                  style={{ marginRight: '1rem', cursor: 'pointer' }}
+                  style={{ marginRight: "1rem", cursor: "pointer" }}
                   name="youtube"
                   type="logo"
                 ></box-icon>
@@ -244,7 +265,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <box-icon
-                  style={{ marginRight: '1rem', cursor: 'pointer' }}
+                  style={{ marginRight: "1rem", cursor: "pointer" }}
                   name="twitter"
                   type="logo"
                 ></box-icon>
@@ -256,13 +277,13 @@ const Footer = () => {
         <Row>
           <Col id="copyright">
             <p>
-              &copy; The Ordinary. 2023. All rights reserved. Terms & Conditions{' '}
+              &copy; The Ordinary. 2023. All rights reserved. Terms & Conditions{" "}
             </p>
             <p>Terms & Conditions</p>
             <p>Privacy Policy</p>
             <p>Do not sell my personal information</p>
             <p>Cookies</p>
-            <p style={{ fontWeight: 'bold' }}>A NICOLE AND EUNICE PROJECT</p>
+            <p style={{ fontWeight: "bold" }}>A NICOLE AND EUNICE PROJECT</p>
           </Col>
         </Row>
       </Container>

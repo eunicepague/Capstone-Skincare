@@ -1,10 +1,10 @@
 // import React from 'react';
 
-import { useState, useEffect } from "react";
-import { Nav, Navbar, Offcanvas, Container } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
-import "./Header.css";
-import axios from "./../../axios";
+import { useState, useEffect } from 'react';
+import { Nav, Navbar, Offcanvas, Container } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import './Header.css';
+import axios from './../../axios';
 
 const adminHeader = () => {
   const [show, setShow] = useState(false);
@@ -16,7 +16,7 @@ const adminHeader = () => {
 
   const userLogged = async () => {
     await axios
-      .get("/authUser")
+      .get('/authUser')
       .then((res) => {
         setUser(res.data.user);
       })
@@ -29,10 +29,10 @@ const adminHeader = () => {
   }, []);
 
   const logout = async () => {
-    await axios.post("/logout");
-    window.localStorage.removeItem("ECCOM_TOKEN");
+    await axios.post('/logout');
+    window.localStorage.removeItem('ECCOM_TOKEN');
     setUser({});
-    window.location.href = "/";
+    window.location.href = '/';
   };
 
   return (
@@ -57,7 +57,11 @@ const adminHeader = () => {
               <Nav className="ml-auto">
                 {user.name ? (
                   <>
-                    <Nav.Link as={Link} to="/account">
+                    <Nav.Link
+                      as={Link}
+                      to="/account"
+                      style={{ textTransform: 'capitalize' }}
+                    >
                       Hello, {user.username}!
                     </Nav.Link>
                     <Nav.Link onClick={logout}>Logout</Nav.Link>
@@ -85,7 +89,11 @@ const adminHeader = () => {
             <Offcanvas.Title>
               {user.name ? (
                 <>
-                  <Nav.Link as={Link} to="/account">
+                  <Nav.Link
+                    as={Link}
+                    to="/account"
+                    style={{ textTransform: 'capitalize' }}
+                  >
                     Hello, {user.username}!
                   </Nav.Link>
                 </>

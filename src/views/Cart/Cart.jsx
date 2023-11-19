@@ -107,7 +107,7 @@ const Cart = () => {
             <div id="cart-left-container">
               <Row className="cart-left-content" lg={8} xl={8}>
                 <Col>
-                  <h6>Shopping Cart</h6>
+                  <h5>Shopping Cart</h5>
                 </Col>
                 <Col>
                   <h6>{itemCount} Items</h6>
@@ -117,7 +117,9 @@ const Cart = () => {
               {carts.map((item) => (
                 <Row key={item.id} className="cart-left-container mt-3">
                   <Col id="cart-img">
-                    <p>PRODUCT DETAILS</p>
+                    <p>
+                      <b>PRODUCT DETAILS</b>
+                    </p>
                     <div className="product-info-container">
                       <img
                         src={`/products/${item.product.image}`}
@@ -143,8 +145,10 @@ const Cart = () => {
                       </Col>
                     </div>
                   </Col>
-                  <Col xl={2}>
-                    <p>QUANTITY</p>
+                  <Col xl={2} className="d-flex flex-column">
+                    <p>
+                      <b>QUANTITY</b>
+                    </p>
                     <div className="quantity-controls">
                       <button
                         className="quantity-button me-2"
@@ -162,11 +166,15 @@ const Cart = () => {
                     </div>
                   </Col>
                   <Col xl={2}>
-                    <p>PRICE</p>
+                    <p>
+                      <b>PRICE</b>
+                    </p>
                     <h6 style={{ marginTop: '3rem' }}>{item.price}</h6>
                   </Col>
                   <Col xl={2}>
-                    <p>TOTAL</p>
+                    <p>
+                      <b>TOTAL</b>
+                    </p>
                     <h6 style={{ marginTop: '3rem' }}>{item.total_price}</h6>
                   </Col>
                 </Row>
@@ -179,12 +187,16 @@ const Cart = () => {
             <section id="cart-right-container">
               <Row id="cart-right-content" lg={4} xl={4}>
                 <Col className="w-100">
-                  <h6>Order Summary</h6>
+                  <h5>Order Summary</h5>
                 </Col>
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
-                  <p>ITEMS {itemCount}</p>
-                  <p>TOTAL</p>
+                  <p className="mb-4 mt-3">
+                    <b>ITEMS {itemCount}</b>
+                  </p>
+                  <p className="mb-4 mt-3">
+                    <b> TOTAL</b>
+                  </p>
                 </Col>
                 {carts.map((item) => (
                   <Col
@@ -198,8 +210,12 @@ const Cart = () => {
 
                 <hr className="w-100"></hr>
                 <Col className="d-flex justify-content-between w-100">
-                  <h6>TOTAL COST</h6>
-                  <h6>₱{totalPrice}</h6>
+                  <h6>
+                    <b>TOTAL COST</b>
+                  </h6>
+                  <h6>
+                    <b>₱{totalPrice}</b>
+                  </h6>
                 </Col>
                 <Col className="w-100 d-flex justify-content-center">
                   <Button

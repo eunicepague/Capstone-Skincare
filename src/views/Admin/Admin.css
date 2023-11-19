@@ -9,7 +9,9 @@
 
 #admin-left {
   /* background-color: #e4e4e4; */
-  background-color: rgb(20, 25, 42);
+  /* background-color: rgb(20, 25, 42); */
+  background-color: rgb(39, 39, 39);
+
   padding: 0;
   text-align: center;
   color: white;
@@ -25,13 +27,13 @@
 #admin-left button {
   width: 100%;
   padding: 20px;
-  background-color: rgb(20, 25, 42);
+  background-color: rgb(39, 39, 39);
   color: white;
   font-weight: bold;
-
   border-color: transparent;
 }
 
+#admin-left button.active,
 #admin-left button:hover {
-  background-color: rgb(34, 39, 55);
+  background-color: rgb(55, 55, 55);
 }

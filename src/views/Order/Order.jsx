@@ -44,37 +44,37 @@ const Status = () => {
                 <tr>
                   <th>
                     <Col>
-                      <h5>QUANTITY</h5>
+                      <h5>Quantity</h5>
                       <p>{item.quantity}</p>
                     </Col>
                   </th>
                   <th>
                     <Col>
-                      <h5>TOTAL</h5>
-                      <p>{item.total}</p>
+                      <h5>Total</h5>
+                      <p>₱ {item.total}</p>
                     </Col>
                   </th>
                   <th>
                     <Col>
-                      <h5>STATUS</h5>
+                      <h5>Status</h5>
                       <p>{item.status}</p>
                     </Col>
                   </th>
                   <th>
                     <Col>
-                      <h5>PAYMENT TYPE</h5>
+                      <h5>Payment Type</h5>
                       <p>{item.payment_type}</p>
                     </Col>
                   </th>
                   <th>
                     <Col>
-                      <h5>DATE ORDERED</h5>
+                      <h5>Date Ordered</h5>
                       <p>{item.created_at}</p>
                     </Col>
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="table-body">
                 <tr>
                   <td colSpan={5} id="status-tableBody">
                     {item.order_items.map((orderItem) => (
@@ -82,7 +82,7 @@ const Status = () => {
                         <thead>
                           <tr>
                             <th>
-                              <Col>
+                              <Col className="d-flex justify-content-center">
                                 <img
                                   src={`/products/${orderItem.product.image}`}
                                 ></img>
@@ -96,20 +96,32 @@ const Status = () => {
                             </th>
                             <th>
                               <Col>
-                                <h6>Quantity</h6>
-                                <p>{orderItem.quantity}</p>
+                                <h6 className="d-flex justify-content-center">
+                                  Quantity
+                                </h6>
+                                <p className="d-flex justify-content-center">
+                                  {orderItem.quantity}
+                                </p>
                               </Col>
                             </th>
                             <th>
                               <Col>
-                                <h6>Price</h6>
-                                <p>{orderItem.product.price}</p>
+                                <h6 className="d-flex justify-content-center">
+                                  Price
+                                </h6>
+                                <p className="d-flex justify-content-center">
+                                  {orderItem.product.price}
+                                </p>
                               </Col>
                             </th>
                             <th>
                               <Col>
-                                <h6>Total Price</h6>
-                                <p>{orderItem.total}</p>
+                                <h6 className="d-flex justify-content-center">
+                                  Total Price
+                                </h6>
+                                <p className="d-flex justify-content-center">
+                                  {orderItem.total}
+                                </p>
                               </Col>
                             </th>
                           </tr>

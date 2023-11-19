@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+#category-container {
+  font-family: 'Raleway', sans-serif;
+}
 #category-container {
   margin-top: 5rem;
+}
+
+#category-content h1 {
+  font-weight: bold;
 }
 
 #category-left {
@@ -25,6 +34,11 @@
 #category-right-card {
   /* display: flex; */
   height: 100%;
+}
+
+#category-right-card h5,
+#category-right-card h6 {
+  font-weight: bold;
 }
 
 #category-right-card button {
@@ -61,4 +75,13 @@
 
 #category-stars img {
   width: 8%;
+}
+
+#category-offcanvas {
+  font-family: 'Raleway', sans-serif;
+}
+
+#category-offcanvas h6,
+#category-accordion h6 {
+  font-weight: bold;
 }

@@ -13,10 +13,12 @@ import './Admin.css';
 const Admin = () => {
   // Use state to track the selected component
   const [selectedComponent, setSelectedComponent] = useState('dashboard');
+  const [activeButton, setActiveButton] = useState('dashboard');
 
   // Define a function to handle button clicks and update the selected component
   const handleButtonClick = (component) => {
     setSelectedComponent(component);
+    setActiveButton(component);
   };
 
   // Render the selected component based on the state
@@ -46,19 +48,36 @@ const Admin = () => {
             <h2>Admin</h2>
             <p style={{ marginBottom: '2rem' }}>The Ordinary Admin</p>
             <hr></hr>
-            <button onClick={() => handleButtonClick('dashboard')}>
+            <button
+              className={activeButton === 'dashboard' ? 'active' : ''}
+              onClick={() => handleButtonClick('dashboard')}
+            >
               Dashboard
             </button>
-            <button onClick={() => handleButtonClick('products')}>
+            <button
+              className={activeButton === 'products' ? 'active' : ''}
+              onClick={() => handleButtonClick('products')}
+            >
               Products
             </button>
-            <button onClick={() => handleButtonClick('category')}>
+            <button
+              className={activeButton === 'category' ? 'active' : ''}
+              onClick={() => handleButtonClick('category')}
+            >
               Category
             </button>
-            <button onClick={() => handleButtonClick('concern')}>
+            <button
+              className={activeButton === 'concern' ? 'active' : ''}
+              onClick={() => handleButtonClick('concern')}
+            >
               Concerns
             </button>
-            <button onClick={() => handleButtonClick('order')}>Orders</button>
+            <button
+              className={activeButton === 'order' ? 'active' : ''}
+              onClick={() => handleButtonClick('order')}
+            >
+              Orders
+            </button>
           </Col>
           <Col id="admin-right" lg={10}>
             {renderSelectedComponent()}

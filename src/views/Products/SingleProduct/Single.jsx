@@ -9,6 +9,7 @@ import X from "./../../../assets/x.png";
 import "./Single.css";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from "../../../axios";
 
 const Order = () => {
@@ -16,6 +17,8 @@ const Order = () => {
   const [isContentVisible, setContentVisibility] = useState(false);
   const [count, setCount] = useState(1);
   const { id } = useParams();
+  const navigate = useNavigate();
+
  
 
   const toggleContent = () => {

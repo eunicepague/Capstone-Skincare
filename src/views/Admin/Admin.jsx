@@ -8,6 +8,7 @@ import Products from './sections/Products';
 import Category from './sections/Category';
 import Concern from './sections/Concern';
 import Order from './sections/Order';
+import User from './sections/UserList';
 import './Admin.css';
 
 const Admin = () => {
@@ -34,6 +35,8 @@ const Admin = () => {
         return <Concern />;
       case 'order':
         return <Order />;
+      case 'user':
+        return <User />;
       default:
         return null;
     }
@@ -77,6 +80,12 @@ const Admin = () => {
               onClick={() => handleButtonClick('order')}
             >
               Orders
+            </button>
+            <button
+              className={activeButton === 'user' ? 'active' : ''}
+              onClick={() => handleButtonClick('user')}
+            >
+              User List
             </button>
           </Col>
           <Col id="admin-right" lg={10}>

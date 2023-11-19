@@ -7,6 +7,8 @@ import {
   Form,
   Accordion,
   Dropdown,
+  Button,
+  Offcanvas,
 } from 'react-bootstrap';
 import swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
@@ -47,6 +49,12 @@ const Category = () => {
     setSelectedItem(itemText);
   };
 
+  // OFFCANVAS
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  // ---------------------------
   const getProducts = async () => {
     const delay = 1000; // 2 seconds (in milliseconds)
     // alert(1);
@@ -357,6 +365,162 @@ const Category = () => {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
+
+                {/* ----- OFFCANVAS ------*/}
+                <Button
+                  variant="outline-dark"
+                  onClick={handleShow}
+                  className="d-lg-none"
+                >
+                  Show all Filters
+                </Button>
+                <Offcanvas show={show} onHide={handleClose} placement="end">
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Filter by:</Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Accordion flush defaultActiveKey="0">
+                      {/* ------RATING------ */}
+                      <Accordion.Item eventKey="0">
+                        <Accordion.Header>
+                          <h6>Rating</h6>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <Form id="category-rating">
+                            <div key={`default-fiveStar`} className="mb-3">
+                              <Form.Check
+                                type="radio"
+                                name="rating"
+                                id={`default-fiveStar`}
+                                label={
+                                  <div>
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} /> 5 stars
+                                  </div>
+                                }
+                              />
+                            </div>
+
+                            <div key={`default-fourStar`} className="mb-3">
+                              <Form.Check
+                                type="radio"
+                                name="rating"
+                                id={`default-fourStar`}
+                                label={
+                                  <div>
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={transStar} /> 4 stars
+                                  </div>
+                                }
+                              />
+                            </div>
+                            <div key={`default-threeStar`} className="mb-3">
+                              <Form.Check
+                                type="radio"
+                                name="rating"
+                                id={`default-threeStar`}
+                                label={
+                                  <div>
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} /> 3 stars
+                                  </div>
+                                }
+                              />
+                            </div>
+                            <div key={`default-twoStar`} className="mb-3">
+                              <Form.Check
+                                type="radio"
+                                name="rating"
+                                id={`default-twoStar`}
+                                label={
+                                  <div>
+                                    <img src={yellowStar} />
+                                    <img src={yellowStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} /> 2 stars
+                                  </div>
+                                }
+                              />
+                            </div>
+                            <div key={`default-oneStar`} className="mb-3">
+                              <Form.Check
+                                type="radio"
+                                name="rating"
+                                id={`default-oneStar`}
+                                label={
+                                  <div>
+                                    <img src={yellowStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} />
+                                    <img src={transStar} /> 1 stars
+                                  </div>
+                                }
+                              />
+                            </div>
+                          </Form>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                      {/* ------PRODUCT TYPE------ */}
+                      <Accordion.Item eventKey="1">
+                        <Accordion.Header>
+                          <h6>Product Type</h6>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <Form>
+                            {categories.map((item) =>
+                              ['checkbox'].map((type) => (
+                                <div key={item.id} className="mb-3">
+                                  <Form.Check
+                                    type={type}
+                                    id={`default-eyeSerum`}
+                                    label={item.name}
+                                    onClick={() => filterByCategory(item.id)}
+                                  />
+                                </div>
+                              ))
+                            )}
+                          </Form>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                      {/* ------CONCERN------ */}
+                      <Accordion.Item eventKey="2">
+                        <Accordion.Header>
+                          <h6>Concern</h6>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <Form>
+                            {concerns.map((item) =>
+                              ['checkbox'].map((checkbox) => (
+                                <div key={item.id} className="mb-3">
+                                  <Form.Check
+                                    type={checkbox}
+                                    id={`default-ageing`}
+                                    label={item.name}
+                                    onClick={() => filterByConcerns(item.id)}
+                                  />
+                                </div>
+                              ))
+                            )}
+                          </Form>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                      {/* ------SKIN TYPE------ */}
+                    </Accordion>
+                  </Offcanvas.Body>
+                </Offcanvas>
+
+                {/* ----- */}
               </div>
 
               {products.map((product) => (

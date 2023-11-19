@@ -1,6 +1,6 @@
 // import React from 'react'
 import { Container, Row, Col, Form, Card } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 // import axios from "axios";
@@ -11,7 +11,6 @@ import { Slide, Fade } from "react-awesome-reveal";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -24,7 +23,7 @@ const Login = () => {
       //   "Authorization"
       // ] = `Bearer ${window.localStorage.getItem("ECOM_TOKEN")}`;
       if (response.data.user.usertype == "user") {
-        window.location.href = "/account";
+        window.location.href = "/";
       } else {
         window.location.href = "/admin-page";
       }

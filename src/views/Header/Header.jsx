@@ -81,7 +81,7 @@ const Header = () => {
                   <>
                     <Nav.Link
                       as={Link}
-                      to="/"
+                      to="/account"
                       style={{ textTransform: 'capitalize' }}
                     >
                       Hello, {user.username}!
@@ -113,7 +113,7 @@ const Header = () => {
                 <>
                   <Nav.Link
                     as={Link}
-                    to="/"
+                    to="/account"
                     style={{ textTransform: 'capitalize' }}
                   >
                     Hello, {user.username}!
@@ -151,7 +151,7 @@ const Header = () => {
             <Nav className="ml-auto">
               {user.name ? (
                 <>
-                  <Nav.Link as={Link} to="/">
+                  <Nav.Link as={Link} to="/account">
                     {user.username}
                   </Nav.Link>
                   <Nav.Link onClick={logout}>Logout</Nav.Link>

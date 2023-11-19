@@ -36,7 +36,11 @@ const Products = () => {
   };
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`/products`);
+      const response = await axios.get(`/products`,{
+        params: { orderBy:'desc', sortBy:'created_at' },
+
+      });
+      
       setAllProduct(response.data.data);
       console.log(response);
     } catch (error) {

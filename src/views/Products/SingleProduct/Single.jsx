@@ -56,7 +56,7 @@ const Order = () => {
         quantity,
         product_id,
       });
-      navigate(`/cart`);
+      navigate(`/carts`);
     } catch (error) {
       console.error("failed", error);
     }

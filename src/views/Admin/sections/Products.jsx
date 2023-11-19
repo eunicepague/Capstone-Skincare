@@ -1,9 +1,9 @@
 // import React from 'react'
-import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import axios from "../../../axios";
-import Swal from "sweetalert2";
-import "./Products.css";
+import { Container, Row, Col, Button, Modal, Form } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import axios from '../../../axios';
+import Swal from 'sweetalert2';
+import './Products.css';
 
 const Products = () => {
   const [lgShow, setLgShow] = useState(false);
@@ -13,18 +13,18 @@ const Products = () => {
 
   const [product, setProduct] = useState({
     id: null,
-    name: "",
-    main_description: "",
-    target: "",
-    suited: "",
-    format: "",
-    ingredients: "",
-    description: "",
-    price: "",
-    quantity: "",
-    image: "product.jpg",
-    category_id: "",
-    concern_id: "",
+    name: '',
+    main_description: '',
+    target: '',
+    suited: '',
+    format: '',
+    ingredients: '',
+    description: '',
+    price: '',
+    quantity: '',
+    image: 'product.jpg',
+    category_id: '',
+    concern_id: '',
   });
 
   const handleInputChange = (e) => {
@@ -36,15 +36,14 @@ const Products = () => {
   };
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`/products`,{
-        params: { orderBy:'desc', sortBy:'created_at' },
-
+      const response = await axios.get(`/products`, {
+        params: { orderBy: 'desc', sortBy: 'created_at' },
       });
-      
+
       setAllProduct(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -60,7 +59,7 @@ const Products = () => {
 
       console.log(response);
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
     }
   };
 
@@ -70,7 +69,7 @@ const Products = () => {
       setCategories(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -80,24 +79,24 @@ const Products = () => {
       setConcerns(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
   const addProduct = async () => {
     setProduct({
       id: null,
-      name: "",
-      main_description: "",
-      target: "",
-      suited: "",
-      format: "",
-      ingredients: "",
-      description: "",
-      price: "",
-      quantity: "",
-      image: "product.jpg",
-      category_id: "",
-      concern_id: "",
+      name: '',
+      main_description: '',
+      target: '',
+      suited: '',
+      format: '',
+      ingredients: '',
+      description: '',
+      price: '',
+      quantity: '',
+      image: 'product.jpg',
+      category_id: '',
+      concern_id: '',
     });
     setLgShow(true);
   };
@@ -109,27 +108,27 @@ const Products = () => {
 
   const delProduct = async (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
           const response = await axios.delete(`/products/${id}`);
           await getAllProducts();
           Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
+            title: 'Deleted!',
+            text: 'Your file has been deleted.',
+            icon: 'success',
           });
 
           // Assuming getCategories function is defined elsewhere
         } catch (error) {
-          console.error("Error:", error);
+          console.error('Error:', error);
         }
       }
     });
@@ -155,23 +154,23 @@ const Products = () => {
             <div className="admin-product">
               <table id="product-table">
                 <tr id="adminProduct-tableHead">
-                  <th style={{ width: "22rem" }}>Product Title</th>
-                  <th style={{ width: "20rem" }}>Main Description</th>
-                  <th style={{ width: "10rem" }}>Target</th>
-                  <th style={{ width: "10rem" }}>Suited</th>
-                  <th style={{ width: "10rem" }}>Format</th>
-                  <th style={{ width: "20rem" }}>Ingredients</th>
-                  <th style={{ width: "20rem" }}>Description</th>
-                  <th style={{ width: "7rem" }}>Quantity</th>
-                  <th style={{ width: "7rem" }}>Price</th>
-                  <th style={{ width: "7rem" }}>Product Category</th>
-                  <th style={{ width: "7rem" }}>Product Concern</th>
-                  <th style={{ width: "10rem" }}>Product Image Here</th>
-                  <th style={{ width: "7rem" }}>Action</th>
+                  <th style={{ width: '22rem' }}>Product Name</th>
+                  <th style={{ width: '20rem' }}>Main Description</th>
+                  <th style={{ width: '10rem' }}>Target</th>
+                  <th style={{ width: '10rem' }}>Suited</th>
+                  <th style={{ width: '10rem' }}>Format</th>
+                  <th style={{ width: '20rem' }}>Ingredients</th>
+                  <th style={{ width: '20rem' }}>Description</th>
+                  <th style={{ width: '7rem' }}>Quantity</th>
+                  <th style={{ width: '7rem' }}>Price</th>
+                  <th style={{ width: '7rem' }}> Category</th>
+                  <th style={{ width: '7rem' }}> Concern</th>
+                  <th style={{ width: '10rem' }}> Image</th>
+                  <th style={{ width: '7rem' }}>Action</th>
                 </tr>
 
                 {allProduct.map((item) => (
-                  <tr id="adminProduct-tableBody">
+                  <tr key={item.id} id="adminProduct-tableBody">
                     <td>{item.name}</td>
                     <td>{item.main_description}</td>
                     <td className="text-center">{item.target}</td>
@@ -414,13 +413,13 @@ const Products = () => {
                 >
                   <option>Select Category</option>
                   {categories.map((item) => (
-                  <option
-                  key={item.id}
-                  selected={product.category_id == item.id}
-                  value={item.id}
-                >
-                  {item.name}
-                </option>
+                    <option
+                      key={item.id}
+                      selected={product.category_id == item.id}
+                      value={item.id}
+                    >
+                      {item.name}
+                    </option>
                   ))}
                 </Form.Select>
               </Col>

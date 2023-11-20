@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from './../../assets/profile.png';
-
 import Dashboard from './sections/Dashboard';
 import Products from './sections/Products';
 import Category from './sections/Category';
@@ -12,7 +11,7 @@ import User from './sections/UserList';
 import './Admin.css';
 
 const Admin = () => {
-  // Use state to track the selected component
+  // track the selected component
   const [selectedComponent, setSelectedComponent] = useState('dashboard');
   const [activeButton, setActiveButton] = useState('dashboard');
 

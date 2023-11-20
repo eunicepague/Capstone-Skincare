@@ -1,16 +1,15 @@
-import { Container, Row, Col } from "react-bootstrap";
-import Cart from "./../../../assets/cart-icon.png";
+import { Container, Row, Col } from 'react-bootstrap';
+import Cart from './../../../assets/cart-icon.png';
 
-import Crueltyfree from "./../../../assets/cruelty-free.png";
-import Check from "./../../../assets/check.png";
-import X from "./../../../assets/x.png";
+import Crueltyfree from './../../../assets/cruelty-free.png';
+import Check from './../../../assets/check.png';
+import X from './../../../assets/x.png';
 
-
-import "./Single.css";
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import './Single.css';
+import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from "../../../axios";
+import axios from '../../../axios';
 
 const Order = () => {
   const [product, setProduct] = useState({});
@@ -18,8 +17,6 @@ const Order = () => {
   const [count, setCount] = useState(1);
   const { id } = useParams();
   const navigate = useNavigate();
-
- 
 
   const toggleContent = () => {
     setContentVisibility(!isContentVisible);
@@ -44,7 +41,7 @@ const Order = () => {
       setProduct(response.data.data);
       console.log(response);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -58,7 +55,7 @@ const Order = () => {
       });
       navigate(`/carts`);
     } catch (error) {
-      console.error("failed", error);
+      console.error('failed', error);
     }
   };
 
@@ -76,10 +73,7 @@ const Order = () => {
 
                 {/* visible only when in small screen */}
                 <section id="order-sm" className="d-md-block d-lg-none">
-                  <img
-                    src={`/products/${product.image}`}
-                    alt={product.name}
-                  />
+                  <img src={`/products/${product.image}`} alt={product.name} />
                 </section>
 
                 <div id="order-bot-content">
@@ -87,13 +81,13 @@ const Order = () => {
                   <p>{product.main_description}</p>
                   <hr></hr>
                   <h6>Targets</h6>
-                  <p>{product.target != "" ? product.target : "N/A"}</p>
+                  <p>{product.target != '' ? product.target : 'N/A'}</p>
                   <hr></hr>
                   <h6>Suited To</h6>
-                  <p>{product.suited != "" ? product.suited : "N/A"}</p>
+                  <p>{product.suited != '' ? product.suited : 'N/A'}</p>
                   <hr></hr>
                   <h6>Format</h6>
-                  <p>{product.format != "" ? product.format : "N/A"}</p>
+                  <p>{product.format != '' ? product.format : 'N/A'}</p>
                   <hr></hr>
                   <div className="d-flex justify-content-between">
                     <h6>Key Ingredients</h6>
@@ -103,7 +97,7 @@ const Order = () => {
                   </div>
                   {isContentVisible && (
                     <p>
-                      {product.ingredients != "" ? product.ingredients : "N/A"}
+                      {product.ingredients != '' ? product.ingredients : 'N/A'}
                     </p>
                   )}
                 </div>
@@ -158,23 +152,6 @@ const Order = () => {
                     </Col>
                   </Row>
                 </div>
-
-                {/* OVERVIEW CONTAINER */}
-                <div id="order-overview-container">
-                  <Row id="order-overview-content">
-                    <Col sm={12} md={12} lg={6}>
-                      <h2 className="mb-md-3 mb-sm-3">Overview.</h2>
-                    </Col>
-                    <Col sm={12} md={12} lg={6}>
-                      <h5 className="mb-md-3 mb-sm-3">About.</h5>
-                      <p>
-                        {product.description != ""
-                          ? product.description
-                          : "N/A"}
-                      </p>
-                    </Col>
-                  </Row>
-                </div>
               </section>
             </Col>
 
@@ -185,6 +162,28 @@ const Order = () => {
             </Col>
           </Row>
         </section>
+        <Row>
+          {/* OVERVIEW CONTAINER */}
+          <div id="order-overview-container">
+            <Row id="order-overview-content">
+              <Col lg={3}>
+                <h2 className="mb-md-3 mb-sm-3">Overview.</h2>
+              </Col>
+              <Col lg={9}>
+                <h5 className="mb-md-3 mb-sm-3">About.</h5>
+                <p
+                  style={{
+                    textIndent: '60px',
+                    marginTop: '2rem',
+                    textAlign: 'justify',
+                  }}
+                >
+                  {product.description != '' ? product.description : 'N/A'}
+                </p>
+              </Col>
+            </Row>
+          </div>
+        </Row>
       </Container>
 
       {/* --------THIS IS THE ADD TO BASKET BUTTON WHEN IN SM SCREEN*/}

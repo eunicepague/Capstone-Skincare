@@ -35,7 +35,7 @@ const Account = () => {
             <Link
               style={{ textDecoration: 'none', color: 'black' }}
               as={Link}
-              to="/status"
+              to="/orders"
             >
               <p>ORDERS</p>
             </Link>
